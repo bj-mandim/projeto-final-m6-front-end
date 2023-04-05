@@ -1,9 +1,9 @@
+import './App.css';
 import { Routes, Route } from "react-router-dom";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import React from "react";
+import Login from './pages/Login';
+import Register from './pages/Register';
 
-const App = () => {
+function App() {
   return (
     <div className="App">
       <Routes>
@@ -12,6 +12,6 @@ const App = () => {
       </Routes>
     </div>
   );
-};
+}
 
 export default App;
