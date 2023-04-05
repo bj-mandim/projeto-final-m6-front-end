@@ -1,12 +1,5 @@
 import "./App.css";
-import React from "react";
 
-function App() {
-  return (
-    <>
-      <h1>Testando React</h1>
-    </>
-  );
-}
+function App() {}
 
 export default App;
