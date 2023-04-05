@@ -1,5 +1,17 @@
-import "./style.css";
+import { Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
+import React from "react";
 
-function App() {}
+const App = () => {
+  return (
+    <div className="App">
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </div>
+  );
+};
 
 export default App;
