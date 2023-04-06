@@ -1,17 +1,18 @@
 import { Routes, Route } from "react-router-dom";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import React from "react";
+import Login from './pages/Login';
+import Register from './pages/Register';
+import GlobalStyle from "./global/style";
 
-const App = () => {
+function App() {
   return (
-    <div className="App">
+    <>
+      <GlobalStyle/>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </div>
+    </>
   );
-};
+}
 
 export default App;
