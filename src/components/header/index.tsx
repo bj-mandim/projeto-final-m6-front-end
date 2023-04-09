@@ -18,7 +18,7 @@ const Header  = () => {
 
                     <nav>
                         <div className="btnGroup">
-                            <a className="btn btn-link">Fazer Login</a>
+                            <a className="btn btn-link-primary">Fazer Login</a>
                             <a className="btn btn-outline">Cadastrar</a>
                         </div>
                     </nav>

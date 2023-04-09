@@ -8,8 +8,8 @@ export const Button = styled.button`
   white-space: nowrap;
   color: #ffffff;
   border-radius: 4px;
-  background: #4529E6 ;
-  border: 1.5px solid #4529E6;
+  background: var(--brand1);
+  border: 1px solid var(--brand1);
   cursor: pointer;
   transition: all 0.3s;
   &:hover {
