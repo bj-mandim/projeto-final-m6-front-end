@@ -5,8 +5,8 @@ const HeaderContainer = styled.header`
     justify-content: space-between;
     align-items: center;
     gap: 24px;
-    background: #FDFDFD;
-    border-bottom: 2px solid #DEE2E6;
+    background: var(--grey10);
+    border-bottom: 2px solid var(--grey6);
 
     padding: 0px 64px;
 
@@ -16,7 +16,7 @@ const HeaderContainer = styled.header`
 
     .content-menu {
         padding: 24px 0px 24px 16px;
-        border-left: 1px solid #DEE2E6;
+        border-left: 1px solid var(--grey6);
 
         .btnGroup {
             display: flex;

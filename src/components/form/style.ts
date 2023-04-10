@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Form = styled.form`
-    background: #FDFDFD;
+    background: var(--grey10);
     border-radius: 4px;
     padding: 44px 48px;
     width: 100%;
@@ -17,50 +17,50 @@ export const Form = styled.form`
         }
     }
 
-    label {
+    /*label {
         display: block;
         font-weight: 500;
-        font-size: 14px;
+        font-size: var(--input-label-size);
         line-height: 17px;
-        color: #212529;
+        color: var(--grey1);
         margin-bottom: 8px;
         margin-top: 24px;
     }
 
     input {
-        border: 1.5px solid #E9ECEF;
+        border: 1.5px solid var(--grey7);
         border-radius: 4px;
         padding: 0px 16px;
         min-height: 48px;
         width: -webkit-fill-available;
-        color: #212529;
-        font-size: 16px;
+        color: var(--grey1);
+        font-size: var(--input-placeholder-size);
         background: transparent;
 
         &::placeholder {
             font-family: 'Inter', sans-serif;
             font-weight: 400;
-            font-size: 16px;
-            color: #868E96;
+            font-size: var(--input-placeholder-size);
+            color: var(--grey3);
         }
 
         &:hover {
-            border: 1px solid #ADB5BD;
+            border: 1px solid var(--grey4);
         }
 
         &:focus {
             outline: none;
             border: 1px solid var(--brand1);
         }
-    }
+    }*/
 
     .forgot-pass {
         display: block;
         text-align: right;
         font-weight: 500;
-        font-size: 14px;
+        font-size: var(--body2-size);
         line-height: 24px;
-        color: #495057;
+        color: var(--grey2);
         text-decoration: none;
         margin-top: 8px;
         margin-bottom: 24px;
@@ -68,8 +68,8 @@ export const Form = styled.form`
 
     .extra-text {
         text-align: center;
-        color: #495057;
-        font-size: 14px;
+        color: var(--grey2);
+        font-size: var(--body2-size);
         line-height: 24px;
         margin: 24px 0;
     }
