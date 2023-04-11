@@ -32,23 +32,6 @@ const HeaderContainer = styled.header`
       background-color: black;
     }
   }
-
-  /*
-
-    padding: 0px 64px;
-
-    .categories {
-        display: none;
-    }
-
-    .content-menu {
-        padding: 24px 0px 24px 16px;
-        border-left: 1px solid #DEE2E6;
-
-        .btnGroup {
-            display: flex;
-        }
-    } */
 `;
 
 export default HeaderContainer;
