@@ -3,6 +3,15 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     * {
         transition: all 300ms ease-in-out;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        button{
+            cursor: pointer;
+        }
+        img{
+            object-fit: cover;
+        }
     }
 
     :root {
@@ -18,6 +27,8 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: #F1F3F5;
+        width: 100vw;
+        height: 100vh;
     }
 
     .btn {

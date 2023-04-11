@@ -1,31 +1,39 @@
 import HeaderContainer from "./styles";
-import Logo from "../../img/motors_shop_logo.png"
+import Logo from "../../img/motors_shop_logo.png";
 
-const Header  = () => {
-    return (
-        <>
-            <HeaderContainer>
-                <div className="logo">
-                    <img src={Logo} alt="Logo MotorsShop"/>
-                </div>
+const Header = () => {
+  return (
+    <>
+      <HeaderContainer id="header">
+        <img id="logo" src={Logo} alt="Logo MotorsShop" />
 
-                <section className="content-menu">
-                    <ul className="categories">
-                        <li><a href="#">Carros</a></li>
-                        <li><a href="#">Motos</a></li>
-                        <li><a href="#">Leilão</a></li>
-                    </ul>
-
-                    <nav>
-                        <div className="btnGroup">
-                            <a className="btn btn-link">Fazer Login</a>
-                            <a className="btn btn-outline">Cadastrar</a>
-                        </div>
-                    </nav>
-                </section>
-            </HeaderContainer>
-        </>
-    );
-}
+        <nav id="nav">
+          <ul id="menu-mobile">
+            <li>
+              <a href="/">Carros</a>
+            </li>
+            <li>
+              <a href="/">Motos</a>
+            </li>
+            <li>
+              <a href="/">Leilão</a>
+            </li>
+          </ul>
+          <div id="button-mobile">
+            <button>1</button>
+          </div>
+          <ul id="menu-desktop">
+            <li>
+              <a className="btn btn-link">Fazer Login</a>
+            </li>
+            <li>
+              <a className="btn btn-outline">Cadastrar</a>
+            </li>
+          </ul>
+        </nav>
+      </HeaderContainer>
+    </>
+  );
+};
 
 export default Header;

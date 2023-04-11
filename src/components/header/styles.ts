@@ -1,12 +1,39 @@
 import styled from "styled-components";
 
 const HeaderContainer = styled.header`
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  background: #fdfdfd;
+  border-bottom: 2px solid #dee2e6;
+
+  #menu-desktop {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 24px;
-    background: #FDFDFD;
-    border-bottom: 2px solid #DEE2E6;
+    padding: 0 0.5rem;
+  }
+
+  #button-mobile {
+    display: none;
+  }
+
+  #menu-mobile {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    #menu-desktop {
+      display: none;
+    }
+
+    #button-mobile {
+      background-color: black;
+    }
+  }
+
+  /*
 
     padding: 0px 64px;
 
@@ -21,7 +48,7 @@ const HeaderContainer = styled.header`
         .btnGroup {
             display: flex;
         }
-    }
+    } */
 `;
 
 export default HeaderContainer;
