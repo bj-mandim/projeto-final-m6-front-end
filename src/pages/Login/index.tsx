@@ -1,67 +1,16 @@
 // import { Link } from "react-router-dom";
 import Header from "../../components/header";
 // import { Form } from "../../components/form/style";
-import Card from "../../components/card";
-import { useState } from "react";
+
 
 const Login = () => {
-  const [getCars, setGetCars] = useState([
-    {
-      is_active: false,
-      brand: "Ford",
-      model: "Exemplo",
-      description: "description",
-      km: 2,
-      year: 2020,
-      price: "R$00.000,00",
-    },
-
-    {
-      is_active: false,
-      brand: "Ford",
-      model: "Exemplo",
-      description: "description",
-      km: 2,
-      year: 2020,
-      price: "R$00.000,00",
-    },
-
-    {
-      is_active: false,
-      brand: "Ford",
-      model: "Exemplo",
-      description: "description",
-      km: 2,
-      year: 2020,
-      price: "R$00.000,00",
-    },
-
-    {
-      is_active: false,
-      brand: "Ford",
-      model: "Exemplo",
-      description: "description",
-      km: 2,
-      year: 2020,
-      price: "R$00.000,00",
-    },
-
-    {
-      is_active: false,
-      brand: "Ford",
-      model: "Exemplo",
-      description: "description",
-      km: 2,
-      year: 2020,
-      price: "R$00.000,00",
-    },
-  ]);
+  
 
   return (
     <>
       <Header></Header>
       {/* <Section>*/}
-      <Card getCars={getCars} />
+
       {/* <Form>
         <h2 className="header">Login</h2>
 

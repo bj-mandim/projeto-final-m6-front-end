@@ -1,10 +1,26 @@
 /* eslint-disable array-callback-return */
 // import { StyledCards } from "./style";
 
-const Card = ({ getCars }: any) => {
+interface iCardProps {
+  getCars: car[]
+}
+
+interface car {
+  is_active:boolean,
+  brand: string,
+  model: string
+  description: string,
+  km: number,
+  year: number,
+  price: string,
+}
+
+const Card = ({ getCars }: iCardProps) => {
   console.log(getCars);
-  return getCars.map((car: any) => {
-    <>
+  return (<>
+  {
+    getCars.map((car)=>{
+       return(<>
       {/* {
       is_active: false,
       brand: "Ford",
@@ -30,8 +46,10 @@ const Card = ({ getCars }: any) => {
       <span>{car.price}</span>
       {/* </li> */}
       {/* </StyledCards> */}
-    </>;
-  });
+    </>);
+    })
+  }
+  </>)
 };
 
 export default Card;
