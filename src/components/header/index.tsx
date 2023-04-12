@@ -1,4 +1,4 @@
-import HeaderContainer from "./styles";
+import HeaderContainer from "./style";
 import Logo from "../../img/motors_shop_logo.png";
 
 const Header = () => {

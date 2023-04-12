@@ -7,7 +7,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
-  background: #fdfdfd;
+  background: var(--grey10);
   border-bottom: 2px solid #dee2e6;
 
   #menu-desktop {
@@ -30,6 +30,7 @@ const HeaderContainer = styled.header`
 
     #button-mobile {
       background-color: black;
+      display: flex;
     }
   }
 `;
