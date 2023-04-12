@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 interface iButtonProps {
 medium?: boolean;
 model?: string;
+largura?:number;
 }
 
 export const Button = styled.button<iButtonProps>`
@@ -16,6 +17,7 @@ export const Button = styled.button<iButtonProps>`
   cursor: pointer;
   text-decoration: none;
   transition: all 300ms ease-in-out;
+  width: ${({largura})=>largura?`${largura}%`:'fit-content'};
 
   ${({ medium }) =>
     !medium
