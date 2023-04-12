@@ -1,42 +1,92 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Header from "../../components/header";
-import { Form } from "../../components/form/style";
+// import { Form } from "../../components/form/style";
+import Card from "../../components/card";
+import { useState } from "react";
 
 const Login = () => {
+  const [getCars, setGetCars] = useState([
+    {
+      is_active: false,
+      brand: "Ford",
+      model: "Exemplo",
+      description: "description",
+      km: 2,
+      year: 2020,
+      price: "R$00.000,00",
+    },
+
+    {
+      is_active: false,
+      brand: "Ford",
+      model: "Exemplo",
+      description: "description",
+      km: 2,
+      year: 2020,
+      price: "R$00.000,00",
+    },
+
+    {
+      is_active: false,
+      brand: "Ford",
+      model: "Exemplo",
+      description: "description",
+      km: 2,
+      year: 2020,
+      price: "R$00.000,00",
+    },
+
+    {
+      is_active: false,
+      brand: "Ford",
+      model: "Exemplo",
+      description: "description",
+      km: 2,
+      year: 2020,
+      price: "R$00.000,00",
+    },
+
+    {
+      is_active: false,
+      brand: "Ford",
+      model: "Exemplo",
+      description: "description",
+      km: 2,
+      year: 2020,
+      price: "R$00.000,00",
+    },
+  ]);
 
   return (
     <>
-    <Header></Header>
-  {/* <Section>*/}
-      <Form> 
+      <Header></Header>
+      {/* <Section>*/}
+      <Card getCars={getCars} />
+      {/* <Form>
         <h2 className="header">Login</h2>
 
         <div className="content_login">
           <label htmlFor="email">Usuário</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Digitar usuário"
-            
-            />
+          <input type="email" id="email" placeholder="Digitar usuário" />
 
           <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Digitar senha"
-            
-            />
+          <input type="password" id="password" placeholder="Digitar senha" />
 
-            <Link to={"/login"} className="forgot-pass">Esqueci minha senha</Link>
+          <Link to={"/login"} className="forgot-pass">
+            Esqueci minha senha
+          </Link>
 
-            <button type="submit" className="btn btn-primary w-100">Entrar</button>
+          <button type="submit" className="btn btn-primary w-100">
+            Entrar
+          </button>
 
-            <p className="extra-text">Ainda não possui conta?</p>
-            <Link to={"/register"} className="btn btn-outline-2">Cadastrar</Link>
+          <p className="extra-text">Ainda não possui conta?</p>
+          <Link to={"/register"} className="btn btn-outline-2">
+            Cadastrar
+          </Link>
         </div>
-       </Form>
-    {/*</Section> */}
+      </Form> */}
+      {/*</Section> */}
     </>
   );
 };
