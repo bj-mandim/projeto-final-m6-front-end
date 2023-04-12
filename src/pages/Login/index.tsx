@@ -76,14 +76,11 @@ const Login = () => {
             Esqueci minha senha
           </Link>
 
-          <button type="submit" className="btn btn-primary w-100">
-            Entrar
-          </button>
+            <Link to={"/login"} className="forgot-pass">Esqueci minha senha</Link>
 
-          <p className="extra-text">Ainda não possui conta?</p>
-          <Link to={"/register"} className="btn btn-outline-2">
-            Cadastrar
-          </Link>
+            <button type="submit" className="btn btn-primary w-100">Entrar</button>
+            <p className="extra-text">Ainda não possui conta?</p>
+            <Link to={"/register"} className="btn btn-outline-2">Cadastrar</Link>
         </div>
       </Form> */}
       {/*</Section> */}
