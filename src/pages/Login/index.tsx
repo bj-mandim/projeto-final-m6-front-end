@@ -1,17 +1,13 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Header from "../../components/header";
-// import { Form } from "../../components/form/style";
-
+import { Form } from "../../components/form/style";
 
 const Login = () => {
-  
-
   return (
     <>
       <Header></Header>
-      {/* <Section>*/}
-
-      {/* <Form>
+      {/*       <Section> */}
+      <Form>
         <h2 className="header">Login</h2>
 
         <div className="content_login">
@@ -25,14 +21,20 @@ const Login = () => {
             Esqueci minha senha
           </Link>
 
-            <Link to={"/login"} className="forgot-pass">Esqueci minha senha</Link>
+          <Link to={"/login"} className="forgot-pass">
+            Esqueci minha senha
+          </Link>
 
-            <button type="submit" className="btn btn-primary w-100">Entrar</button>
-            <p className="extra-text">Ainda não possui conta?</p>
-            <Link to={"/register"} className="btn btn-outline-2">Cadastrar</Link>
+          <button type="submit" className="btn btn-primary w-100">
+            Entrar
+          </button>
+          <p className="extra-text">Ainda não possui conta?</p>
+          <Link to={"/register"} className="btn btn-outline-2">
+            Cadastrar
+          </Link>
         </div>
-      </Form> */}
-      {/*</Section> */}
+      </Form>
+      {/*       </Section> */}
     </>
   );
 };
