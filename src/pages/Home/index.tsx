@@ -11,50 +11,103 @@ function Home() {
       is_active: false,
       brand: "Ford",
       model: "Exemplo",
-      description: "description",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       km: 2,
       year: 2020,
-      price: "R$00.000,00",
+      price: "120.000,00",
+      img_car:
+        "https://images.usadosbr.com/manipulatedImages/media/gallery/6a/dc/58/fiat-palio-1-0-fire-celebration-8v-1-2009-sao-paulo-sp-9382637e-xw-image-760x570-crop.webp",
+      user: {
+        name: "Elias Borges",
+        img_user:
+          "https://img.freepik.com/fotos-gratis/cliente-masculino-pensativo-olhando-para-longe_74855-3601.jpg?w=360",
+      },
     },
-
     {
       is_active: false,
       brand: "Ford",
       model: "Exemplo",
-      description: "description",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       km: 2,
       year: 2020,
-      price: "R$00.000,00",
+      price: "120.000,00",
+      img_car:
+        "https://images.usadosbr.com/manipulatedImages/media/gallery/6a/dc/58/fiat-palio-1-0-fire-celebration-8v-1-2009-sao-paulo-sp-9382637e-xw-image-760x570-crop.webp",
+      user: {
+        name: "Elias Borges",
+        img_user:
+          "https://img.freepik.com/fotos-gratis/cliente-masculino-pensativo-olhando-para-longe_74855-3601.jpg?w=360",
+      },
     },
-
     {
       is_active: false,
       brand: "Ford",
       model: "Exemplo",
-      description: "description",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       km: 2,
       year: 2020,
-      price: "R$00.000,00",
+      price: "120.000,00",
+      img_car:
+        "https://images.usadosbr.com/manipulatedImages/media/gallery/6a/dc/58/fiat-palio-1-0-fire-celebration-8v-1-2009-sao-paulo-sp-9382637e-xw-image-760x570-crop.webp",
+      user: {
+        name: "Elias Borges",
+        img_user:
+          "https://img.freepik.com/fotos-gratis/cliente-masculino-pensativo-olhando-para-longe_74855-3601.jpg?w=360",
+      },
     },
-
     {
       is_active: false,
       brand: "Ford",
       model: "Exemplo",
-      description: "description",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       km: 2,
       year: 2020,
-      price: "R$00.000,00",
+      price: "120.000,00",
+      img_car:
+        "https://images.usadosbr.com/manipulatedImages/media/gallery/6a/dc/58/fiat-palio-1-0-fire-celebration-8v-1-2009-sao-paulo-sp-9382637e-xw-image-760x570-crop.webp",
+      user: {
+        name: "Elias Borges",
+        img_user:
+          "https://img.freepik.com/fotos-gratis/cliente-masculino-pensativo-olhando-para-longe_74855-3601.jpg?w=360",
+      },
     },
-
     {
       is_active: false,
       brand: "Ford",
       model: "Exemplo",
-      description: "description",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
       km: 2,
       year: 2020,
-      price: "R$00.000,00",
+      price: "120.000,00",
+      img_car:
+        "https://images.usadosbr.com/manipulatedImages/media/gallery/6a/dc/58/fiat-palio-1-0-fire-celebration-8v-1-2009-sao-paulo-sp-9382637e-xw-image-760x570-crop.webp",
+      user: {
+        name: "Elias Borges",
+        img_user:
+          "https://img.freepik.com/fotos-gratis/cliente-masculino-pensativo-olhando-para-longe_74855-3601.jpg?w=360",
+      },
+    },
+    {
+      is_active: false,
+      brand: "Ford",
+      model: "Exemplo",
+      description:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+      km: 2,
+      year: 2020,
+      price: "120.000,00",
+      img_car:
+        "https://images.usadosbr.com/manipulatedImages/media/gallery/6a/dc/58/fiat-palio-1-0-fire-celebration-8v-1-2009-sao-paulo-sp-9382637e-xw-image-760x570-crop.webp",
+      user: {
+        name: "Elias Borges",
+        img_user:
+          "https://img.freepik.com/fotos-gratis/cliente-masculino-pensativo-olhando-para-longe_74855-3601.jpg?w=360",
+      },
     },
   ]);
 
@@ -179,7 +232,6 @@ function Home() {
             </div>
           </section>
           <section className="render_cards">
-            {/* Elias */}
             <Card getCars={getCars} />
           </section>
         </div>
