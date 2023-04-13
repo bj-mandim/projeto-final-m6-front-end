@@ -21,6 +21,19 @@ const HeaderContainer = styled.header`
 
   #menu-mobile {
     display: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-right: 2px solid var(--grey6);
+   a {
+    text-decoration: none;
+    color: var(--grey2);
+    :hover {
+      color: var(--grey2);
+    }
+    }
   }
 
   @media (max-width: 600px) {
