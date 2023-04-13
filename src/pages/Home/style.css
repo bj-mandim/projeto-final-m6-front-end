@@ -1,0 +1,86 @@
+.container_filter_cards {
+  padding: 2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter_card {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter {
+  width: 85%;
+  margin-bottom: 20px;
+}
+
+.container_filter {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.container_max_min {
+  display: flex;
+  flex-direction: column;
+}
+
+.container_max_min > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.render_cards {
+  width: 80%;
+  background-color: rgb(255, 104, 104);
+}
+
+.container {
+  height: 60vh;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 1%,
+    #000 100%
+  ); /* acertar degradê */
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.container > div {
+  position: absolute;
+  bottom: 1px;
+}
+
+.container > div > img {
+  position: relative;
+  top: 4px;
+
+  z-index: -1;
+}
+
+.container > div > div {
+  width: 100%;
+  position: absolute;
+  bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--grey10);
+  text-align: center;
+}
+
+.container > div > div > h1 {
+  line-height: 2.5px;
+}
+
+.container > div > div > p {
+  line-height: 2.5px;
+}
+
+.button_clear_filter {
+  display: none;
+}
