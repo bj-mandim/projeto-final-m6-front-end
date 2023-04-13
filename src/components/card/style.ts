@@ -7,19 +7,24 @@ export const StyledCards = styled.div`
   height: 21.875rem;
   display: flex;
   flex-direction: column;
+  border-radius: 8px;
+  margin-bottom: 10px;
 
   .boxImage {
     display: flex;
     width: 100%;
     height: 9.5rem;
     background-color: var(--grey7);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 
     img {
       width: 16.375rem;
       height: 9.393rem;
       margin: 0 auto;
+      object-fit: cover;
     }
-    
+
     .statusCar {
       position: absolute;
       top: 11px;
@@ -35,12 +40,11 @@ export const StyledCards = styled.div`
       color: #fff;
     }
   }
-  
 
   .descriptionCar {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    padding: 10px;
     h1 {
       color: var(--grey1);
       font-size: 1rem;
@@ -54,11 +58,11 @@ export const StyledCards = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: normal;
-      color: var(--grey2)
+      color: var(--grey2);
     }
   }
 
-  .boxUser{
+  .boxUser {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -67,12 +71,13 @@ export const StyledCards = styled.div`
       border-radius: 50%;
       width: 2rem;
       height: 2rem;
+      object-fit: cover;
     }
 
     h2 {
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--grey2)
+      color: var(--grey2);
     }
   }
 
@@ -87,7 +92,7 @@ export const StyledCards = styled.div`
     align-items: center;
     gap: 0.3rem;
 
-    span{
+    span {
       background-color: var(--brand4);
       color: var(--brand1);
       font-size: 0.875rem;

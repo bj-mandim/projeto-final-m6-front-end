@@ -35,7 +35,10 @@
 
 .render_cards {
   width: 80%;
-  background-color: rgb(255, 104, 104);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: row;
 }
 
 .container {
