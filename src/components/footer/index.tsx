@@ -1,18 +1,16 @@
+import { ChevronUpIcon } from "@chakra-ui/icons";
 import Motors_shop_footer from "../../img/Motors_shop_footer.png";
-import direitos_reservados from "../../img/direitos_reservados.png";
 import { Containerfooter } from "./style";
 
 export const Footer = () => {
   return (
     <Containerfooter>
-      <div>
+      <div className="footer-wrapper">
         <figure>
           <img src={Motors_shop_footer} alt="Logo" />
         </figure>
-        <figure>
-          <img src={direitos_reservados} alt="Direitos reservados" />
-        </figure>
-        <a href="#">^</a>
+        <p className="body-2-400 white">© 2022 - Todos os direitos reservados.</p>
+        <a href="#" className="backToTop"><ChevronUpIcon/></a>
       </div>
     </Containerfooter>
   );

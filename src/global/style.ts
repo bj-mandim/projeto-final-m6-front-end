@@ -75,11 +75,17 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: var(--grey8);
-        font-size: var(--body2-size);
         color: var(--grey2);
     }
 
+    a {
+        cursor: pointer;
+    }
+
     /* Text Classes */
+    .white {
+        color: #FFFFFF;
+    }
     /* -- HEADING */
     .heading {
         color: var(--grey1);
@@ -336,6 +342,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &-link {
+            background: transparent;
             color: var(--grey0);
 
             &:hover {

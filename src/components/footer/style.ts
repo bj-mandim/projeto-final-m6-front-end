@@ -2,66 +2,38 @@ import styled from "styled-components";
 
 export const Containerfooter= styled.footer`
   width: 100%;
-  div {
+
+  .footer-wrapper {
     background-color: var(--grey0);
-    height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 3rem;
-  }
-  a {
-    display: flex;
-    justify-content: center;
-    border-radius: 9px;
-    align-items: center;
-    width: 35px;
-    height: 35px;
-    background-color: var(--grey1);
-    color: white;
-    padding-top: 5px;
-    text-decoration: none;
-    padding-left: 3px;
-    padding-right: 3px;
-    :hover {
-      color: white;
-    }
-  }
-  @media screen and (max-width: 425px) {
-    div {
-      gap: 5px;
-      flex-direction: column;
-    }
-  
-  }
+    padding: 45px 3rem;
 
-  @media screen and (max-width: 660px) {
-    
-    div{
+    * {
+      margin: 0;
+    }
+
+    .backToTop {
       display: flex;
-      flex-direction: column;
-      width: 100%;
-      justify-content: space-evenly;
+      justify-content: center;
+      border-radius: 9px;
       align-items: center;
-      height: 160px;
-    }
+      width: 50px;
+      height: 50px;
+      background-color: var(--grey1);
+      color: white;
 
-    section {
-      margin-right: 0px;
-    }
-
-    p {
-      font-size: 14px;
-    }
-    
-    a{
-      margin-right: 0px;
+      &:hover {
+        background-color: var(--grey2);
+      }
     }
   }
 
-  @media screen and (max-width: 320px) {
-    p {
-      font-size: 12px;
+  @media screen and (max-width: 767px) {
+    .footer-wrapper {
+      gap: 60px;
+      flex-direction: column;
     }
   }
 `;

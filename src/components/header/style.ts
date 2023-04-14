@@ -1,14 +1,60 @@
 import styled from "styled-components";
 
-const HeaderContainer = styled.header`
-  width: 100%;
-  height: 10vh;
+export const HeaderWrapper = styled.header`
+  #menu-mobile {
+    box-shadow: 0px 0px 40px 0px #000000bf;
+
+    @media (min-width: 767px) {
+      display: none;
+    }
+
+    #categories {
+      margin: 0px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+
+      li {
+        list-style-type: none;
+
+        a {
+          color: var(--grey2);
+        }
+      }
+    }
+
+    #nav-mobile {
+      border-top: 1px solid var(--grey4);
+      padding: 32px 24px;
+      text-align: left !important;
+      display: flex;
+      flex-direction: column;
+      gap: 44px;
+
+      .btn-link {
+        text-align: left;
+      }
+    }
+  }
+`;
+
+export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 5%;
   background: var(--grey10);
   border-bottom: 2px solid #dee2e6;
+  z-index: 9999;
+  position: relative;
+
+  @media (min-width: 767px) {
+    #nav {
+      border-left: 1px solid var(--grey6);
+      padding: 24px 0;
+    }
+  }
 
   #menu-desktop {
     display: flex;
@@ -17,35 +63,26 @@ const HeaderContainer = styled.header`
 
   #button-mobile {
     display: none;
+    outline: none;
+    border: none;
+    background-color: transparent;
   }
 
-  #menu-mobile {
-    display: none;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-right: 2px solid var(--grey6);
-   a {
-    text-decoration: none;
-    color: var(--grey2);
-    :hover {
-      color: var(--grey2);
-    }
-    }
-  }
+  @media (max-width: 768px) {
+    padding-top: 24px;
+    padding-bottom: 24px;
 
-  @media (max-width: 600px) {
     #menu-desktop {
       display: none;
     }
 
     #button-mobile {
-      background-color: black;
-      display: flex;
+      display: block;
+
+      .hamburger-icon {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 `;
-
-export default HeaderContainer;
