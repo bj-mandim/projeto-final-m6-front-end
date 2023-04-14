@@ -1,10 +1,8 @@
 import Header from "../../components/header";
 // import "./style.css";
 import { Footer } from "../../components/footer";
-
-import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
-import car from "../../img/carro_branco.png";
+/* import car from "../../img/carro_branco.png"; */
 import {
   Article,
   Aside,
@@ -18,7 +16,7 @@ import {
   Section,
 } from "./styles";
 import Comment from "../../components/comment";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";
 
@@ -26,9 +24,6 @@ function Product() {
   const { card }: any = useContext(ContextApi);
   const [isOpen, setIsOpen] = useState(false);
 
-  /* useEffect(() => {
-    getCardId(idCar);
-  }, []); */
   return (
     <>
       <Header></Header>
@@ -104,7 +99,7 @@ function Product() {
               </button>
             </div>
             <div className="modal-img">
-              <img src={car} alt="" />
+              <img src={card.images[0].url} alt="" />
             </div>
           </div>
         </Modal>
