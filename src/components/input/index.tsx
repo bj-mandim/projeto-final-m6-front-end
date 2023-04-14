@@ -1,18 +1,22 @@
 
-import { InputContainer } from "./style";
+// import { InputContainer } from "./style";
 
-const Input = (
-) => {
- 
-  return (
+const Input = () => {
 
-    <InputContainer>
-
-      <label></label>
-      <input />
-
-    </InputContainer>
-  );
 }
+
+// const Input = (
+// ) => {
+ 
+//   return (
+
+//     <InputContainer>
+
+//       <label></label>
+//       <input />
+
+//     </InputContainer>
+//   );
+// }
 
 export default Input;

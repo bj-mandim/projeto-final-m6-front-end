@@ -50,7 +50,7 @@ const Register = () => {
 
         <label htmlFor="email">Data de Nascimento</label>
             <input
-              type="date"
+              type="test"
               id="birth"
               placeholder="00/00/00"
             

@@ -22,10 +22,6 @@ const Login = () => {
             Esqueci minha senha
           </Link>
 
-          <Link to={"/login"} className="forgot-pass">
-            Esqueci minha senha
-          </Link>
-
           <button type="submit" className="btn btn-primary w-100">
             Entrar
           </button>

@@ -78,12 +78,38 @@
 
 .container > div > div > h1 {
   line-height: 2.5px;
+ 
 }
 
 .container > div > div > p {
   line-height: 2.5px;
+
 }
 
 .button_clear_filter {
   display: none;
+}
+
+@media (max-width: 768px) {
+  main{
+    width: 100%;
+
+		flex-wrap: nowrap;
+		overflow-y: scroll;
+		height: fit-content;
+		padding: 16px;
+  }
+
+  @media (max-width: 550px) {
+    p{
+      font-size: 17px;
+    }
+  }
+  
+  @media (max-width: 430px) {
+    p{
+      font-size: 11px;
+			margin-top: 110px;
+    }
+  }
 }
