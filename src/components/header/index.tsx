@@ -10,22 +10,23 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { Outlet } from "react-router-dom";
-
+import { Outlet, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
-    <HeaderWrapper id="header">
-      <HeaderContainer>
+      <HeaderWrapper id="header">
+        <HeaderContainer>
           <Image
             src={Logo}
             alt="Logo do header"
             maxW={"300px"}
             maxH={"30px"}
             id="logo"
+            onClick={() => navigate("/")}
           />
           <nav id="nav">
             <HStack
@@ -37,21 +38,38 @@ const Header = () => {
               justify={"space-evenly"}
               id="menu-desktop"
             >
-              <Link className="btn btn-link-primary">Fazer Login</Link>
-              <Button variant={"outline-1"} className="btn btn-outline">Cadastrar</Button>
+              <Link
+                className="btn btn-link-primary"
+                onClick={() => navigate("/login")}
+              >
+                Fazer Login
+              </Link>
+              <Button
+                variant={"outline-1"}
+                className="btn btn-outline"
+                onClick={() => navigate("/register")}
+              >
+                Cadastrar
+              </Button>
             </HStack>
 
             <IconButton
               aria-label="Abrir menu"
-              icon={isMenuOpen ? <CloseIcon /> : <HamburgerIcon className="hamburger-icon" />}
+              icon={
+                isMenuOpen ? (
+                  <CloseIcon />
+                ) : (
+                  <HamburgerIcon className="hamburger-icon" />
+                )
+              }
               display={{ base: "block", md: "none" }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               id="button-mobile"
               className="btn"
             />
           </nav>
-      </HeaderContainer>
-      {isMenuOpen && (
+        </HeaderContainer>
+        {isMenuOpen && (
           <Flex
             direction={"column"}
             display={{ base: "block", md: "none" }}
@@ -63,9 +81,15 @@ const Header = () => {
             id="menu-mobile"
           >
             <ul id="categories" className="body-1-600">
-              <li><Link>Carros</Link></li>
-              <li><Link>Motos</Link></li>
-              <li><Link>Leilão</Link></li>
+              <li>
+                <Link>Carros</Link>
+              </li>
+              <li>
+                <Link>Motos</Link>
+              </li>
+              <li>
+                <Link>Leilão</Link>
+              </li>
             </ul>
             <nav id="nav-mobile">
               <Link className="body-1-600">Fazer Login</Link>
@@ -74,7 +98,7 @@ const Header = () => {
           </Flex>
         )}
         <Outlet />
-    </HeaderWrapper>
+      </HeaderWrapper>
 
       {/* <HeaderContainer id="header">
         <img id="logo" src={Logo} alt="Logo MotorsShop" />

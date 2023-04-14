@@ -1,38 +1,55 @@
+import { useNavigate } from "react-router-dom";
 import { StyledCards } from "../../../components/card/style";
+import { ContextApi } from "../../../contexts";
+import { useContext } from "react";
 
 interface iCardProps {
   getCars: car[];
 }
 
-interface car {
-  is_active: boolean;
-  brand: string;
-  model: string;
-  description: string;
-  km: number;
-  year: number;
-  price: string;
-  img_car: string;
-  user: any;
+interface IImages {
+  id: string;
+  url: string;
 }
 
-const Card = ({ getCars }: iCardProps) => {
+interface car {
+  brand: string;
+  color: string;
+  description: string;
+  fipe_table: number;
+  fuel: string;
+  id: string;
+  images: IImages[];
+  is_active: boolean;
+  km: number;
+  model: string;
+  price: string;
+  year: number;
+}
+
+const Card = () => {
+  const { getCardId, listCards }: any = useContext(ContextApi);
+
   return (
     <>
-      {getCars.map((car) => {
+      {listCards.map((car: car) => {
         return (
           <>
-            <StyledCards>
+            <StyledCards
+              onClick={() => {
+                getCardId(car.id);
+              }}
+            >
               <div className="boxImage">
-                <img src={car.img_car} alt="car-image" />
+                <img src={car.images[0].url} alt="car-image" />
                 <span className="statusCar">Ativo</span>
               </div>
               <div className="descriptionCar">
                 <h1>{car.model}</h1>
                 <p>{car.description}</p>
                 <div className="boxUser">
-                  <img src={car.user.img_user} alt="user-photo" />
-                  <h2>{car.user.name}</h2>
+                  <img src={car.images[0].url} alt="user-photo" />
+                  <h2>Claudio</h2>
                 </div>
                 <div className="boxKmYearPrice">
                   <div className="kmYear">
@@ -51,15 +68,3 @@ const Card = ({ getCars }: iCardProps) => {
 };
 
 export default Card;
-
-{
-  /* <h1>{car.is_active}</h1>
-            <h1>
-              {car.brand} - {car.model}
-            </h1>
-            <p>{car.description}</p>
-            
-            <p>{car.km}</p>
-            <span>{car.year}</span>
-            <span>{car.price}</span> */
-}
