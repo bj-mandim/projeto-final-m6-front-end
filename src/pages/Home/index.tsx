@@ -4,6 +4,7 @@ import { useState } from "react";
 import "./style.css";
 import Button from "../../components/button/style";
 import car from "../../img/Car.png";
+import { Footer } from "../../components/footer";
 
 function Home() {
   const [getCars, setGetCars] = useState([
@@ -236,8 +237,57 @@ function Home() {
           </section>
         </div>
       </main>
+      <Footer />
     </>
   );
 }
 
 export default Home;
+
+
+// function Home() {
+// 	const navigate = useNavigate();
+// 	const [widthWindow, setWidthWindow] = useState<number>(window.innerWidth);
+// 	const [openModal, setOpenModal] = useState(false);
+// 	window.addEventListener("resize", function () {
+// 		setWidthWindow(window.innerWidth);
+// 	});
+
+// 	return (
+// 		<>
+// 			<Main>
+// 				{openModal && (
+// 					<Modal>
+// 							<>Filtros</>
+// 							<button onClick={() => setOpenModal(false)}>
+// 								X
+// 							</button>
+// 						</StyledModalTitle>
+
+// 						<Filter />
+// 						<div className="">
+// 							<StyleButton??
+// 								onClick={() => setOpenModal(false)}
+// 							>
+// 								Ver anúncios
+// 							</StyleButton??>
+// 						</div>
+// 					</Modal>
+// 				)}
+// 				{widthWindow > 768 && <Filter />}
+// 				<mockedcars />
+// 				{widthWindow <= 768 && (
+// 					<div className="">
+// 						<Stylebutton?
+// 							onClick={() => setOpenModal(true)}
+// 						>
+// 							Filtros
+// 						</Styledbutton??>
+// 					</div>
+// 				)}
+// 			</Main>
+// 		</>
+// 	);
+// }
+
+// export default Dashboard;

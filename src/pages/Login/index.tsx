@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/header";
 import { Form } from "../../components/form/style";
+import { Footer } from "../../components/footer";
 
 const Login = () => {
   return (
@@ -21,10 +22,6 @@ const Login = () => {
             Esqueci minha senha
           </Link>
 
-          <Link to={"/login"} className="forgot-pass">
-            Esqueci minha senha
-          </Link>
-
           <button type="submit" className="btn btn-primary w-100">
             Entrar
           </button>
@@ -35,6 +32,7 @@ const Login = () => {
         </div>
       </Form>
       {/*       </Section> */}
+      <Footer />
     </>
   );
 };

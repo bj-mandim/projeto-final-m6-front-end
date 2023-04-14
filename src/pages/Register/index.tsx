@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Header from "../../components/header";
 import { Form } from "../../components/form/style";
+import { Footer } from "../../components/footer";
 
 const Register = () => {
 
@@ -49,7 +50,7 @@ const Register = () => {
 
         <label htmlFor="email">Data de Nascimento</label>
             <input
-              type="date"
+              type="test"
               id="birth"
               placeholder="00/00/00"
             
@@ -148,6 +149,7 @@ const Register = () => {
 
         </div>
       </Form>
+      <Footer />
     {/* </Section> */}
     </>
   );

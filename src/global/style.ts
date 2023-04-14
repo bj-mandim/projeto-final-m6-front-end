@@ -75,11 +75,17 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background: var(--grey8);
-        font-size: var(--body2-size);
         color: var(--grey2);
     }
 
+    a {
+        cursor: pointer;
+    }
+
     /* Text Classes */
+    .white {
+        color: #FFFFFF;
+    }
     /* -- HEADING */
     .heading {
         color: var(--grey1);
@@ -217,7 +223,7 @@ const GlobalStyle = createGlobalStyle`
         transition: all 300ms ease-in-out;
 
         &-medium {
-            padding: 12px 20px;
+            padding: 18px;
             font-size: var(--button-medium-text-size);
         }
 
@@ -336,6 +342,7 @@ const GlobalStyle = createGlobalStyle`
         }
 
         &-link {
+            background: transparent;
             color: var(--grey0);
 
             &:hover {
@@ -384,11 +391,12 @@ const GlobalStyle = createGlobalStyle`
         margin-top: 24px;
     }
 
-    input {
+    input, textarea {
         border: 1px solid var(--grey7);
         border-radius: 4px;
         padding: 0px 16px;
         min-height: 48px;
+        width: -moz-available;
         width: -webkit-fill-available;
         color: var(--grey1);
         font-size: var(--input-placeholder-size);

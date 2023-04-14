@@ -8,6 +8,18 @@ export const Form = styled.form`
     max-width: 412px;
     margin: 15vh auto;
 
+    @media screen and (max-width: 767px) {
+        
+      width: 80%;
+    
+  }
+
+  @media screen and (max-width: 767px) {
+        
+        width: 60%;
+      
+    }
+
     .inline-fields {
         display: flex;
         gap: 16px;
@@ -15,9 +27,11 @@ export const Form = styled.form`
         div {
             width: 48%;
         }
-    }
 
-    /*label {
+    
+    }
+/*
+    label {
         display: block;
         font-weight: 500;
         font-size: var(--input-label-size);
@@ -30,7 +44,8 @@ export const Form = styled.form`
     input {
         border: 1.5px solid var(--grey7);
         border-radius: 4px;
-        padding: 0px 16px;
+        padding: 0px, 16px, 0px, 16px;
+        gap: 10px;
         min-height: 48px;
         width: -webkit-fill-available;
         color: var(--grey1);
@@ -52,7 +67,8 @@ export const Form = styled.form`
             outline: none;
             border: 1px solid var(--brand1);
         }
-    }*/
+    }
+    */
 
     .forgot-pass {
         display: block;
