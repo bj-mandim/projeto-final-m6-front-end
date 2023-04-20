@@ -3,7 +3,7 @@ import { useContext } from "react";
 import Header from "../../components/header";
 import { Banner } from "../../components/banner";
 import Filter from "../../components/filter";
-import Card from "../../components/card";
+import Card from "../../components/card/Home";
 import { Footer } from "../../components/footer";
 import { ContextApi } from "../../contexts";
 
@@ -15,12 +15,12 @@ function Home() {
 
   return (
     <>
-      <Header/>
+      <Header />
 
-      <Banner/>
-      
+      <Banner />
+
       <HomeContainer>
-        <Filter/>
+        <Filter />
         <Card />
       </HomeContainer>
 

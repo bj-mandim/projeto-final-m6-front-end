@@ -2,7 +2,6 @@ import Header from "../../components/header";
 // import "./style.css";
 import { Footer } from "../../components/footer";
 import { IoClose } from "react-icons/io5";
-/* import car from "../../img/carro_branco.png"; */
 import {
   Article,
   Aside,
