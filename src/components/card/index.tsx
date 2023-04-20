@@ -91,6 +91,136 @@ const Card = () => {
               </div>
             </figcaption>
         </StyledCards>
+        <StyledCards>
+            <div className="boxImage">
+              <img src={car} alt="car-image" />
+              <span className="status" id="ativo">Ativo</span>
+              <span className="moneySign">$</span>
+            </div>
+
+            <figcaption className="description">
+              <h3 className="heading-7">Maserati - Ghibli</h3>
+              <p className="body-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+
+              <div className="boxUser">
+                <img src={car} alt="user-photo" />
+                <p className="body-2">Claudio</p>
+              </div>
+
+              <div className="boxExtraInfo">
+                <ul className="boxFilterInfo">
+                  <li>0 KM</li>
+                  <li>2019</li>
+                </ul>
+
+                <span className="price heading-7">R$ 00.000,00</span>
+              </div>
+            </figcaption>
+        </StyledCards>
+        <StyledCards>
+            <div className="boxImage">
+              <img src={car} alt="car-image" />
+              <span className="status" id="ativo">Ativo</span>
+              <span className="moneySign">$</span>
+            </div>
+
+            <figcaption className="description">
+              <h3 className="heading-7">Maserati - Ghibli</h3>
+              <p className="body-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+
+              <div className="boxUser">
+                <img src={car} alt="user-photo" />
+                <p className="body-2">Claudio</p>
+              </div>
+
+              <div className="boxExtraInfo">
+                <ul className="boxFilterInfo">
+                  <li>0 KM</li>
+                  <li>2019</li>
+                </ul>
+
+                <span className="price heading-7">R$ 00.000,00</span>
+              </div>
+            </figcaption>
+        </StyledCards>
+        <StyledCards>
+            <div className="boxImage">
+              <img src={car} alt="car-image" />
+              <span className="status" id="ativo">Ativo</span>
+              <span className="moneySign">$</span>
+            </div>
+
+            <figcaption className="description">
+              <h3 className="heading-7">Maserati - Ghibli</h3>
+              <p className="body-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+
+              <div className="boxUser">
+                <img src={car} alt="user-photo" />
+                <p className="body-2">Claudio</p>
+              </div>
+
+              <div className="boxExtraInfo">
+                <ul className="boxFilterInfo">
+                  <li>0 KM</li>
+                  <li>2019</li>
+                </ul>
+
+                <span className="price heading-7">R$ 00.000,00</span>
+              </div>
+            </figcaption>
+        </StyledCards>
+        <StyledCards>
+            <div className="boxImage">
+              <img src={car} alt="car-image" />
+              <span className="status" id="ativo">Ativo</span>
+              <span className="moneySign">$</span>
+            </div>
+
+            <figcaption className="description">
+              <h3 className="heading-7">Maserati - Ghibli</h3>
+              <p className="body-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+
+              <div className="boxUser">
+                <img src={car} alt="user-photo" />
+                <p className="body-2">Claudio</p>
+              </div>
+
+              <div className="boxExtraInfo">
+                <ul className="boxFilterInfo">
+                  <li>0 KM</li>
+                  <li>2019</li>
+                </ul>
+
+                <span className="price heading-7">R$ 00.000,00</span>
+              </div>
+            </figcaption>
+        </StyledCards>
+        <StyledCards>
+            <div className="boxImage">
+              <img src={car} alt="car-image" />
+              <span className="status" id="ativo">Ativo</span>
+              <span className="moneySign">$</span>
+            </div>
+
+            <figcaption className="description">
+              <h3 className="heading-7">Maserati - Ghibli</h3>
+              <p className="body-2">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem...</p>
+
+              <div className="boxUser">
+                <img src={car} alt="user-photo" />
+                <p className="body-2">Claudio</p>
+              </div>
+
+              <div className="boxExtraInfo">
+                <ul className="boxFilterInfo">
+                  <li>0 KM</li>
+                  <li>2019</li>
+                </ul>
+
+                <span className="price heading-7">R$ 00.000,00</span>
+              </div>
+            </figcaption>
+        </StyledCards>
       </CardsList>
     </>
   );

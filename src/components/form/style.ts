@@ -89,4 +89,37 @@ export const Form = styled.form`
         line-height: 24px;
         margin: 24px 0;
     }
+
+    .white_btn {
+		font-family: "Inter";
+		font-size: 14px;
+		font-weight: 600;
+		height: 48px;
+		width: 100%;
+		color: var(--grey0);
+		border: 2px solid var(--grey6);
+		background-color: var(--grey10);
+		border-radius: 8px;
+		cursor: pointer;
+		:hover {
+			background-color: var(--brand1);
+			color: var(--whiteFixed);
+			border: 2px solid var(--grey6);
+		}
+	}
+
+	.white_btn:focus {
+		background-color: var(--brand1);
+		color: var(--grey10);
+		border: none;
+		border-radius: 4px;
+	}
+`;
+
+export const Article = styled.article`
+	display: flex;
+	flex-direction: row;
+	gap: 10%;
+	position: relative;
+
 `;

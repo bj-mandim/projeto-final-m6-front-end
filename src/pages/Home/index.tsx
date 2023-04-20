@@ -4,6 +4,7 @@ import Header from "../../components/header";
 import { Banner } from "../../components/banner";
 import Filter from "../../components/filter";
 import Card from "../../components/card";
+import Pagination from "../../components/pagination";
 import { Footer } from "../../components/footer";
 import { ContextApi } from "../../contexts";
 
@@ -23,6 +24,8 @@ function Home() {
         <Filter/>
         <Card />
       </HomeContainer>
+
+      <Pagination/>
 
       <Footer />
     </>

@@ -4,12 +4,19 @@ export const CardsList = styled.section`
   display: flex;
   flex-wrap: wrap;
   gap: 48px;
+
+  @media (max-width: 767px) {
+    flex-wrap: nowrap;
+    gap: 16px;
+    overflow: scroll;
+    align-self: flex-start;
+    max-width: 100%;
+  }
 `;
 
 export const StyledCards = styled.figure`
 
   position: relative;
-  border-radius: 8px;
   overflow: hidden;
   max-width: 312px;
   margin: 0;
@@ -18,6 +25,9 @@ export const StyledCards = styled.figure`
 
   @media (max-width: 767px) {
     margin: 24px auto;
+    width: 100%;
+    flex: 0 0 100%;
+    max-width: 288px;
   }
 
   p {

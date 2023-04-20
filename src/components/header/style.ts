@@ -37,6 +37,12 @@ export const HeaderWrapper = styled.header`
       }
     }
   }
+
+  @media (max-width: 767px) {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+  }
 `;
 
 export const HeaderContainer = styled.div`
