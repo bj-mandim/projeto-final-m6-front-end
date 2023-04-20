@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { apiCards } from "./api";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 interface iChildren {
@@ -45,6 +45,7 @@ export const ContextApi = createContext({});
 
 function ApiState({ children }: iChildren) {
   const navigate = useNavigate();
+  const location = useLocation()
   const [listCards, setListCards] = useState([]);
   const [card, setCard] = useState({});
   const [idCar, setIdCar] = useState("");
@@ -66,17 +67,30 @@ function ApiState({ children }: iChildren) {
       .then((res) => {
         setCard(res.data);
         setIdCar(id);
-        console.log(card);
+        localStorage.setItem("@Last_view",id);
         navigate("/product");
       })
       .catch((err) => {
         console.log(err);
+        navigate('/');
       });
+  }
+
+  function checkCarId(){
+    const id = localStorage.getItem("@Last_view")
+
+    id? getCardId(id): navigate('/');
   }
 
   useEffect(() => {
     getCards();
-  }, []);
+  },[]);
+
+  useEffect(() => {
+    if(location.pathname === '/product'){
+      checkCarId()
+    }
+  },[]);
 
   async function registerUser(data: iFormSignup): Promise<void> {
     try {

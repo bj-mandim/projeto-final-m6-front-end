@@ -20,67 +20,71 @@ import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";
 
 function Product() {
-  const { card }: any = useContext(ContextApi);
+  const { card, idCar}: any = useContext(ContextApi);
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
       <Header></Header>
       <Section>
-        <Article>
-          <Main>
-            <Figure onClick={() => setIsOpen(true)}>
-              <img src={card.images[0].url} alt="" />
-            </Figure>
-            <Div>
-              <h3>{card.brand}</h3>
-              <div className="container-infos">
-                <div className="priceAndSpan">
-                  <div className="span">
-                    <span>{card.year}</span>
-                    <span>{card.km} KM</span>
+        {idCar &&(
+          <Article>
+            <Main>
+              <Figure onClick={() => setIsOpen(true)}>
+                <img src={card.images[0].url} alt="" />
+              </Figure>
+              <Div>
+                <h3>{card.brand}</h3>
+                <div className="container-infos">
+                  <div className="priceAndSpan">
+                    <div className="span">
+                      <span>{card.year}</span>
+                      <span>{card.km} KM</span>
+                    </div>
+                    <div className="price">
+                      <p>R$ {card.price}</p>
+                    </div>
                   </div>
-                  <div className="price">
-                    <p>R$ {card.price}</p>
-                  </div>
+                  <button className="btn btn-primary btn-medium">Comprar</button>
                 </div>
-                <button className="btn btn-primary btn-medium">Comprar</button>
-              </div>
-            </Div>
-            <DivDescription className="description">
-              <h3>Descrição</h3>
-              <p>{card.description}</p>
-            </DivDescription>
-            <Comment />
-            <WriteComment />
-          </Main>
-          <SecondMain>
-            <Aside>
-              <div>
-                <h3>Fotos</h3>
-              </div>
-              <div className="small-images">
-                <img src={card.images[1].url} alt="" />
-                <img src={card.images[2].url} alt="" />
-                <img src={card.images[3].url} alt="" />
-                <img src={card.images[4].url} alt="" />
-                <img src={card.images[5].url} alt="" />
-                <img src={card.images[6].url} alt="" />
-              </div>
-            </Aside>
-            <SecondAside>
-              <h3>Samuel Leão</h3>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s
-              </p>
-              <button>Ver todos anúncios</button>
-            </SecondAside>
-          </SecondMain>
-        </Article>
+              </Div>
+              <DivDescription className="description">
+                <h3>Descrição</h3>
+                <p>{card.description}</p>
+              </DivDescription>
+              <Comment />
+              <WriteComment />
+            </Main>
+            <SecondMain>
+              <Aside>
+                <div>
+                  <h3>Fotos</h3>
+                </div>
+                <div className="small-images">
+                  <img src={card.images[1].url} alt="" />
+                  <img src={card.images[2].url} alt="" />
+                  <img src={card.images[3].url} alt="" />
+                  <img src={card.images[4].url} alt="" />
+                  <img src={card.images[5].url} alt="" />
+                  <img src={card.images[6].url} alt="" />
+                </div>
+              </Aside>
+              <SecondAside>
+                <h3>Samuel Leão</h3>
+                <p>
+                  Lorem Ipsum is simply dummy text of the printing and typesetting
+                  industry. Lorem Ipsum has been the industry's standard dummy
+                  text ever since the 1500s
+                </p>
+                <button>Ver todos anúncios</button>
+              </SecondAside>
+            </SecondMain>
+          </Article>
+        )}
       </Section>
-      {isOpen && (
+      <Footer />
+      
+      {isOpen && idCar && (
         <Modal
           id="wrapp"
           onClick={(e: React.MouseEvent<HTMLDivElement>) => {
@@ -102,8 +106,7 @@ function Product() {
             </div>
           </div>
         </Modal>
-      )}
-      <Footer />
+      )}      
     </>
   );
 }
