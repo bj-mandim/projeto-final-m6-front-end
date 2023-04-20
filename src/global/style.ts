@@ -4,6 +4,7 @@ const GlobalStyle = createGlobalStyle`
     * {
         transition: all 300ms ease-in-out;
         font-family: 'Inter', sans-serif;
+        list-style: none;
     }
 
     :root {
@@ -62,6 +63,7 @@ const GlobalStyle = createGlobalStyle`
         --heading5-size: 24px;
         --heading6-size: 20px;
         --heading7-size: 16px;
+        --heading8-size: 12px;
 
         --body1-size: 16px;
         --body2-size: 14px;
@@ -164,6 +166,19 @@ const GlobalStyle = createGlobalStyle`
 
         &-7 {
             font-size: var(--heading7-size);
+            line-height: 20px;
+
+            &-500 {
+                font-weight: 500;
+            }
+
+            &-600 {
+                font-weight: 600;
+            }
+        }
+
+        &-8 {
+            font-size: var(--heading8-size);
             line-height: 20px;
 
             &-500 {
