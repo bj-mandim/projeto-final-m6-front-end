@@ -1,53 +1,74 @@
 import styled from "styled-components";
 
-export const StyledCards = styled.div`
-  position: relative;
-  background-color: white;
-  width: 19.5rem;
-  height: 21.875rem;
+export const CardsList = styled.section`
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 48px;
+`;
+
+export const StyledCards = styled.figure`
+
+  position: relative;
   border-radius: 8px;
-  margin-bottom: 10px;
+  overflow: hidden;
+  max-width: 312px;
+  margin: 0;
+
+  font-family: 'Lexend';
+
+  @media (max-width: 767px) {
+    margin: 24px auto;
+  }
+
+  p {
+      margin-bottom: 8px;
+      margin-top: 8px;
+  }
 
   .boxImage {
-    display: flex;
     width: 100%;
-    height: 9.5rem;
     background-color: var(--grey7);
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
 
     img {
-      width: 16.375rem;
-      height: 9.393rem;
       margin: 0 auto;
+      width: 100%;
       object-fit: cover;
     }
+  }
 
-    .statusCar {
-      position: absolute;
-      top: 11px;
-      left: 16px;
-      width: 3.188rem;
-      height: 1.5rem;
+  .status {
+    position: absolute;
+    top: 11px;
+    left: 16px;
+    line-height: 1.4rem;
+    padding: 1px 0.5rem;
+    font-size: 14px;
+
+    &#ativo {
       background-color: var(--brand1);
-      line-height: 1.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0 0.3rem;
+      color: #fff;
+    }
+
+    &#inativo {
+      background-color: var(--grey4);
       color: #fff;
     }
   }
 
-  .descriptionCar {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    h1 {
+  .moneySign {
+    background: var(--green1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    padding: 4px;
+  }
+
+  .description {
+    h3 {
       color: var(--grey1);
-      font-size: 1rem;
       font-weight: 600;
     }
 
@@ -74,33 +95,38 @@ export const StyledCards = styled.div`
       object-fit: cover;
     }
 
-    h2 {
+    p {
       font-size: 0.875rem;
       font-weight: 500;
       color: var(--grey2);
     }
   }
 
-  .boxKmYearPrice {
+  .boxExtraInfo {
     display: flex;
+    gap: 8px;
     justify-content: space-between;
-    font-weight: 500;
-  }
-
-  .kmYear {
-    display: flex;
     align-items: center;
-    gap: 0.3rem;
+    margin-top: 16px;
 
-    span {
-      background-color: var(--brand4);
-      color: var(--brand1);
-      font-size: 0.875rem;
-      padding: 4px 8px;
+    .boxFilterInfo {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      gap: 0.3rem;
+
+      li {
+        background-color: var(--brand4);
+        color: var(--brand1);
+        font-size: 0.875rem;
+        padding: 4px 8px;
+      }
     }
-  }
 
-  .priceCar {
-    font-size: 1rem;
+    .price {
+      color: var(--grey1);
+      font-weight: 600;
+    }
   }
 `;
