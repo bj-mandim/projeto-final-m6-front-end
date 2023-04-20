@@ -7,6 +7,10 @@ export const FilterContainer = styled.aside`
             display: none;
         }
     }
+
+    @media (max-width: 767px) {
+        width: 100%;
+    }
 `;
 
 export const FilterGroupWrapper = styled.main`
@@ -52,7 +56,8 @@ export const FilterGroupWrapper = styled.main`
         }
 
         &#show {
-            right: 0%;
+            right: 0;
+            width: auto;
         }
     }
 `;

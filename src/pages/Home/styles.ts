@@ -12,7 +12,8 @@ export const HomeContainer = styled.main`
 	@media (max-width: 768px) {
 		display: flex;
 		flex-direction: column-reverse;
-        padding: 52px 32px;
+        padding: 52px 24px;
 		max-width: 100%;
+		align-items: center;
 	}
 `;
