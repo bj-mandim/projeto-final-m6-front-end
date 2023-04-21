@@ -19,9 +19,10 @@ export const StyleAvatar = styled.div`
 	display: flex;
 	align-items: center;
 	& > img {
-		max-width: 32px;
-		max-height: 32px;
+		width: 32px;
+		height: 32px;
 		border-radius: 50%;
+		object-fit: cover;
 	}
 	& > div {
 		width: 32px;
