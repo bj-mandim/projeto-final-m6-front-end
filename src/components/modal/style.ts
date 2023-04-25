@@ -4,7 +4,6 @@ export const StyleModal = styled.div`
   position: absolute;
   top: 100px;
   z-index: 900;
-  padding: 1rem;
   background-color: #1e1c1c9e;
   width: 100%;
   height: 320vh;
@@ -32,7 +31,7 @@ export const StyleModal = styled.div`
     gap: 2rem;
 
     @media (max-width: 600px) {
-      width: 85%;
+      width: 80%;
       height: auto;
       margin: 0 auto;
     }
