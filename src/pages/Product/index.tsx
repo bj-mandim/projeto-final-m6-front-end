@@ -8,7 +8,6 @@ import {
   Div,
   Figure,
   Main,
-  Modal,
   SecondAside,
   DivDescription,
   SecondMain,
@@ -18,6 +17,9 @@ import Comment from "../../components/comment";
 import { useContext } from "react";
 import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";
+import { StyleModal } from "../../components/modal/style";
+import { FormModal } from "../../components/form/style";
+import Button from "../../components/button/style";
 
 function Product() {
   const { card, isOpen, setIsOpen, idCar }: any = useContext(ContextApi);
@@ -86,7 +88,7 @@ function Product() {
       <Footer />
 
       {isOpen && idCar && (
-        <Modal
+        <StyleModal
           id="wrapp"
           onClick={(e: React.MouseEvent<HTMLDivElement>) => {
             const target = e.target as HTMLButtonElement;
@@ -96,17 +98,19 @@ function Product() {
           }}
         >
           <div className="modal-wrapper">
-            <div className="modal-header">
-              <h3>Mercedes Benz A 2000 CGI ADVANCE SEDAN</h3>
-              <button onClick={() => setIsOpen(false)}>
-                <IoClose />
-              </button>
-            </div>
-            <div className="modal-img">
-              <img src={card.images[0].url} alt="" />
-            </div>
+            <FormModal>
+              <div className="modal-header">
+                <span>Mercedes Benz A 2000 CGI ADVANCE SEDAN</span>
+                <Button model="model-5" onClick={() => setIsOpen(false)}>
+                  <IoClose />
+                </Button>
+              </div>
+              <div className="modal-img">
+                <img src={card.images[0].url} alt="" />
+              </div>
+            </FormModal>
           </div>
-        </Modal>
+        </StyleModal>
       )}
     </>
   );

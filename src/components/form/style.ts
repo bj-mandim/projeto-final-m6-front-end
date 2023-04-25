@@ -85,6 +85,17 @@ export const FormModal = styled.form`
   width: 100%;
   max-height: 70vh;
   overflow-y: scroll;
+  margin-top: 50px;
+
+  .modal-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100;
+  }
 
   .modal-header {
     display: flex;
@@ -93,8 +104,7 @@ export const FormModal = styled.form`
   }
 
   @media screen and (max-width: 767px) {
-    width: 80%;
-    width: 100%;
+    width: 85%;
   }
 
   .inline-fields {
