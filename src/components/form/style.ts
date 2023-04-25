@@ -24,45 +24,6 @@ export const Form = styled.form`
       width: 48%;
     }
   }
-  /*
-    label {
-        display: block;
-        font-weight: 500;
-        font-size: var(--input-label-size);
-        line-height: 17px;
-        color: var(--grey1);
-        margin-bottom: 8px;
-        margin-top: 24px;
-    }
-
-    input {
-        border: 1.5px solid var(--grey7);
-        border-radius: 4px;
-        padding: 0px, 16px, 0px, 16px;
-        gap: 10px;
-        min-height: 48px;
-        width: -webkit-fill-available;
-        color: var(--grey1);
-        font-size: var(--input-placeholder-size);
-        background: transparent;
-
-        &::placeholder {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            font-size: var(--input-placeholder-size);
-            color: var(--grey3);
-        }
-
-        &:hover {
-            border: 1px solid var(--grey4);
-        }
-
-        &:focus {
-            outline: none;
-            border: 1px solid var(--brand1);
-        }
-    }
-    */
 
   .forgot-pass {
     display: block;
@@ -122,15 +83,17 @@ export const FormModal = styled.form`
   border-radius: 4px;
   padding: 20px;
   width: 100%;
-  height: auto;
+  max-height: 70vh;
+  overflow-y: scroll;
 
-  @media screen and (max-width: 767px) {
-    width: 80%;
-    width: 100%;
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   @media screen and (max-width: 767px) {
-    width: 60%;
+    width: 80%;
     width: 100%;
   }
 
@@ -188,5 +151,3 @@ export const FormModal = styled.form`
     border-radius: 4px;
   }
 `;
-
-

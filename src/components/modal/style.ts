@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 export const StyleModal = styled.div`
   position: absolute;
-  top: 70px;
+  top: 100px;
   z-index: 900;
   padding: 1rem;
   background-color: #1e1c1c9e;
   width: 100%;
-  height: auto;
+  height: 320vh;
 
   .container-form {
     width: 100%;
@@ -18,7 +18,7 @@ export const StyleModal = styled.div`
 
   @media (max-width: 600px) {
     width: 100%;
-    height: auto;
+    height: 250%;
     margin: 0 auto;
     padding: 0;
     top: 80px;
@@ -28,14 +28,12 @@ export const StyleModal = styled.div`
     width: 60%;
     margin: 0 auto;
     margin-bottom: 50px;
-    background-color: var(--whiteFixed);
     padding: 0 1.5rem;
     gap: 2rem;
 
     @media (max-width: 600px) {
       width: 85%;
       height: auto;
-      background-color: black;
       margin: 0 auto;
     }
   }
