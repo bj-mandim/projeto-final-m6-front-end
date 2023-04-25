@@ -1,8 +1,8 @@
 import { CardsListAdminUser, StyledCards } from "../UserAdminPage/style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
-import car from "../../img/Car.png";
-import Button from "../../button/style";
+import car from "../../../img/Car.png";
+import { Flex } from "@chakra-ui/react";
 
 interface iCardProps {
   getCars: ICard[];
@@ -67,14 +67,14 @@ const CardUserAdmin = () => {
 
                     <span className="price heading-7">{`R$: ${car.price}`}</span>
                   </div>
-                  <div>
-                    <Button medium model="model-6">
+                  <Flex gap={"8px"} style={{marginTop: 16}}>
+                    <button className="btn btn-outline btn-medium">
                       Editar
-                    </Button>
-                    <Button medium model="model-6">
+                    </button>
+                    <button className="btn btn-outline btn-medium">
                       Ver Detalhes
-                    </Button>
-                  </div>
+                    </button>
+                  </Flex>
                 </figcaption>
               </StyledCards>
             </>
