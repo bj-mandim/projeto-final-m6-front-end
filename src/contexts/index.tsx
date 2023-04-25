@@ -21,12 +21,13 @@ function ApiState({ children }: iChildren) {
   const [listCards, setListCards] = useState([]);
   const [card, setCard] = useState({});
   const [idCar, setIdCar] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+
   function getCards() {
     apiCards
       .get(`/cars`)
       .then((res) => {
         setListCards(res.data);
-        console.log(listCards);
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +40,6 @@ function ApiState({ children }: iChildren) {
       .then((res) => {
         setCard(res.data);
         setIdCar(id);
-        localStorage.setItem("@Last_view",id);
         navigate("/product");
       })
       .catch((err) => {
@@ -72,6 +72,12 @@ function ApiState({ children }: iChildren) {
         setCard,
         getCardId,
         idCar,
+<<<<<<< HEAD
+=======
+        registerUser,
+        isOpen,
+        setIsOpen,
+>>>>>>> 3a4634c3af5eab0d74289ef742716832e15c37d1
       }}
     >
       {children}

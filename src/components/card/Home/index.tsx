@@ -60,7 +60,7 @@ const Card = () => {
 
                   <div className="boxExtraInfo">
                     <ul className="boxFilterInfo">
-                      <li>{car.km}</li>
+                      <li>{`${car.km} KM`}</li>
                       <li>{car.year}</li>
                     </ul>
 

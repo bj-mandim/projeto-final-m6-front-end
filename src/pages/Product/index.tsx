@@ -15,13 +15,12 @@ import {
   Section,
 } from "./styles";
 import Comment from "../../components/comment";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";
 
 function Product() {
-  const { card, idCar}: any = useContext(ContextApi);
-  const [isOpen, setIsOpen] = useState(false);
+  const { card, isOpen, setIsOpen }: any = useContext(ContextApi);
 
   return (
     <>
