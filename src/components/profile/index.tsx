@@ -118,6 +118,7 @@ const Profile = () => {
                     id="combustivel"
                     placeholder="Ex. O carro se encontra em tais condições..."
                   />
+                  gi
                 </div>
               </FormModal>
             </div>
