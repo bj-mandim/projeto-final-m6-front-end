@@ -18,7 +18,7 @@ const Login = () => {
           <label htmlFor="password">Senha</label>
           <input type="password" id="password" placeholder="Digitar senha" />
 
-          <Link to={"/login"} className="forgot-pass">
+          <Link to={"/forgot-password"} className="forgot-pass">
             Esqueci minha senha
           </Link>
 
