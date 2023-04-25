@@ -28,18 +28,17 @@ function AdminPage() {
         <Pagination />
       </Section>
       <Footer />
-
       {isOpen && (
         <StyleModal>
           <div className="modal-wrapper">
-            <div className="modal-header">
-              <button onClick={() => setIsOpen(false)}>
-                <IoClose />
-              </button>
-            </div>
             <div className="container-form">
               <FormModal>
-                <h2 className="header_register">Criar Anuncio</h2>
+                <div className="modal-header">
+                  <h2 className="header_register">Criar Anuncio</h2>
+                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                    <IoClose />
+                  </Button>
+                </div>
                 <br />
                 <strong>Informações do veículo</strong>
                 <div className="content_register">
@@ -109,6 +108,24 @@ function AdminPage() {
                     type="text"
                     id="combustivel"
                     placeholder="Ex. O carro se encontra em tais condições..."
+                  />
+                  <label htmlFor="email">Imagem da capa</label>
+                  <input
+                    type="text"
+                    id="img-capa"
+                    placeholder="Ex. https://imagem.com"
+                  />
+                  <label htmlFor="email">Primeira Imagem da galeria</label>
+                  <input
+                    type="text"
+                    id="img-capa"
+                    placeholder="Ex. https://imagem.com"
+                  />
+                  <label htmlFor="email">Segunda Imagem da galeria</label>
+                  <input
+                    type="text"
+                    id="img-capa"
+                    placeholder="Ex. https://imagem.com"
                   />
                 </div>
               </FormModal>
