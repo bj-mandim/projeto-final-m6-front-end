@@ -20,13 +20,13 @@ import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";
 
 function Product() {
-  const { card, isOpen, setIsOpen }: any = useContext(ContextApi);
+  const { card, isOpen, setIsOpen, idCar }: any = useContext(ContextApi);
 
   return (
     <>
       <Header></Header>
       <Section>
-        {idCar &&(
+        {idCar && (
           <Article>
             <Main>
               <Figure onClick={() => setIsOpen(true)}>
@@ -44,7 +44,9 @@ function Product() {
                       <p>R$ {card.price}</p>
                     </div>
                   </div>
-                  <button className="btn btn-primary btn-medium">Comprar</button>
+                  <button className="btn btn-primary btn-medium">
+                    Comprar
+                  </button>
                 </div>
               </Div>
               <DivDescription className="description">
@@ -71,9 +73,9 @@ function Product() {
               <SecondAside>
                 <h3>Samuel Leão</h3>
                 <p>
-                  Lorem Ipsum is simply dummy text of the printing and typesetting
-                  industry. Lorem Ipsum has been the industry's standard dummy
-                  text ever since the 1500s
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s
                 </p>
                 <button>Ver todos anúncios</button>
               </SecondAside>
@@ -82,7 +84,7 @@ function Product() {
         )}
       </Section>
       <Footer />
-      
+
       {isOpen && idCar && (
         <Modal
           id="wrapp"
@@ -105,7 +107,7 @@ function Product() {
             </div>
           </div>
         </Modal>
-      )}      
+      )}
     </>
   );
 }
