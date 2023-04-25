@@ -1,18 +1,23 @@
 import styled from "styled-components";
 
 export const CardsListAdminUser = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 48px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+    padding: 32px;
+    max-width: 85%;
+    margin: 0 auto;
+
   @media (max-width: 768px) {
-    /* FALTA FAZER */
+    max-width: 100%;
+    flex-wrap: nowrap;
+    overflow: auto;
+    margin-bottom: 48px;
   }
 `;
 
 export const StyledCards = styled.figure`
   position: relative;
-  border-radius: 8px;
   overflow: hidden;
   max-width: 280px;
   margin: 0;
@@ -129,5 +134,10 @@ export const StyledCards = styled.figure`
       color: var(--grey1);
       font-weight: 600;
     }
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex: 0 0 100%;
   }
 `;

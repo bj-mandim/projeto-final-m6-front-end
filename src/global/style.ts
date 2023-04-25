@@ -89,6 +89,9 @@ const GlobalStyle = createGlobalStyle`
         color: #FFFFFF;
     }
     /* -- HEADING */
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--grey1);
+    }
     .heading {
         color: var(--grey1);
         font-weight: 600;
@@ -349,6 +352,7 @@ const GlobalStyle = createGlobalStyle`
             &-primary {
                 border: 1px solid var(--brand1);
                 color: var(--brand1);
+                background: transparent;
 
                 &:hover {
                     background: var(--brand4);
