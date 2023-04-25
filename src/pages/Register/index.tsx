@@ -2,48 +2,45 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header";
 import { Form } from "../../components/form/style";
 import { Footer } from "../../components/footer";
-// import { yupResolver } from "@hookform/resolvers/yup";
-// import { ContextApi, iFormSignup, registerUser } from "../../contexts";
-// import { useContext, useState } from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { UserContext, iFormSignup } from "../../contexts/userContext";
+import { useContext, useState } from "react";
 import { Article } from "../../components/form/style";
+import { useForm } from "react-hook-form";
+import { schemaRegister } from "../../validators";
 
 const Register = () => {
 
-  function setAdvertiserAnnouncer(arg0: boolean): void {
-    throw new Error("Function not implemented.");
-  }
-
-  // const {
-  //   handleSubmit,
-    
-  // } = useForm<iFormSignup>({
-  //   resolver: yupResolver(schemaSignup),
-  // });
+  const {
+    handleSubmit,
+  } = useForm<iFormSignup>({
+    resolver: yupResolver(schemaRegister),
+  });
   
-  // const [validatedIsAnnouncer, setValidatedIsAnnouncer] = useState<boolean>(false);
-  // const [advertiserAnnouncer, setAdvertiserAnnouncer] = useState<string | boolean>("");
-  // const { registerUser } = useContext(ContextApi);
+  const [validatedIsAnnouncer, setValidatedIsAnnouncer] = useState<boolean>(false);
+  const [advertiserAnnouncer, setAdvertiserAnnouncer] = useState<string | boolean>("");
+  const { registerUser } = useContext(UserContext);
 
-  // function validatedAccountType(data: iFormSignup) {
-  //   if (advertiserAnnouncer && advertiserAnnouncer !== "") {
-  //     data.is_announcer = true;
-  //     setAdvertiserAnnouncer(false);
-  //     registerUser(data);
-  //   } else if (!advertiserAnnouncer && advertiserAnnouncer !== "") {
-  //     data.is_announcer = false;
-  //     setAdvertiserAnnouncer(false);
-  //     registerUser(data);
-  //   } else if (data.is_announcer === undefined) {
-  //     setValidatedIsAnnouncer(true);
-  //   }
-  // }
+  function validatedAccountType(data: iFormSignup) {
+    if (advertiserAnnouncer && advertiserAnnouncer !== "") {
+      data.is_announcer = true;
+      setAdvertiserAnnouncer(false);
+      registerUser(data);
+    } else if (!advertiserAnnouncer && advertiserAnnouncer !== "") {
+      data.is_announcer = false;
+      setAdvertiserAnnouncer(false);
+      registerUser(data);
+    } else if (data.is_announcer === undefined) {
+      setValidatedIsAnnouncer(true);
+    }
+  }
 
 
   return (
     <>
     <Header/>
-      {/* <Form onSubmit={handleSubmit(validatedAccountType)}> */}
-      <Form>
+      <Form onSubmit={handleSubmit(validatedAccountType)}>
+      {/* <Form> */}
         <h2 className="header_register">Cadastro</h2>
         <br/>
         <strong>Informações pessoais</strong>
@@ -176,7 +173,7 @@ const Register = () => {
                 Anunciante
               </button>
           </Article>
-              {/* {validatedIsAnnouncer && <p>Tipo de conta é obrigatório</p>} */}
+              {validatedIsAnnouncer && <p>Escolher o tipo de conta é obrigatório</p>}
 
           <label htmlFor="password">Senha</label>
             <input
@@ -203,5 +200,6 @@ const Register = () => {
     </>
   );
 };
- export default Register
+
+export default Register
 
