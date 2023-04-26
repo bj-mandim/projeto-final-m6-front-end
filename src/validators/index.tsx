@@ -19,8 +19,8 @@ export const schemaRegister = yup.object({
   description: yup.string().required("Descrição obrigatória"),
   phone: yup
     .string()
-    .required("Número de telefone é obrigatório")
-    .matches(brazilianPhoneRegex, "O número digitado é inválido"),
+    .required("Número de telefone é obrigatório"),
+    // .matches(brazilianPhoneRegex, "O número digitado é inválido"),
   password: yup
     .string()
     .required("Senha obrigatória!")
