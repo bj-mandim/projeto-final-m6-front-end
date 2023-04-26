@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Header from "../../components/header";
+import { Header } from "../../components/header";
 import { Form } from "../../components/form/style";
 import { Footer } from "../../components/footer";
 

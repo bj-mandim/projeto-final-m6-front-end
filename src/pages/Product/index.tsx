@@ -1,4 +1,4 @@
-import Header from "../../components/header";
+import { Header, HeaderLogin } from "../../components/header";
 // import "./style.css";
 import { Footer } from "../../components/footer";
 import { IoClose } from "react-icons/io5";
@@ -26,7 +26,7 @@ function Product() {
 
   return (
     <>
-      <Header></Header>
+      <HeaderLogin />
       <Section>
         {idCar && (
           <Article>

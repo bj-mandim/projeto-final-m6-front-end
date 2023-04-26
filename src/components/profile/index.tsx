@@ -1,9 +1,6 @@
 import { useContext } from "react";
 import { ProfileWrapper } from "./styles";
 import { ContextApi } from "../../contexts";
-import { StyleModal } from "../modal/style";
-import { IoClose } from "react-icons/io5";
-import { FormModal } from "../form/style";
 
 const Profile = () => {
   const { setIsOpen }: any = useContext(ContextApi);

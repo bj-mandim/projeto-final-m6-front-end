@@ -22,6 +22,7 @@ function ApiState({ children }: iChildren) {
   const [card, setCard] = useState({});
   const [idCar, setIdCar] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [infosOpen, setInfosOpen] = useState(false);
 
   function getCards() {
     apiCards
@@ -74,6 +75,8 @@ function ApiState({ children }: iChildren) {
         idCar,
         isOpen,
         setIsOpen,
+        infosOpen,
+        setInfosOpen,
       }}
     >
       {children}

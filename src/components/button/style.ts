@@ -166,6 +166,16 @@ const Button = styled.button<iButtonProps>`
           color: var(--grey3);
           text-align: start;
         `;
+      case "option-modal":
+        return css`
+          background: var(--gray6);
+          border-color: transparent;
+          color: var(--grey0);
+          text-align: start;
+          display: flex;
+          align-items: flex-start;
+          padding: 0;
+        `;
       case "model-12":
         return css`
           background: var(--brand3);
