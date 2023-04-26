@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Header from "../../components/header";
+import { Header } from "../../components/header";
 import { Banner } from "../../components/banner";
 import Filter from "../../components/filter";
 import Card from "../../components/card/Home";
