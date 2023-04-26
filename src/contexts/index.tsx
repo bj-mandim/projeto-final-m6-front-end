@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { apiCards } from "./api";
+import { apiCards, kenzieCars } from "./api";
 import { useLocation, useNavigate } from "react-router-dom";
 
 interface iChildren {
@@ -17,6 +17,7 @@ function ApiState({ children }: iChildren) {
   const navigate = useNavigate();
   const location = useLocation();
   const [listCards, setListCards] = useState([]);
+  const [fipeTable, setFipeTable] = useState<any>({});
   const [card, setCard] = useState({});
   const [idCar, setIdCar] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -27,6 +28,17 @@ function ApiState({ children }: iChildren) {
       .get(`/cars`)
       .then((res) => {
         setListCards(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function getFipeCars() {
+    kenzieCars
+      .get(`/cars`)
+      .then((res) => {
+        setFipeTable(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -54,6 +66,7 @@ function ApiState({ children }: iChildren) {
   }
 
   useEffect(() => {
+    getFipeCars();
     getCards();
   }, []);
 
