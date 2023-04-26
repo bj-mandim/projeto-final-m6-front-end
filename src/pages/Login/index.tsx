@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import Header from "../../components/header";
+import { Header } from "../../components/header";
 import { Form } from "../../components/form/style";
 import { Footer } from "../../components/footer";
 import { UserContext, iFormLogin } from "../../contexts/userContext";
