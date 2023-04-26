@@ -11,8 +11,6 @@ export interface iFormLogin {
   password: string;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-
 export const ContextApi = createContext({});
 
 function ApiState({ children }: iChildren) {
