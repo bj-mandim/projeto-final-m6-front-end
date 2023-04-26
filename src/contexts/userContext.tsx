@@ -28,9 +28,30 @@ export interface iFormSignup {
     state: string;
     city: string;
     street: string;
-    number: string;
+    number: string; //number
     complement: string;
   };
+}
+
+interface iUser {
+  id: string,
+  name: string,
+  email: string,
+  is_announcer: boolean,
+  description: string,
+  phone: string,
+  cpf: string,
+  birth: string,
+  reset_token: null,//Verificar esse retorno
+  address: {
+    id: string,
+    cep: string,
+    state: string,
+    city: string,
+    street: string,
+    number: number, //Verificar compatibilidade com o front
+    complement: string
+  }
 }
 
 interface iUserContext {
@@ -44,16 +65,19 @@ export const UserContext = createContext({} as iUserContext);
 
 const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
+  const [user, setUser] = useState<iUser|null>(null)
 
-  const token = localStorage.getItem("");
+  const token = localStorage.getItem("@Token_cars_shop");
   const navigate = useNavigate();
 
   async function loginUser(data: iFormLogin): Promise<void> {
     setGlobalLoading(true);
     try {
-      const response = await apiCards.post("/home", data);
+      const response = await apiCards.post("/login", data);
 
-      localStorage.setItem("", response.data);
+      localStorage.setItem("@Token_cars_shop", response.data.access_token);
+
+      await getProfile()
 
       toast.success("Login realizado com sucesso!");
       navigate(`/`);
@@ -66,18 +90,37 @@ const Providers = ({ children }: iProvidersProps) => {
 
   async function registerUser(data: iFormSignup): Promise<void> {
     try {
-      await apiCards.post("/users", data);
+      const formatedData = {...data,address:{...data.address, number: parseInt(data.address.number)}}
+      await apiCards.post("/users", formatedData);
 
       navigate("/login");
       toast.success("Usuário cadastrado com sucesso!");
     } catch (error) {
+      console.log(error)
       toast.error("Esse email já está cadastrado!");
+    }
+  }
+
+  async function getProfile(){
+    const token = localStorage.getItem("@Token_cars_shop")
+    if (token){
+      try{
+        const {data} = await apiCards.get<iUser>("users/profile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(data);
+      } catch (error) {
+        localStorage.removeItem("@TOKEN");
+        setUser(null);
+      }
     }
   }
 
   return (
     <UserContext.Provider
-      value={{ registerUser, loginUser, globalLoading, setGlobalLoading }}
+      value={{ registerUser, loginUser, globalLoading, setGlobalLoading}}
     >
       {children}
     </UserContext.Provider>
