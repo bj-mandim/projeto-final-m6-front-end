@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Header from "../../components/header";
+import { Header } from "../../components/header";
 import { Form } from "../../components/form/style";
 import { Footer } from "../../components/footer";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,9 +18,12 @@ const Register = () => {
   } = useForm<iFormSignup>({
     resolver: yupResolver(schemaRegister),
   });
-  
-  const [validatedIsAnnouncer, setValidatedIsAnnouncer] = useState<boolean>(false);
-  const [advertiserAnnouncer, setAdvertiserAnnouncer] = useState<string | boolean>("");
+
+  const [validatedIsAnnouncer, setValidatedIsAnnouncer] =
+    useState<boolean>(false);
+  const [advertiserAnnouncer, setAdvertiserAnnouncer] = useState<
+    string | boolean
+  >("");
   const { registerUser } = useContext(UserContext);
 
   function validatedAccountType(data: iFormSignup) {
@@ -38,13 +41,12 @@ const Register = () => {
     }
   }
 
-
   return (
     <>
-    <Header/>
+      <Header />
       <Form onSubmit={handleSubmit(validatedAccountType)}>
         <h2 className="header_register">Cadastro</h2>
-        <br/>
+        <br />
         <strong>Informações pessoais</strong>
 
         <div className="content_register">
@@ -91,7 +93,7 @@ const Register = () => {
             />
 
           <p>
-            <br/>
+            <br />
             <strong>Informações de Endereço</strong>
           </p>
         
@@ -144,27 +146,29 @@ const Register = () => {
           </div>
 
           <p>
-            <br/>
-          
+            <br />
+
             <strong>Tipo de conta</strong>
           </p>
           <Article>
-              <button
-                onClick={() => setAdvertiserAnnouncer(false)}
-                type="button"
-                className="white_btn"
-              >
-                Comprador
-              </button>
-              <button
-                onClick={() => setAdvertiserAnnouncer(true)}
-                type="button"
-                className="white_btn"
-              >
-                Anunciante
-              </button>
+            <button
+              onClick={() => setAdvertiserAnnouncer(false)}
+              type="button"
+              className="white_btn"
+            >
+              Comprador
+            </button>
+            <button
+              onClick={() => setAdvertiserAnnouncer(true)}
+              type="button"
+              className="white_btn"
+            >
+              Anunciante
+            </button>
           </Article>
-              {validatedIsAnnouncer && <p>Escolher o tipo de conta é obrigatório</p>}
+          {validatedIsAnnouncer && (
+            <p>Escolher o tipo de conta é obrigatório</p>
+          )}
 
           <label htmlFor="password">Senha</label>
             <input
@@ -193,5 +197,4 @@ const Register = () => {
   );
 };
 
-export default Register
-
+export default Register;

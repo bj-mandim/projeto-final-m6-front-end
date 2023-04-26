@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import Button from "../../components/button/style";
 import { NotFoundDiv } from "./style";
-import Header from "../../components/header";
+import { Header } from "../../components/header";
 import { Footer } from "../../components/footer/index";
 
 function PageNotFound() {
