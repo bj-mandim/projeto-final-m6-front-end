@@ -7,11 +7,11 @@ interface IAvatarProps {
   };
 }
 
-const Avatar = ({ user }: IAvatarProps) => {
+const Avatar = ({ user, setOptionsOpen }: any) => {
   return (
-    <StyleAvatar>
+    <StyleAvatar onClick={() => setOptionsOpen(true)}>
       {user.image_url ? (
-				<img src={user.image_url} alt="" />
+        <img src={user.image_url} alt="" />
       ) : (
         <div>{user.name[0].toUpperCase()}</div>
       )}

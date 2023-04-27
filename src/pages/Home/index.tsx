@@ -14,28 +14,27 @@ function Home() {
   console.log(listCards);
 
   const [cars, setCars] = useState<ICarsReturn[]>([]);
-	const [query, setQuery] = useState("");
-  const [brands, setBrands] = useState<string[]>([])
-
-
+  const [query, setQuery] = useState("");
+  const [brands, setBrands] = useState<string[]>([]);
 
   async function getCars(): Promise<void> {
-		try {
-			const allCars = await listCards.get(`/cars ${query}`);
-			setCars(allCars.data.result);
+    try {
+      const allCars = await listCards.get(`/cars ${query}`);
+      setCars(allCars.data.result);
 
-			const newBrands = allCars.data.result.map((car: ICarsReturn) => car.brand);
-			setBrands([...new Set([...newBrands])]);
-		} catch (error) {
-			console.error(error);
-		}
-	}
+      const newBrands = allCars.data.result.map(
+        (car: ICarsReturn) => car.brand
+      );
+      setBrands([...new Set([...newBrands])]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   useEffect(() => {
-		getCars();
-	// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [query]);
-  
+    getCars();
+  }, [query]);
+
   return (
     <>
       <Header />
@@ -43,10 +42,10 @@ function Home() {
       <Banner />
 
       <HomeContainer>
-        <Filter 
+        {/* <Filter 
 				  brands={brands} models={[]} colors={[]} years={[]} fuels={[]} handleSetQuery={function (type: string, value: string): void {
 					  throw new Error("Function not implemented.");
-				  } }        />
+				  } }        /> */}
         <Card />
       </HomeContainer>
 
@@ -58,4 +57,3 @@ function Home() {
 }
 
 export default Home;
-

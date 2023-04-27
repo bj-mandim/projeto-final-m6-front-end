@@ -118,7 +118,8 @@ export const Header = () => {
 
 export const HeaderLogin = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setInfosOpen }: any = useContext(ContextApi);
+  const { setInfosOpen, setOptionsOpen, setadressModalOpen }: any =
+    useContext(ContextApi);
   const navigate = useNavigate();
   return (
     <>
@@ -142,7 +143,7 @@ export const HeaderLogin = () => {
               justify={"space-evenly"}
               id="menu-desktop"
             >
-              <Avatar user={user} />
+              <Avatar user={user} setOptionsOpen={setOptionsOpen} />
             </HStack>
 
             <IconButton
@@ -184,11 +185,11 @@ export const HeaderLogin = () => {
               </li>
               <li>
                 <Button
-                  onClick={() => console.log("funcionando Deletar")}
+                  onClick={() => setadressModalOpen(true)}
                   model="option-modal"
                   className="body-1-600"
                 >
-                  Deletar Perfil
+                  Editar Endereço
                 </Button>
               </li>
               <li>
