@@ -88,6 +88,7 @@ function ApiState({ children }: iChildren) {
         setIsOpen,
         infosOpen,
         setInfosOpen,
+        fipeTable
       }}
     >
       {children}

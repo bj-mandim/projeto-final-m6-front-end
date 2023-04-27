@@ -190,7 +190,7 @@ const Register = () => {
             Cadastrar
           </button>
         </div>
-        <Link to={"/login"} className="btn btn-outline-2"> Voltar ao Login</Link>
+        {/* <Link to={"/login"} className="btn btn-outline-2"> Voltar ao Login</Link> */}
       </Form>
       <Footer />
     </>
