@@ -1,7 +1,6 @@
 import { CardsList, StyledCards } from "./style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
-import car from "../../img/Car.png";
 
 interface iCardProps {
   getCars: ICard[];

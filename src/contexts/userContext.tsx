@@ -34,24 +34,24 @@ export interface iFormSignup {
 }
 
 interface iUser {
-  id: string,
-  name: string,
-  email: string,
-  is_announcer: boolean,
-  description: string,
-  phone: string,
-  cpf: string,
-  birth: string,
-  reset_token: null,//Verificar esse retorno
+  id: string;
+  name: string;
+  email: string;
+  is_announcer: boolean;
+  description: string;
+  phone: string;
+  cpf: string;
+  birth: string;
+  reset_token: null; //Verificar esse retorno
   address: {
-    id: string,
-    cep: string,
-    state: string,
-    city: string,
-    street: string,
-    number: number, //Verificar compatibilidade com o front
-    complement: string
-  }
+    id: string;
+    cep: string;
+    state: string;
+    city: string;
+    street: string;
+    number: number; //Verificar compatibilidade com o front
+    complement: string;
+  };
 }
 
 interface iUserContext {
@@ -61,11 +61,11 @@ interface iUserContext {
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const UserContext = createContext({} as iUserContext);
+export const UserContext = createContext({} as any);
 
 const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
-  const [user, setUser] = useState<iUser|null>(null)
+  const [user, setUser] = useState<iUser | null>(null);
 
   const token = localStorage.getItem("@Token_cars_shop");
   const navigate = useNavigate();
@@ -77,7 +77,7 @@ const Providers = ({ children }: iProvidersProps) => {
 
       localStorage.setItem("@Token_cars_shop", response.data.access_token);
 
-      await getProfile()
+      await getProfile();
 
       toast.success("Login realizado com sucesso!");
       navigate(`/`);
@@ -90,27 +90,31 @@ const Providers = ({ children }: iProvidersProps) => {
 
   async function registerUser(data: iFormSignup): Promise<void> {
     try {
-      const formatedData = {...data,address:{...data.address, number: parseInt(data.address.number)}}
+      const formatedData = {
+        ...data,
+        address: { ...data.address, number: parseInt(data.address.number) },
+      };
       await apiCards.post("/users", formatedData);
 
       navigate("/login");
       toast.success("Usuário cadastrado com sucesso!");
     } catch (error) {
-      console.log(error)
-      toast.error("Esse email já está cadastrado!");
+      console.log(error);
+      toast.error("Esse usuáio já está cadastrado!");
     }
   }
 
-  async function getProfile(){
-    const token = localStorage.getItem("@Token_cars_shop")
-    if (token){
-      try{
-        const {data} = await apiCards.get<iUser>("users/profile", {
+  async function getProfile() {
+    const token = localStorage.getItem("@Token_cars_shop");
+    if (token) {
+      try {
+        const { data } = await apiCards.get<iUser>("users/profile", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         setUser(data);
+        console.log(data, "USER COM CARROS");
       } catch (error) {
         localStorage.removeItem("@TOKEN");
         setUser(null);
@@ -120,7 +124,7 @@ const Providers = ({ children }: iProvidersProps) => {
 
   return (
     <UserContext.Provider
-      value={{ registerUser, loginUser, globalLoading, setGlobalLoading}}
+      value={{ registerUser, loginUser, globalLoading, setGlobalLoading, user }}
     >
       {children}
     </UserContext.Provider>

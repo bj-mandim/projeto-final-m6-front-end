@@ -28,6 +28,7 @@ function ApiState({ children }: iChildren) {
   const [brand, setBrand] = useState();
   const [price, setPrice] = useState("");
 
+  //CARDS ROTAS
   function getCards() {
     apiCards
       .get(`/cars`)
@@ -38,7 +39,6 @@ function ApiState({ children }: iChildren) {
         console.log(err);
       });
   }
-
 
   function getCardId(id: string) {
     apiCards
@@ -54,6 +54,8 @@ function ApiState({ children }: iChildren) {
       });
   }
 
+  //TABELA FIPE ROTAS
+
   function getFipeTable(brand: string, model: string) {
     apiKenzieCards
       .get(`/cars?brand=${brand}`)
@@ -65,12 +67,82 @@ function ApiState({ children }: iChildren) {
       });
   }
 
+  //USER ROTAS
+
+  function listUser() {
+    apiCards
+      .get(`/users`)
+      .then((res) => {
+        setListCards(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function listUserId(id: string) {
+    apiCards
+      .get(`/users/${id}`)
+      .then((res) => {
+        setListCards(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function deleteUser(id: string) {
+    apiCards
+      .delete(`/users/${id}`)
+      .then((res) => {
+        setListCards(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function updatedUser(id: string) {
+    apiCards
+      .patch(`/users/${id}`)
+      .then((res) => {
+        setListCards(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  //REDEFINIR SENHA ROTAS
+
+  function sendEmailUser(email: string) {
+    apiCards
+      .post(`/users/resetPassword`)
+      .then((res) => {
+        //retorno de uma mensagem toast, token enviado;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function resetPasswordUser(password: string, token: string) {
+    apiCards
+      .patch(`/users/resetPassword/${token}`)
+      .then((res) => {
+        //retorno de uma mensagem toast, token enviado;
+        //O token enviado na requisição a cima tem que passar pra cá para colocar no bearer
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   function checkCarId() {
     const id = localStorage.getItem("@Last_view");
 
     id ? getCardId(id) : navigate("/");
   }
-
   useEffect(() => {
     getCards();
   }, []);

@@ -1,4 +1,4 @@
-function finter(listCardsBrand: any, value: string) {
+function filter(listCardsBrand: any, value: string) {
   const filtered = listCardsBrand.filter(
     (card: any) =>
       card.brand.toLowerCase().includes(value.toLowerCase()) ||
@@ -6,4 +6,4 @@ function finter(listCardsBrand: any, value: string) {
   );
   return filtered[0].value;
 }
-export default finter;
+export default filter;
