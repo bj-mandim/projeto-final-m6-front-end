@@ -33,7 +33,7 @@ const Login = () => {
           <label htmlFor="password">Senha</label>
           <input type="password" placeholder="Digitar senha" {...register("password")} />
 
-          <Link to={"/login"} className="forgot-pass">
+          <Link to={"/forgot-password"} className="forgot-pass">
             Esqueci minha senha
           </Link>
 

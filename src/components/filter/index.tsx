@@ -1,9 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { FilterContainer, FilterGroupWrapper, FilterGroup, FilterList, InputGroup } from "./style";
+import { IHomeFilter } from "../../interfaces/Filter/filter.interface";
+import { ContextApi } from "../../contexts";
 
-const Filter = () => {
+const Filter = ({
+	brands,
+	models,
+	colors,
+	years,
+	fuels,
+	handleSetQuery,
+}: IHomeFilter) => {
+
   const [openFilter, setOpenFilter] = useState('close');
+  const { getCarsBrand, fipeTable }: any = useContext(ContextApi);
 
   return(
     <>
@@ -18,14 +29,12 @@ const Filter = () => {
           
           <FilterGroup id="marca">
               <h3 className="heading-4">Marca</h3>
-              <FilterList className="heading-6">
-                <li>General Motors</li>
-                <li>Fiat</li>
-                <li>Ford</li>
-                <li>Honda</li>
-                <li>Porsche</li>
-                <li>Volswagen</li>
-              </FilterList>				
+              <ul>
+              {Object.keys(fipeTable).map(keys=> <p>{keys}</p>)}
+              <FilterList className="heading-6"
+						    onClick={() => getCarsBrand()}>
+              </FilterList>	
+              </ul>			
           </FilterGroup>
           <FilterGroup id="modelo">
               <h3 className="heading-4">Modelo</h3>
