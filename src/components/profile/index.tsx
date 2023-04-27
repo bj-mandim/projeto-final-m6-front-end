@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { ProfileWrapper } from "./styles";
 import { ContextApi } from "../../contexts";
+import { UserContext } from "../../contexts/userContext";
 
-const Profile = () => {
+export const Profile = () => {
   const { setIsOpen }: any = useContext(ContextApi);
+  const { user }: any = useContext(UserContext);
+  const { name, description } = user;
   return (
     <>
       <ProfileWrapper>
@@ -15,15 +18,10 @@ const Profile = () => {
           />
           <figcaption className="anunciante-info">
             <div className="anunciante-nome">
-              <h3 className="heading-6">Samuel Leão</h3>
+              <h3 className="heading-6">{name}</h3>
               <span className="body-2 anunciante-status">Anunciante</span>
             </div>
-            <p className="anunciante-descricao body-1">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
-              quaerat repellendus, corporis iure quibusdam commodi odit
-              excepturi aspernatur quas? Iusto magnam id vitae explicabo
-              reiciendis odit, dolores exercitationem error animi!
-            </p>
+            <p className="anunciante-descricao body-1">{description}</p>
           </figcaption>
         </figure>
 
@@ -38,4 +36,30 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export const ProfileUser = () => {
+  const { setIsOpen }: any = useContext(ContextApi);
+  return (
+    <>
+      <ProfileWrapper>
+        <figure className="anunciante">
+          <img
+            src="https://www.psicologo.com.br/wp-content/uploads/sou-uma-pessoa-boa-ou-nao.jpg"
+            alt="img_admin"
+            className="anunciante-img"
+          />
+          <figcaption className="anunciante-info">
+            <div className="anunciante-nome">
+              <h3 className="heading-6">Samuel Leão</h3>
+            </div>
+            <p className="anunciante-descricao body-1">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
+              quaerat repellendus, corporis iure quibusdam commodi odit
+              excepturi aspernatur quas? Iusto magnam id vitae explicabo
+              reiciendis odit, dolores exercitationem error animi!
+            </p>
+          </figcaption>
+        </figure>
+      </ProfileWrapper>
+    </>
+  );
+};

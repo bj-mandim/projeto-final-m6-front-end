@@ -1,6 +1,6 @@
-import { HeaderLogin } from "../../components/header";
+import { Header, HeaderLogin } from "../../components/header";
 import { Section, Article } from "./styles";
-import Profile from "../../components/profile";
+import { Profile } from "../../components/profile";
 import CardUserAdmin from "../../components/card/UserAdminPage";
 import { ContextApi } from "../../contexts";
 import { useContext } from "react";
@@ -11,6 +11,7 @@ import Pagination from "../../components/pagination";
 import { Footer } from "../../components/footer";
 import Button from "../../components/button/style";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 function AdminPage() {
   const {
@@ -29,6 +30,7 @@ function AdminPage() {
     adressModalOpen,
     setadressModalOpen,
   }: any = useContext(ContextApi);
+  const { user }: any = useContext(UserContext);
   const navigate = useNavigate();
 
   function fipeTable(model: any, brand: any) {

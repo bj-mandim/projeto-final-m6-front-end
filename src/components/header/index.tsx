@@ -2,17 +2,15 @@ import { HeaderWrapper, HeaderContainer } from "./style";
 import Logo from "../../img/motors_shop_logo.png";
 import { useContext, useState } from "react";
 import { Flex, Image, HStack, Link, IconButton } from "@chakra-ui/react";
+import { IoClose } from "react-icons/io5";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { Outlet, useNavigate } from "react-router-dom";
 import Button from "../button/style";
 import Avatar from "../avatar";
 import { ContextApi } from "../../contexts";
-
-const user = {
-  image_url:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqt6O6bqpcON7yrS0AoagxeM8LZje-nzH2g&usqp=CAU",
-  name: "Vitória Mandim",
-};
+import { UserContext } from "../../contexts/userContext";
+import { StyleModal } from "../modal/style";
+import { FormModal } from "../form/style";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -116,10 +114,24 @@ export const Header = () => {
   );
 };
 
+/* const user = {
+  name: "Vitória Simões",
+  image_url:
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqt6O6bqpcON7yrS0AoagxeM8LZje-nzH2g&usqp=CAU",
+}; */
+
 export const HeaderLogin = () => {
+  const { user }: any = useContext(UserContext);
+  const {
+    setInfosOpen,
+    setOptionsOpen,
+    setadressModalOpen,
+    setIsOpen,
+    optionsOpen,
+    infosOpen,
+    adressModalOpen,
+  }: any = useContext(ContextApi);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setInfosOpen, setOptionsOpen, setadressModalOpen }: any =
-    useContext(ContextApi);
   const navigate = useNavigate();
   return (
     <>
@@ -221,6 +233,194 @@ export const HeaderLogin = () => {
         )}
         <Outlet />
       </HeaderWrapper>
+      {infosOpen && (
+        <StyleModal>
+          <div className="modal-wrapper">
+            <div className="container-form">
+              <FormModal>
+                <div className="modal-header">
+                  <h2 className="header_register">Editar Perfil</h2>
+                  <Button
+                    model="model-5"
+                    onClick={() => {
+                      setIsOpen(false);
+                    }}
+                  >
+                    <IoClose />
+                  </Button>
+                </div>
+                <br />
+                <strong>Informações do usuário</strong>
+                <div className="content_register">
+                  <label htmlFor="email">Nome</label>
+                  <input
+                    type="name"
+                    id="name"
+                    placeholder="Ex. Vitória Simões"
+                  />
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="name"
+                    id="name"
+                    placeholder="Ex. vitoriasomoes2023@mail.com"
+                  />
+                  <label htmlFor="email">CPF</label>
+                  <input
+                    type="name"
+                    id="name"
+                    placeholder="Ex. 999.999.999-00"
+                  />
+                  <label htmlFor="email">Celular</label>
+                  <input
+                    type="name"
+                    id="name"
+                    placeholder="Ex. (027)99999-9999"
+                  />
+                  <label htmlFor="email">Data de Nascimento</label>
+                  <input type="name" id="name" placeholder="Ex. 09/09/09" />
+                  <label htmlFor="email">Descrição</label>
+                  <input
+                    type="text"
+                    id="name"
+                    placeholder="Ex. local da descrição..."
+                  />
+                </div>
+              </FormModal>
+            </div>
+          </div>
+        </StyleModal>
+      )}
+      {optionsOpen && (
+        <StyleModal>
+          <div className="modal-wrapper">
+            <div className="container-form">
+              <FormModal>
+                <div className="modal-header">
+                  <h2 className="header_register">Opções do User</h2>
+                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                    <IoClose />
+                  </Button>
+                </div>
+                <br />
+                <strong>Selecione a opção desejada</strong>
+                <div className="inline-fields">
+                  <div>
+                    <label htmlFor="email">Editar Dados</label>
+                    <Button
+                      onClick={(e) => {
+                        setOptionsOpen(false);
+                        setInfosOpen(true);
+                      }}
+                    >
+                      Dados
+                    </Button>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email">Editar Endereço</label>
+                    <Button
+                      onClick={(e) => {
+                        setOptionsOpen(false);
+                        setadressModalOpen(true);
+                      }}
+                    >
+                      Endereço
+                    </Button>
+                  </div>
+                </div>
+                <div className="inline-fields">
+                  <div>
+                    <label htmlFor="email">Deslogar do Perfil</label>
+                    <Button
+                      onClick={(e) => {
+                        navigate("/");
+                        setInfosOpen(false);
+                      }}
+                    >
+                      Sair
+                    </Button>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email">Área de Anunciantes</label>
+                    <Button
+                      onClick={(e) => {
+                        setOptionsOpen(false);
+                        setadressModalOpen(true);
+                        navigate("/admin-page");
+                      }}
+                    >
+                      Apenas Anunciantes
+                    </Button>
+                  </div>
+                </div>
+              </FormModal>
+            </div>
+          </div>
+        </StyleModal>
+      )}
+      {adressModalOpen && (
+        <StyleModal>
+          <div className="modal-wrapper">
+            <div className="container-form">
+              <FormModal>
+                <div className="modal-header">
+                  <h2 className="header_register">Editar Endereço</h2>
+                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                    <IoClose />
+                  </Button>
+                </div>
+                <br />
+                <strong>Informações do endereço usuário</strong>
+                <div className="content_register">
+                  <label htmlFor="email">CEP</label>
+                  <input type="name" id="cep" placeholder="Ex. 89888.888" />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Estado</label>
+                      <input
+                        type="text"
+                        id="estado"
+                        placeholder="Ex. Espírito Santo"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Cidade</label>
+                      <input
+                        type="text"
+                        id="cidade"
+                        placeholder="Ex. Guarapari"
+                      />
+                    </div>
+                  </div>
+                  <label htmlFor="email">Rua</label>
+                  <input
+                    type="text"
+                    id="rua"
+                    placeholder="Ex. Rua de Ninguem"
+                  />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Número</label>
+                      <input type="number" id="numero" placeholder="Ex. 218" />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Complemento</label>
+                      <input
+                        type="text"
+                        id="complemento"
+                        placeholder="Ex. Apart 12"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </FormModal>
+            </div>
+          </div>
+        </StyleModal>
+      )}
     </>
   );
 };

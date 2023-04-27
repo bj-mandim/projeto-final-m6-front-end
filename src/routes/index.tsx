@@ -7,6 +7,7 @@ import Product from "../pages/Product";
 import AdminPage from "../pages/AdminPage";
 import PageNotFound from "../pages/PageNotFound";
 import ForgotPassword from "../pages/ForgotPass";
+import UserPage from "../pages/UserPage";
 
 function RoutesComponent() {
   return (
@@ -20,6 +21,7 @@ function RoutesComponent() {
         <Route path="/register" element={<Register />} />
         <Route path="/product" element={<Product />} />
         <Route path="/admin-page" element={<AdminPage />} />
+        <Route path="/user-page" element={<UserPage />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </>

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Header } from "../../components/header";
+import { Header, HeaderLogin } from "../../components/header";
 import { Banner } from "../../components/banner";
 import Filter from "../../components/filter";
 import Card from "../../components/card/Home";
@@ -8,9 +8,12 @@ import { ContextApi } from "../../contexts";
 import { HomeContainer } from "./styles";
 import Pagination from "../../components/pagination";
 import { ICarsReturn } from "../../interfaces/Car/car.interface";
+import { UserContext } from "../../contexts/userContext";
 
 function Home() {
   const { listCards }: any = useContext(ContextApi);
+  const { user }: any = useContext(UserContext);
+
   console.log(listCards);
 
   const [cars, setCars] = useState<ICarsReturn[]>([]);
@@ -35,7 +38,25 @@ function Home() {
     getCars();
   }, [query]);
 
-  return (
+  return user ? (
+    <>
+      <HeaderLogin />
+
+      <Banner />
+
+      <HomeContainer>
+        {/* <Filter 
+                    brands={brands} models={[]} colors={[]} years={[]} fuels={[]} handleSetQuery={function (type: string, value: string): void {
+                      throw new Error("Function not implemented.");
+                    } }        /> */}
+        <Card />
+      </HomeContainer>
+
+      <Pagination />
+
+      <Footer />
+    </>
+  ) : (
     <>
       <Header />
 
@@ -43,9 +64,9 @@ function Home() {
 
       <HomeContainer>
         {/* <Filter 
-				  brands={brands} models={[]} colors={[]} years={[]} fuels={[]} handleSetQuery={function (type: string, value: string): void {
-					  throw new Error("Function not implemented.");
-				  } }        /> */}
+              brands={brands} models={[]} colors={[]} years={[]} fuels={[]} handleSetQuery={function (type: string, value: string): void {
+                throw new Error("Function not implemented.");
+              } }        /> */}
         <Card />
       </HomeContainer>
 
