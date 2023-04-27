@@ -118,7 +118,7 @@ export const Header = () => {
 
 export const HeaderLogin = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { setInfosOpen }: any = useContext(ContextApi);
+  const { setInfosOpen, setOptionsOpen }: any = useContext(ContextApi);
   const navigate = useNavigate();
   return (
     <>
@@ -142,7 +142,7 @@ export const HeaderLogin = () => {
               justify={"space-evenly"}
               id="menu-desktop"
             >
-              <Avatar user={user} />
+              <Avatar user={user} setOptionsOpen={setOptionsOpen} />
             </HStack>
 
             <IconButton

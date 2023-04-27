@@ -10,9 +10,32 @@ import { StyleModal } from "../../components/modal/style";
 import Pagination from "../../components/pagination";
 import { Footer } from "../../components/footer";
 import Button from "../../components/button/style";
+import { useNavigate } from "react-router-dom";
 
 function AdminPage() {
-  const { isOpen, setIsOpen, infosOpen }: any = useContext(ContextApi);
+  const {
+    isOpen,
+    setIsOpen,
+    infosOpen,
+    getFipeTable,
+    model,
+    brand,
+    setBrand,
+    setModel,
+    price,
+    optionsOpen,
+    setInfosOpen,
+    setOptionsOpen,
+    adressModalOpen,
+    setadressModalOpen,
+  }: any = useContext(ContextApi);
+  const navigate = useNavigate();
+
+  function fipeTable(model: any, brand: any) {
+    if (brand!) {
+      getFipeTable(brand.value, model.value);
+    }
+  }
 
   return (
     <>
@@ -45,19 +68,31 @@ function AdminPage() {
                   <label htmlFor="email">Marca</label>
                   <input
                     type="name"
-                    id="name"
+                    id="marca"
                     placeholder="Ex. Mercedes Benz"
                   />
                   <label htmlFor="email">Modelo</label>
                   <input
                     type="name"
-                    id="name"
+                    id="modelo"
                     placeholder="Ex. A 200 CGI ADVANCE SEDAN"
                   />
                   <div className="inline-fields">
                     <div>
                       <label htmlFor="email">Ano</label>
-                      <input type="text" id="number" placeholder="Ex. 2018" />
+                      <input
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const marcaValue = document.querySelector("#marca");
+                          const modeloValue = document.querySelector("#modelo");
+                          setBrand(marcaValue);
+                          setModel(modeloValue);
+                          fipeTable(model, brand);
+                        }}
+                        type="text"
+                        id="ano"
+                        placeholder="Ex. 2018"
+                      />
                     </div>
 
                     <div>
@@ -72,41 +107,33 @@ function AdminPage() {
                   <div className="inline-fields">
                     <div>
                       <label htmlFor="email">Quilometragem</label>
-                      <input type="text" id="number" placeholder="Ex. 201" />
+                      <input
+                        type="text"
+                        id="quilometragem"
+                        placeholder="Ex. 201"
+                      />
                     </div>
 
                     <div>
                       <label htmlFor="email">Cor</label>
-                      <input
-                        type="text"
-                        id="combustivel"
-                        placeholder="Ex. Rosa"
-                      />
+                      <input type="text" id="cor" placeholder="Ex. Rosa" />
                     </div>
                   </div>
                   <div className="inline-fields">
                     <div>
                       <label htmlFor="email">Tabela FIPE</label>
-                      <input
-                        type="text"
-                        id="number"
-                        placeholder="Valor ideal para venda"
-                      />
+                      <input type="text" placeholder={`R$: ${price}`} />
                     </div>
 
                     <div>
                       <label htmlFor="email">Preço</label>
-                      <input
-                        type="text"
-                        id="combustivel"
-                        placeholder="Ex. 100.000,00"
-                      />
+                      <input type="text" id="preco" placeholder="Ex. 100000" />
                     </div>
                   </div>
                   <label htmlFor="email">Descrição</label>
                   <input
                     type="text"
-                    id="combustivel"
+                    id="descricao"
                     placeholder="Ex. O carro se encontra em tais condições..."
                   />
                   <label htmlFor="email">Imagem da capa</label>
@@ -118,13 +145,13 @@ function AdminPage() {
                   <label htmlFor="email">Primeira Imagem da galeria</label>
                   <input
                     type="text"
-                    id="img-capa"
+                    id="img-capa2"
                     placeholder="Ex. https://imagem.com"
                   />
                   <label htmlFor="email">Segunda Imagem da galeria</label>
                   <input
                     type="text"
-                    id="img-capa"
+                    id="img-capa3"
                     placeholder="Ex. https://imagem.com"
                   />
                 </div>
@@ -179,6 +206,121 @@ function AdminPage() {
                     id="name"
                     placeholder="Ex. local da descrição..."
                   />
+                </div>
+              </FormModal>
+            </div>
+          </div>
+        </StyleModal>
+      )}
+      {optionsOpen && (
+        <StyleModal>
+          <div className="modal-wrapper">
+            <div className="container-form">
+              <FormModal>
+                <div className="modal-header">
+                  <h2 className="header_register">Options User</h2>
+                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                    <IoClose />
+                  </Button>
+                </div>
+                <br />
+                <strong>Selecione a opção desejada</strong>
+                <div className="inline-fields">
+                  <div>
+                    <label htmlFor="email">Editar Dados</label>
+                    <Button
+                      onClick={(e) => {
+                        setOptionsOpen(false);
+                        setInfosOpen(true);
+                      }}
+                    >
+                      Dados
+                    </Button>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email">Editar Endereço</label>
+                    <Button
+                      onClick={(e) => {
+                        setOptionsOpen(false);
+                        setadressModalOpen(true);
+                      }}
+                    >
+                      Endereço
+                    </Button>
+                  </div>
+                </div>
+                <div className="content_register">
+                  <label htmlFor="email">Deslogar do Perfil</label>
+                  <Button
+                    onClick={(e) => {
+                      navigate("/");
+                    }}
+                  >
+                    Sair
+                  </Button>
+                </div>
+              </FormModal>
+            </div>
+          </div>
+        </StyleModal>
+      )}
+      {adressModalOpen && (
+        <StyleModal>
+          <div className="modal-wrapper">
+            <div className="container-form">
+              <FormModal>
+                <div className="modal-header">
+                  <h2 className="header_register">Editar Endereço</h2>
+                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                    <IoClose />
+                  </Button>
+                </div>
+                <br />
+                <strong>Informações do endereço usuário</strong>
+                <div className="content_register">
+                  <label htmlFor="email">CEP</label>
+                  <input type="name" id="cep" placeholder="Ex. 89888.888" />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Estado</label>
+                      <input
+                        type="text"
+                        id="estado"
+                        placeholder="Ex. Espírito Santo"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Cidade</label>
+                      <input
+                        type="text"
+                        id="cidade"
+                        placeholder="Ex. Guarapari"
+                      />
+                    </div>
+                  </div>
+                  <label htmlFor="email">Rua</label>
+                  <input
+                    type="text"
+                    id="rua"
+                    placeholder="Ex. Rua de Ninguem"
+                  />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Número</label>
+                      <input type="number" id="numero" placeholder="Ex. 218" />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Complemento</label>
+                      <input
+                        type="text"
+                        id="complemento"
+                        placeholder="Ex. Apart 12"
+                      />
+                    </div>
+                  </div>
                 </div>
               </FormModal>
             </div>
