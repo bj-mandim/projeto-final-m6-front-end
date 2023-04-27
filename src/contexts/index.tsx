@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { apiCards, kenzieCars } from "./api";
+import { apiCards, apiKenzieCards } from "./api";
 import { useLocation, useNavigate } from "react-router-dom";
+import filter from "../pages/AdminPage/filter";
 
 interface iChildren {
   children: React.ReactNode;
@@ -17,11 +18,15 @@ function ApiState({ children }: iChildren) {
   const navigate = useNavigate();
   const location = useLocation();
   const [listCards, setListCards] = useState([]);
-  const [fipeTable, setFipeTable] = useState<any>({});
   const [card, setCard] = useState({});
   const [idCar, setIdCar] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [adressModalOpen, setadressModalOpen] = useState(false);
   const [infosOpen, setInfosOpen] = useState(false);
+  const [optionsOpen, setOptionsOpen] = useState(false);
+  const [model, setModel] = useState();
+  const [brand, setBrand] = useState();
+  const [price, setPrice] = useState("");
 
   function getCards() {
     apiCards
@@ -34,16 +39,6 @@ function ApiState({ children }: iChildren) {
       });
   }
 
-  function getFipeCars() {
-    kenzieCars
-      .get(`/cars`)
-      .then((res) => {
-        setFipeTable(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
 
   function getCardId(id: string) {
     apiCards
@@ -59,6 +54,17 @@ function ApiState({ children }: iChildren) {
       });
   }
 
+  function getFipeTable(brand: string, model: string) {
+    apiKenzieCards
+      .get(`/cars?brand=${brand}`)
+      .then((res) => {
+        setPrice(filter(res.data, model));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   function checkCarId() {
     const id = localStorage.getItem("@Last_view");
 
@@ -66,7 +72,6 @@ function ApiState({ children }: iChildren) {
   }
 
   useEffect(() => {
-    getFipeCars();
     getCards();
   }, []);
 
@@ -88,7 +93,17 @@ function ApiState({ children }: iChildren) {
         setIsOpen,
         infosOpen,
         setInfosOpen,
-        fipeTable
+        getFipeTable,
+        model,
+        brand,
+        setBrand,
+        setModel,
+        price,
+        setPrice,
+        optionsOpen,
+        setOptionsOpen,
+        adressModalOpen,
+        setadressModalOpen,
       }}
     >
       {children}

@@ -5,9 +5,10 @@ const apiCards = axios.create({
   timeout: 5000,
 });
 
-const kenzieCars = axios.create({
-  baseURL: `https://kenzie-kars.herokuapp.com`,
+
+const apiKenzieCards = axios.create({
+  baseURL: `https://kenzie-kars.herokuapp.com/`,
   timeout: 5000,
 });
 
-export { apiCards, kenzieCars };
+export { apiCards, apiKenzieCards };
