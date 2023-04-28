@@ -3,6 +3,8 @@ import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
 import car from "../../../img/Car.png";
 import { Flex } from "@chakra-ui/react";
+import { UserContext, iUser } from "../../../contexts/userContext";
+import { StyleAvatar } from "../../avatar/style";
 
 interface iCardProps {
   getCars: ICard[];
@@ -26,15 +28,17 @@ interface ICard {
   model: string;
   price: string;
   year: number;
+  user: iUser;
 }
 
 const CardUserAdmin = () => {
-  const { getCardId, listCards }: any = useContext(ContextApi);
+  const { getCardId }: any = useContext(ContextApi);
+  const { user }: any = useContext(UserContext);
 
   return (
     <>
       <CardsListAdminUser>
-        {listCards.map((car: ICard) => {
+        {user.cars.map((car: ICard) => {
           return (
             <>
               <StyledCards
@@ -55,8 +59,15 @@ const CardUserAdmin = () => {
                   <p className="body-2">{car.description}</p>
 
                   <div className="boxUser">
-                    <img src={car.images[0].url} alt="user-photo" />
-                    <p className="body-2">Claudio</p>
+                    <StyleAvatar>
+                      {user.image_url ? (
+                        <img src={user.image_url} alt="" />
+                      ) : (
+                        <div>{user.name[0].toUpperCase()}</div>
+                      )}
+                    </StyleAvatar>
+                    {/* <img src={car.images[0].url} alt="user-photo" /> */}
+                    <p className="body-2">{user.name}</p>
                   </div>
 
                   <div className="boxExtraInfo">
@@ -67,7 +78,7 @@ const CardUserAdmin = () => {
 
                     <span className="price heading-7">{`R$: ${car.price}`}</span>
                   </div>
-                  <Flex gap={"8px"} style={{marginTop: 16}}>
+                  <Flex gap={"8px"} style={{ marginTop: 16 }}>
                     <button className="btn btn-outline btn-medium">
                       Editar
                     </button>

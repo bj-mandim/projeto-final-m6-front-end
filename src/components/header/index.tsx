@@ -118,7 +118,8 @@ export const Header = () => {
   name: "Vitória Simões",
   image_url:
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqt6O6bqpcON7yrS0AoagxeM8LZje-nzH2g&usqp=CAU",
-}; */
+}; 
+*/
 
 export const HeaderLogin = () => {
   const { user }: any = useContext(UserContext);
@@ -290,75 +291,130 @@ export const HeaderLogin = () => {
           </div>
         </StyleModal>
       )}
-      {optionsOpen && (
-        <StyleModal>
-          <div className="modal-wrapper">
-            <div className="container-form">
-              <FormModal>
-                <div className="modal-header">
-                  <h2 className="header_register">Opções do User</h2>
-                  <Button model="model-5" onClick={() => setIsOpen(false)}>
-                    <IoClose />
-                  </Button>
-                </div>
-                <br />
-                <strong>Selecione a opção desejada</strong>
-                <div className="inline-fields">
-                  <div>
-                    <label htmlFor="email">Editar Dados</label>
-                    <Button
-                      onClick={(e) => {
-                        setOptionsOpen(false);
-                        setInfosOpen(true);
-                      }}
-                    >
-                      Dados
+      {optionsOpen &&
+        (user.is_announcer ? (
+          <StyleModal>
+            <div className="modal-wrapper">
+              <div className="container-form">
+                <FormModal>
+                  <div className="modal-header">
+                    <h2 className="header_register">Opções do User</h2>
+                    <Button model="model-5" onClick={() => setIsOpen(false)}>
+                      <IoClose />
                     </Button>
                   </div>
+                  <br />
+                  <strong>Selecione a opção desejada</strong>
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Editar Dados</label>
+                      <Button
+                        onClick={(e) => {
+                          setOptionsOpen(false);
+                          setInfosOpen(true);
+                        }}
+                      >
+                        Dados
+                      </Button>
+                    </div>
 
-                  <div>
-                    <label htmlFor="email">Editar Endereço</label>
-                    <Button
-                      onClick={(e) => {
-                        setOptionsOpen(false);
-                        setadressModalOpen(true);
-                      }}
-                    >
-                      Endereço
-                    </Button>
+                    <div>
+                      <label htmlFor="email">Editar Endereço</label>
+                      <Button
+                        onClick={(e) => {
+                          setOptionsOpen(false);
+                          setadressModalOpen(true);
+                        }}
+                      >
+                        Endereço
+                      </Button>
+                    </div>
                   </div>
-                </div>
-                <div className="inline-fields">
-                  <div>
-                    <label htmlFor="email">Deslogar do Perfil</label>
-                    <Button
-                      onClick={(e) => {
-                        navigate("/");
-                        setInfosOpen(false);
-                      }}
-                    >
-                      Sair
-                    </Button>
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Deslogar do Perfil</label>
+                      <Button
+                        onClick={(e) => {
+                          navigate("/");
+                          setInfosOpen(false);
+                        }}
+                      >
+                        Sair
+                      </Button>
+                    </div>
+                    <div>
+                      <label htmlFor="email">Área de Anunciantes</label>
+                      <Button
+                        onClick={(e) => {
+                          setOptionsOpen(false);
+                          setInfosOpen(false);
+                          navigate("/admin-page");
+                        }}
+                      >
+                        Apenas Anunciantes
+                      </Button>
+                    </div>
                   </div>
-
-                  <div>
-                    <label htmlFor="email">Área de Anunciantes</label>
-                    <Button
-                      onClick={(e) => {
-                        setOptionsOpen(false);
-                        setadressModalOpen(true);
-                        navigate("/admin-page");
-                      }}
-                    >
-                      Apenas Anunciantes
-                    </Button>
-                  </div>
-                </div>
-              </FormModal>
+                </FormModal>
+              </div>
             </div>
-          </div>
-        </StyleModal>
-      )}
+          </StyleModal>
+        ) : (
+          <StyleModal>
+            <div className="modal-wrapper">
+              <div className="container-form">
+                <FormModal>
+                  <div className="modal-header">
+                    <h2 className="header_register">Opções do User</h2>
+                    <Button model="model-5" onClick={() => setIsOpen(false)}>
+                      <IoClose />
+                    </Button>
+                  </div>
+                  <br />
+                  <strong>Selecione a opção desejada</strong>
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Editar Dados</label>
+                      <Button
+                        onClick={(e) => {
+                          setOptionsOpen(false);
+                          setInfosOpen(true);
+                        }}
+                      >
+                        Dados
+                      </Button>
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Editar Endereço</label>
+                      <Button
+                        onClick={(e) => {
+                          setOptionsOpen(false);
+                          setadressModalOpen(true);
+                        }}
+                      >
+                        Endereço
+                      </Button>
+                    </div>
+                  </div>
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Deslogar do Perfil</label>
+                      <Button
+                        onClick={(e) => {
+                          navigate("/");
+                          setInfosOpen(false);
+                        }}
+                      >
+                        Sair
+                      </Button>
+                    </div>
+                  </div>
+                </FormModal>
+              </div>
+            </div>
+          </StyleModal>
+        ))}
       {adressModalOpen && (
         <StyleModal>
           <div className="modal-wrapper">

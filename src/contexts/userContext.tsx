@@ -2,6 +2,7 @@ import { createContext, useState, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { apiCards } from "./api";
+import { ICard } from "../components/card/Home";
 
 interface iProvidersProps {
   children: ReactNode;
@@ -33,7 +34,7 @@ export interface iFormSignup {
   };
 }
 
-interface iUser {
+export interface iUser {
   id: string;
   name: string;
   email: string;
@@ -43,6 +44,7 @@ interface iUser {
   cpf: string;
   birth: string;
   reset_token: null; //Verificar esse retorno
+  image_url?: string;
   address: {
     id: string;
     cep: string;
@@ -66,6 +68,7 @@ export const UserContext = createContext({} as any);
 const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
   const [user, setUser] = useState<iUser | null>(null);
+  const [userPage, setUserPage] = useState<iUser | null>(null);
 
   const token = localStorage.getItem("@Token_cars_shop");
   const navigate = useNavigate();
@@ -108,7 +111,7 @@ const Providers = ({ children }: iProvidersProps) => {
     const token = localStorage.getItem("@Token_cars_shop");
     if (token) {
       try {
-        const { data } = await apiCards.get<iUser>("users/profile", {
+        const { data } = await apiCards.get<iUser>(`users/profile/`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -124,7 +127,15 @@ const Providers = ({ children }: iProvidersProps) => {
 
   return (
     <UserContext.Provider
-      value={{ registerUser, loginUser, globalLoading, setGlobalLoading, user }}
+      value={{
+        registerUser,
+        loginUser,
+        globalLoading,
+        setGlobalLoading,
+        user,
+        userPage,
+        setUserPage,
+      }}
     >
       {children}
     </UserContext.Provider>

@@ -15,13 +15,12 @@ export const CardsList = styled.section`
 `;
 
 export const StyledCards = styled.figure`
-
   position: relative;
   overflow: hidden;
   max-width: 312px;
   margin: 0;
 
-  font-family: 'Lexend';
+  font-family: "Lexend";
 
   @media (max-width: 767px) {
     margin: 24px auto;
@@ -31,8 +30,8 @@ export const StyledCards = styled.figure`
   }
 
   p {
-      margin-bottom: 8px;
-      margin-top: 8px;
+    margin-bottom: 8px;
+    margin-top: 8px;
   }
 
   .boxImage {
@@ -42,6 +41,7 @@ export const StyledCards = styled.figure`
     img {
       margin: 0 auto;
       width: 100%;
+      height: 140px;
       object-fit: cover;
     }
   }

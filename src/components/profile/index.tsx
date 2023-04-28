@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { ProfileWrapper } from "./styles";
 import { ContextApi } from "../../contexts";
-import { UserContext } from "../../contexts/userContext";
+import { UserContext, iUser } from "../../contexts/userContext";
+import { StyleAvatarUserAdminPage } from "../avatar/style";
 
 export const Profile = () => {
   const { setIsOpen }: any = useContext(ContextApi);
@@ -11,11 +12,13 @@ export const Profile = () => {
     <>
       <ProfileWrapper>
         <figure className="anunciante">
-          <img
-            src="https://www.psicologo.com.br/wp-content/uploads/sou-uma-pessoa-boa-ou-nao.jpg"
-            alt="img_admin"
-            className="anunciante-img"
-          />
+          <StyleAvatarUserAdminPage>
+            {user.image_url ? (
+              <img src={user.image_url} alt="" />
+            ) : (
+              <div>{user.name[0].toUpperCase()}</div>
+            )}
+          </StyleAvatarUserAdminPage>
           <figcaption className="anunciante-info">
             <div className="anunciante-nome">
               <h3 className="heading-6">{name}</h3>
@@ -38,24 +41,26 @@ export const Profile = () => {
 
 export const ProfileUser = () => {
   const { setIsOpen }: any = useContext(ContextApi);
+  const { userPage }: any = useContext(UserContext);
+
+  console.log(userPage);
   return (
     <>
       <ProfileWrapper>
         <figure className="anunciante">
-          <img
-            src="https://www.psicologo.com.br/wp-content/uploads/sou-uma-pessoa-boa-ou-nao.jpg"
-            alt="img_admin"
-            className="anunciante-img"
-          />
+          {/* <StyleAvatarUserAdminPage>
+            {userPage.image_url ? (
+              <img src={userPage.image_url} alt="" />
+            ) : (
+              <div>{userPage.name[0].toUpperCase()}</div>
+            )}
+          </StyleAvatarUserAdminPage> */}
           <figcaption className="anunciante-info">
             <div className="anunciante-nome">
-              <h3 className="heading-6">Samuel Leão</h3>
+              <h3 className="heading-6">{userPage.name}</h3>
             </div>
             <p className="anunciante-descricao body-1">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat
-              quaerat repellendus, corporis iure quibusdam commodi odit
-              excepturi aspernatur quas? Iusto magnam id vitae explicabo
-              reiciendis odit, dolores exercitationem error animi!
+              {userPage.description}
             </p>
           </figcaption>
         </figure>
