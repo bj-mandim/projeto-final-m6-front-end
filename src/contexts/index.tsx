@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { apiCards, apiKenzieCards } from "./api";
 import { useLocation, useNavigate } from "react-router-dom";
 import filter from "../pages/AdminPage/filter";
+import { UserContext } from "./userContext";
 
 interface iChildren {
   children: React.ReactNode;
@@ -27,6 +28,10 @@ function ApiState({ children }: iChildren) {
   const [model, setModel] = useState();
   const [brand, setBrand] = useState();
   const [price, setPrice] = useState("");
+
+  const { setUserPage }: any = useContext(UserContext);
+  const token = localStorage.getItem("authToken");
+  console.log(token);
 
   //CARDS ROTAS
   function getCards() {
@@ -69,46 +74,18 @@ function ApiState({ children }: iChildren) {
 
   //USER ROTAS
 
-  function listUser() {
-    apiCards
-      .get(`/users`)
-      .then((res) => {
-        setListCards(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   function listUserId(id: string) {
     apiCards
-      .get(`/users/${id}`)
+      .get(`/users/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
-        setListCards(res.data);
+        setUserPage(res.data);
       })
       .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  function deleteUser(id: string) {
-    apiCards
-      .delete(`/users/${id}`)
-      .then((res) => {
-        setListCards(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  function updatedUser(id: string) {
-    apiCards
-      .patch(`/users/${id}`)
-      .then((res) => {
-        setListCards(res.data);
-      })
-      .catch((err) => {
+        console.log(id);
         console.log(err);
       });
   }
@@ -176,6 +153,7 @@ function ApiState({ children }: iChildren) {
         setOptionsOpen,
         adressModalOpen,
         setadressModalOpen,
+        listUserId,
       }}
     >
       {children}

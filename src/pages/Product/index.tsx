@@ -1,5 +1,4 @@
-import { Header, HeaderLogin } from "../../components/header";
-// import "./style.css";
+import { HeaderLogin } from "../../components/header";
 import { Footer } from "../../components/footer";
 import { IoClose } from "react-icons/io5";
 import {
@@ -20,9 +19,13 @@ import { ContextApi } from "../../contexts";
 import { StyleModal } from "../../components/modal/style";
 import { FormModal } from "../../components/form/style";
 import Button from "../../components/button/style";
+import { useNavigate } from "react-router-dom";
 
 function Product() {
-  const { card, isOpen, setIsOpen, idCar }: any = useContext(ContextApi);
+  const { card, isOpen, setIsOpen, idCar, listUserId }: any =
+    useContext(ContextApi);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -73,13 +76,17 @@ function Product() {
                 </div>
               </Aside>
               <SecondAside>
-                <h3>Samuel Leão</h3>
-                <p>
-                  Lorem Ipsum is simply dummy text of the printing and
-                  typesetting industry. Lorem Ipsum has been the industry's
-                  standard dummy text ever since the 1500s
-                </p>
-                <button>Ver todos anúncios</button>
+                <h3>{card.user.name}</h3>
+                <p>{card.user.description}</p>
+                <Button
+                  onClick={() => {
+                    listUserId(card.user.id);
+                    navigate(`/user-page`);
+                  }}
+                >
+                  Ver todos anúncios
+                </Button>
+                {/* ao clicar, redireciona para a /user-product */}
               </SecondAside>
             </SecondMain>
           </Article>

@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const CardsListAdminUser = styled.section`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 48px;
-    padding: 32px;
-    max-width: 85%;
-    margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 48px;
+  padding: 32px;
+  max-width: 85%;
+  margin: 0 auto;
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -36,6 +36,7 @@ export const StyledCards = styled.figure`
     img {
       margin: 0 auto;
       width: 100%;
+      height: 140px;
       object-fit: cover;
     }
   }

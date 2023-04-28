@@ -30,7 +30,6 @@ function AdminPage() {
     adressModalOpen,
     setadressModalOpen,
   }: any = useContext(ContextApi);
-  const { user }: any = useContext(UserContext);
   const navigate = useNavigate();
 
   function fipeTable(model: any, brand: any) {
