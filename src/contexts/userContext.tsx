@@ -1,67 +1,11 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { apiCards } from "./api";
-import { ICard } from "../components/card/Home";
-
-interface iProvidersProps {
-  children: ReactNode;
-}
-
-export interface iFormLogin {
-  email: string;
-  password: string;
-}
-
-export interface iFormSignup {
-  name: string;
-  email: string;
-  cpf: string;
-  phone: string;
-  birth: string;
-  description: string;
-  image_url?: string;
-  is_announcer: boolean;
-  password: string;
-  confirmPassword: string;
-  address: {
-    cep: string;
-    state: string;
-    city: string;
-    street: string;
-    number: string; //number
-    complement: string;
-  };
-}
-
-export interface iUser {
-  id: string;
-  name: string;
-  email: string;
-  is_announcer: boolean;
-  description: string;
-  phone: string;
-  cpf: string;
-  birth: string;
-  reset_token: null; //Verificar esse retorno
-  image_url?: string;
-  address: {
-    id: string;
-    cep: string;
-    state: string;
-    city: string;
-    street: string;
-    number: number; //Verificar compatibilidade com o front
-    complement: string;
-  };
-}
-
-interface iUserContext {
-  registerUser: (data: iFormSignup) => Promise<void>;
-  loginUser: (data: iFormLogin) => Promise<void>;
-  globalLoading: boolean;
-  setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { iFormLogin } from "../interfaces/User";
+import { iFormSignup } from "../interfaces/User";
+import { iUser } from "../interfaces/User";
+import { iProvidersProps } from "../interfaces/Others";
 
 export const UserContext = createContext({} as any);
 

@@ -1,11 +1,5 @@
 import { StyleAvatar } from "./style";
-
-interface IAvatarProps {
-  user: {
-    name: string;
-    image_url: string | null;
-  };
-}
+import { IAvatarProps } from "../../interfaces/Others";
 
 const Avatar = ({ user, setOptionsOpen }: any) => {
   return (

@@ -2,32 +2,8 @@ import { CardsList, StyledCards } from "./style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
 import { StyleAvatar, StyleAvatarUserAdminPage } from "../../avatar/style";
-import { UserContext, iUser } from "../../../contexts/userContext";
-
-interface iCardProps {
-  getCars: ICard[];
-}
-
-interface IImages {
-  id: string;
-  url: string;
-}
-
-export interface ICard {
-  brand: string;
-  color: string;
-  description: string;
-  fipe_table: number;
-  fuel: string;
-  id: string;
-  images: IImages[];
-  is_active: boolean;
-  km: number;
-  model: string;
-  price: string;
-  year: number;
-  user: iUser;
-}
+import { UserContext } from "../../../contexts/userContext";
+import { ICard } from "../../../interfaces/Car";
 
 const Card = () => {
   const { getCardId, listCards }: any = useContext(ContextApi);
@@ -64,7 +40,6 @@ const Card = () => {
                         <div>{car.user.name[0].toUpperCase()}</div>
                       )}
                     </StyleAvatar>
-                    {/* <img src={car.images[0].url} alt="user-photo" /> */}
                     <p className="body-2">{car.user.name}</p>
                   </div>
 

@@ -8,11 +8,6 @@ interface iChildren {
   children: React.ReactNode;
 }
 
-export interface iFormLogin {
-  email: string;
-  password: string;
-}
-
 export const ContextApi = createContext({});
 
 function ApiState({ children }: iChildren) {
@@ -72,7 +67,7 @@ function ApiState({ children }: iChildren) {
       });
   }
 
-  //USER ROTAS
+  //USER ROTAS (LIST USER ID GABRIEL)
 
   function listUserId(id: string) {
     apiCards

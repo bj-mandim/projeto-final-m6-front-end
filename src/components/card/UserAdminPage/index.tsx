@@ -1,35 +1,10 @@
 import { CardsListAdminUser, StyledCards } from "../UserAdminPage/style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
-import car from "../../../img/Car.png";
 import { Flex } from "@chakra-ui/react";
-import { UserContext, iUser } from "../../../contexts/userContext";
+import { UserContext } from "../../../contexts/userContext";
 import { StyleAvatar } from "../../avatar/style";
-
-interface iCardProps {
-  getCars: ICard[];
-}
-
-interface IImages {
-  id: string;
-  url: string;
-}
-
-interface ICard {
-  brand: string;
-  color: string;
-  description: string;
-  fipe_table: number;
-  fuel: string;
-  id: string;
-  images: IImages[];
-  is_active: boolean;
-  km: number;
-  model: string;
-  price: string;
-  year: number;
-  user: iUser;
-}
+import { ICard } from "../../../interfaces/Car";
 
 const CardUserAdmin = () => {
   const { getCardId }: any = useContext(ContextApi);
@@ -47,7 +22,7 @@ const CardUserAdmin = () => {
                 }}
               >
                 <div className="boxImage">
-                  <img src={car.images[0].url} alt="car-image" />
+                  <img src={car.images[0].url} alt="carImage" />
                   <span className="status" id="ativo">
                     Ativo
                   </span>
@@ -66,7 +41,6 @@ const CardUserAdmin = () => {
                         <div>{user.name[0].toUpperCase()}</div>
                       )}
                     </StyleAvatar>
-                    {/* <img src={car.images[0].url} alt="user-photo" /> */}
                     <p className="body-2">{user.name}</p>
                   </div>
 
