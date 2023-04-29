@@ -7,7 +7,7 @@ import { Footer } from "../../components/footer";
 import { ContextApi } from "../../contexts";
 import { HomeContainer } from "./styles";
 import Pagination from "../../components/pagination";
-import { ICarsReturn } from "../../interfaces/Car/car.interface";
+import { ICarsReturn } from "../../interfaces/Car";
 import { UserContext } from "../../contexts/userContext";
 
 function Home() {

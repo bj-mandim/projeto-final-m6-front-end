@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ProfileWrapper } from "./styles";
 import { ContextApi } from "../../contexts";
-import { UserContext, iUser } from "../../contexts/userContext";
+import { UserContext } from "../../contexts/userContext";
 import { StyleAvatarUserAdminPage } from "../avatar/style";
 
 export const Profile = () => {

@@ -1,10 +1,5 @@
 import styled, { css } from "styled-components";
-
-interface iButtonProps {
-  medium?: boolean;
-  model?: string;
-  widths?: number;
-}
+import { iButtonProps } from "../../interfaces/Others";
 
 const Button = styled.button<iButtonProps>`
   outline: none;
