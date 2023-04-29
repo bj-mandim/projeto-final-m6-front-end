@@ -1,14 +1,14 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { apiCards, apiKenzieCards } from "./api";
 import { useLocation, useNavigate } from "react-router-dom";
 import filter from "../pages/AdminPage/filter";
-import { UserContext } from "./userContext";
+import { iUser } from "../interfaces/User";
 
 interface iChildren {
   children: React.ReactNode;
 }
 
-export const ContextApi = createContext({});
+export const ContextApi = createContext({} as any);
 
 function ApiState({ children }: iChildren) {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ function ApiState({ children }: iChildren) {
   const [model, setModel] = useState();
   const [brand, setBrand] = useState();
   const [price, setPrice] = useState("");
+  const [userPage, setUserPage] = useState<iUser | null>(null);
 
-  const { setUserPage }: any = useContext(UserContext);
   const token = localStorage.getItem("authToken");
   console.log(token);
 
@@ -46,6 +46,7 @@ function ApiState({ children }: iChildren) {
       .then((res) => {
         setCard(res.data);
         setIdCar(id);
+        localStorage.setItem("@Last_view_car",id)
         navigate("/product");
       })
       .catch((err) => {
@@ -78,10 +79,11 @@ function ApiState({ children }: iChildren) {
       })
       .then((res) => {
         setUserPage(res.data);
+        localStorage.setItem("@Last_view_user",res.data.id)
       })
       .catch((err) => {
-        console.log(id);
         console.log(err);
+        navigate("/");
       });
   }
 
@@ -111,10 +113,17 @@ function ApiState({ children }: iChildren) {
   }
 
   function checkCarId() {
-    const id = localStorage.getItem("@Last_view");
+    const id = localStorage.getItem("@Last_view_car");
 
     id ? getCardId(id) : navigate("/");
   }
+
+  function checkPageUserId() {
+    const id = localStorage.getItem("@Last_view_user");
+
+    id ? listUserId(id) : navigate("/");
+  }
+
   useEffect(() => {
     getCards();
   }, []);
@@ -122,6 +131,9 @@ function ApiState({ children }: iChildren) {
   useEffect(() => {
     if (location.pathname === "/product") {
       checkCarId();
+    }
+    else if (location.pathname === "/user-page") {
+      checkPageUserId();
     }
   }, []);
 
@@ -149,6 +161,8 @@ function ApiState({ children }: iChildren) {
         adressModalOpen,
         setadressModalOpen,
         listUserId,
+        setUserPage,
+        userPage
       }}
     >
       {children}

@@ -43,18 +43,18 @@ export const ProfileUser = () => {
   const { setIsOpen }: any = useContext(ContextApi);
   const { userPage }: any = useContext(UserContext);
 
-  console.log(userPage);
   return (
     <>
+    {userPage && 
       <ProfileWrapper>
         <figure className="anunciante">
-          {/* <StyleAvatarUserAdminPage>
+          <StyleAvatarUserAdminPage>
             {userPage.image_url ? (
               <img src={userPage.image_url} alt="" />
             ) : (
               <div>{userPage.name[0].toUpperCase()}</div>
             )}
-          </StyleAvatarUserAdminPage> */}
+          </StyleAvatarUserAdminPage>
           <figcaption className="anunciante-info">
             <div className="anunciante-nome">
               <h3 className="heading-6">{userPage.name}</h3>
@@ -65,6 +65,8 @@ export const ProfileUser = () => {
           </figcaption>
         </figure>
       </ProfileWrapper>
+}
+{/* Direcionar para "/" */}
     </>
   );
 };
