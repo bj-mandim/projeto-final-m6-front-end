@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { apiCards } from "./api";
@@ -6,15 +6,16 @@ import { iFormLogin } from "../interfaces/User";
 import { iFormSignup } from "../interfaces/User";
 import { iUser } from "../interfaces/User";
 import { iProvidersProps } from "../interfaces/Others";
+import  { ContextApi } from ".";
 
 export const UserContext = createContext({} as any);
 
 const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
   const [user, setUser] = useState<iUser | null>(null);
-  const [userPage, setUserPage] = useState<iUser | null>(null);
+  const {userPage, setUserPage} = useContext(ContextApi)
 
-  const token = localStorage.getItem("@Token_cars_shop");
+  // const token = localStorage.getItem("@Token_cars_shop");
   const navigate = useNavigate();
 
   async function loginUser(data: iFormLogin): Promise<void> {
@@ -61,13 +62,16 @@ const Providers = ({ children }: iProvidersProps) => {
           },
         });
         setUser(data);
-        console.log(data, "USER COM CARROS");
       } catch (error) {
-        localStorage.removeItem("@TOKEN");
+        localStorage.removeItem("@Token_cars_shop");
         setUser(null);
       }
     }
   }
+
+  useEffect(()=>{
+    getProfile()
+  },[])
 
   return (
     <UserContext.Provider
