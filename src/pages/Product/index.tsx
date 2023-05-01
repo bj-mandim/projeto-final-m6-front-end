@@ -86,7 +86,6 @@ function Product() {
                 >
                   Ver todos anúncios
                 </Button>
-                {/* ao clicar, redireciona para a /user-product */}
               </SecondAside>
             </SecondMain>
           </Article>

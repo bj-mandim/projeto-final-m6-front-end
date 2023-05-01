@@ -7,7 +7,6 @@ import { ICard } from "../../../interfaces/Car";
 
 const Card = () => {
   const { getCardId, listCards }: any = useContext(ContextApi);
-  console.log(listCards);
 
   return (
     <>
@@ -61,9 +60,10 @@ const Card = () => {
   );
 };
 
-const CardUserPage = () => {
+export const CardUserPage = () => {
   const { getCardId }: any = useContext(ContextApi);
   const { userPage }: any = useContext(UserContext);
+  console.log(userPage);
 
   return (
     <>

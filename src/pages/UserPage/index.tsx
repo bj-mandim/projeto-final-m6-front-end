@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Card from "../../components/card/Home";
+import Card, { CardUserPage } from "../../components/card/Home";
 import { Footer } from "../../components/footer";
 import { HeaderLogin } from "../../components/header";
 import Pagination from "../../components/pagination";
@@ -21,7 +21,7 @@ function UserPage() {
           </Article>
 
           <h3 className="heading-6">Anúncios</h3>
-          <Card />
+          <CardUserPage />
 
           <Pagination />
         </ContainerUser>

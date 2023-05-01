@@ -207,7 +207,10 @@ export const HeaderLogin = () => {
               </li>
               <li>
                 <Button
-                  onClick={() => navigate("/")}
+                  onClick={() => {
+                    localStorage.clear();
+                    navigate("/");
+                  }}
                   model="option-modal"
                   className="body-1-600"
                 >
@@ -335,6 +338,7 @@ export const HeaderLogin = () => {
                       <label htmlFor="email">Deslogar do Perfil</label>
                       <Button
                         onClick={(e) => {
+                          localStorage.clear();
                           navigate("/");
                           setInfosOpen(false);
                         }}
