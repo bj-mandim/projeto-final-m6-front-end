@@ -93,8 +93,8 @@ function Product() {
       </Section>
       <Footer />
 
-      {isOpen && idCar && (
-        <StyleModal
+      {idCar && (
+        <StyleModal show={isOpen}
           id="wrapp"
           onClick={(e: React.MouseEvent<HTMLDivElement>) => {
             const target = e.target as HTMLButtonElement;
