@@ -1,6 +1,15 @@
 import styled from "styled-components";
 
 export const FilterContainer = styled.aside`
+    #marca > ul > li {
+        text-transform: capitalize;
+        cursor: pointer;
+        margin-top: 0.5rem
+    }
+
+    #cor > ul > li {
+        text-transform: capitalize;
+    }
 
     @media (min-width: 767px) {
         #openFilter {

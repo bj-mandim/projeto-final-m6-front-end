@@ -1,6 +1,7 @@
 import { CardsList, StyledCards } from "./style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
+import { CarsContext } from "../../../contexts/carsContext";
 
 interface iCardProps {
   getCars: ICard[];
@@ -9,6 +10,19 @@ interface iCardProps {
 interface IImages {
   id: string;
   url: string;
+}
+interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  is_announcer: boolean;
+  description: string;
+  phone: string;
+  cpf: string;
+  birth: string;
+  image: {
+    url: string;
+  }
 }
 
 interface ICard {
@@ -24,15 +38,16 @@ interface ICard {
   model: string;
   price: string;
   year: number;
+  user: IUser;
 }
 
-const Card = () => {
-  const { getCardId, listCards }: any = useContext(ContextApi);
+const Card = ({lista}: any) => {
+  const { getCardId }: any = useContext(ContextApi);
 
   return (
     <>
       <CardsList>
-        {listCards.map((car: ICard) => {
+        {lista.map((car: ICard) => {
           return (
             <>
               <StyledCards
@@ -41,7 +56,7 @@ const Card = () => {
                 }}
               >
                 <div className="boxImage">
-                  <img src={car.images[0].url} alt="car-image" />
+                  <img src={car.images[0]?.url} alt="car-image" />
                   <span className="status" id="ativo">
                     Ativo
                   </span>
@@ -53,8 +68,8 @@ const Card = () => {
                   <p className="body-2">{car.description}</p>
 
                   <div className="boxUser">
-                    <img src={car.images[0].url} alt="user-photo" />
-                    <p className="body-2">Claudio</p>
+                    <img src={car.user.image?.url} alt="user-photo" />
+                    <p className="body-2">{car.user.name}</p>
                   </div>
 
                   <div className="boxExtraInfo">

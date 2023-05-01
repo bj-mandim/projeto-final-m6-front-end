@@ -9,10 +9,13 @@ import { HomeContainer } from "./styles";
 import Pagination from "../../components/pagination";
 import { ICarsReturn } from "../../interfaces/Car/car.interface";
 import { UserContext } from "../../contexts/userContext";
+import { CarsContext } from "../../contexts/carsContext";
 
 function Home() {
   const { listCards }: any = useContext(ContextApi);
   const { user }: any = useContext(UserContext);
+  const listaFeita = listCards
+  const { list }: any = useContext(CarsContext)
 
   console.log(listCards);
 
@@ -63,11 +66,11 @@ function Home() {
       <Banner />
 
       <HomeContainer>
-        {/* <Filter 
+        <Filter 
               brands={brands} models={[]} colors={[]} years={[]} fuels={[]} handleSetQuery={function (type: string, value: string): void {
                 throw new Error("Function not implemented.");
-              } }        /> */}
-        <Card />
+              } }        />
+        { list.length > 0 ? <Card lista={list}/> : <Card lista={listaFeita}/>}
       </HomeContainer>
 
       <Pagination />

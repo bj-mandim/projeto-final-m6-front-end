@@ -29,8 +29,8 @@ function ApiState({ children }: iChildren) {
   const [price, setPrice] = useState("");
 
   //CARDS ROTAS
-  function getCards() {
-    apiCards
+  async function getCards() {
+    await apiCards
       .get(`/cars`)
       .then((res) => {
         setListCards(res.data);
