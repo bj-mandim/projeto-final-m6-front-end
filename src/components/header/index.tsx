@@ -237,8 +237,8 @@ export const HeaderLogin = () => {
         )}
         <Outlet />
       </HeaderWrapper>
-      {infosOpen && (
-        <StyleModal>
+      { (
+        <StyleModal show={infosOpen}>
           <div className="modal-wrapper">
             <div className="container-form">
               <FormModal>
@@ -294,9 +294,9 @@ export const HeaderLogin = () => {
           </div>
         </StyleModal>
       )}
-      {optionsOpen &&
+      {
         (user.is_announcer ? (
-          <StyleModal>
+          <StyleModal show={optionsOpen}>
             <div className="modal-wrapper">
               <div className="container-form">
                 <FormModal>
@@ -364,7 +364,7 @@ export const HeaderLogin = () => {
             </div>
           </StyleModal>
         ) : (
-          <StyleModal>
+          <StyleModal show={optionsOpen}>
             <div className="modal-wrapper">
               <div className="container-form">
                 <FormModal>
@@ -420,7 +420,7 @@ export const HeaderLogin = () => {
           </StyleModal>
         ))}
       {adressModalOpen && (
-        <StyleModal>
+        <StyleModal show={adressModalOpen}>
           <div className="modal-wrapper">
             <div className="container-form">
               <FormModal>

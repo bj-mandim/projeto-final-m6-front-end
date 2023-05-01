@@ -52,8 +52,8 @@ function AdminPage() {
         <Pagination />
       </Section>
       <Footer />
-      {isOpen && (
-        <StyleModal>
+      { (
+        <StyleModal show={isOpen}>
           <div className="modal-wrapper">
             <div className="container-form">
               <FormModal>
@@ -161,8 +161,8 @@ function AdminPage() {
           </div>
         </StyleModal>
       )}
-      {infosOpen && (
-        <StyleModal>
+      {(
+        <StyleModal show={infosOpen}>
           <div className="modal-wrapper">
             <div className="container-form">
               <FormModal>
@@ -214,7 +214,7 @@ function AdminPage() {
         </StyleModal>
       )}
       {optionsOpen && (
-        <StyleModal>
+        <StyleModal show={optionsOpen}>
           <div className="modal-wrapper">
             <div className="container-form">
               <FormModal>
@@ -267,7 +267,7 @@ function AdminPage() {
         </StyleModal>
       )}
       {adressModalOpen && (
-        <StyleModal>
+        <StyleModal show={adressModalOpen}>
           <div className="modal-wrapper">
             <div className="container-form">
               <FormModal>

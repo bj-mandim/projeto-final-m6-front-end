@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
-export const StyleModal = styled.div`
+interface iModalProps{
+  show:boolean;
+}
+
+export const StyleModal = styled.div<iModalProps>`
   position: absolute;
   top: 100px;
   z-index: 900;
   background-color: #1e1c1c9e;
   width: 100%;
   height: 320vh;
+  display: ${({ show }) => (show ? `block` : `none`)};
 
   .container-form {
     width: 100%;
