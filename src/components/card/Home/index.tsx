@@ -12,6 +12,19 @@ interface IImages {
   id: string;
   url: string;
 }
+interface IUser {
+  id: string;
+  name: string;
+  email: string;
+  is_announcer: boolean;
+  description: string;
+  phone: string;
+  cpf: string;
+  birth: string;
+  image: {
+    url: string;
+  }
+}
 
 export interface ICard {
   brand: string;
@@ -36,7 +49,7 @@ const Card = () => {
   return (
     <>
       <CardsList>
-        {listCards.map((car: ICard) => {
+        {lista.map((car: ICard) => {
           return (
             <>
               <StyledCards
@@ -45,7 +58,7 @@ const Card = () => {
                 }}
               >
                 <div className="boxImage">
-                  <img src={car.images[0].url} alt="car-image" />
+                  <img src={car.images[0]?.url} alt="car-image" />
                   <span className="status" id="ativo">
                     Ativo
                   </span>

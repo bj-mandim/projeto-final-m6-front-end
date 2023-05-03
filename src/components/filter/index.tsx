@@ -9,6 +9,7 @@ import {
 } from "./style";
 import { IHomeFilter } from "../../interfaces/Filter/filter.interface";
 import { ContextApi } from "../../contexts";
+import { CarsContext } from "../../contexts/carsContext";
 
 const Filter = ({
   brands,
@@ -20,6 +21,46 @@ const Filter = ({
 }: IHomeFilter) => {
   const [openFilter, setOpenFilter] = useState("close");
   const { getCarsBrand, fipeTable }: any = useContext(ContextApi);
+  const [minKm, setMinKm] = useState('')
+  const [minPrice, setMinPrice] = useState('')
+  const [formValues, setFormValues] = useState({
+    kmMin: '',
+    kmMax: '',
+    priceMin: '',
+    priceMax: '',
+  })
+  const handleInputChange = (event: any) => {
+    const { name, value } = event.target;
+    setFormValues({ ...formValues, [name]: value });
+  }
+  const { 
+    brand,
+    filterByBrand,
+    setList,
+    model,
+    filterByModel,
+    color,
+    filterByColor,
+    year,
+    filterByYear,
+    filterByFuel,
+    filterByKm,
+    filterByPrice,
+  }: any = useContext(CarsContext)
+
+  let modelsReduced = []
+  if (model) {
+    modelsReduced = model.filter((item: any, i: any) => model.indexOf(item) === i)
+  }
+  let colorsReduced = []
+  if (color) {
+    colorsReduced = color.filter((item: any, i: any) => color.indexOf(item) === i)
+  }
+  let yearsReduced = []
+  if (year) {
+    yearsReduced = year.filter((item: any, i: any) => year.indexOf(item) === i)
+    yearsReduced.sort()
+  }
 
   return (
     <>
@@ -40,9 +81,10 @@ const Filter = ({
 
           <FilterGroup id="marca">
             <h3 className="heading-4">Marca</h3>
+            <p onClick={() => setList([])}>Limpar</p>
             <ul>
-              {Object.keys(fipeTable).map((keys) => (
-                <p>{keys}</p>
+              {Object.keys(brand).map((keys) => (
+                <li id={keys} onClick={() => filterByBrand(keys)}>{keys}</li>
               ))}
               <FilterList
                 className="heading-6"
@@ -52,65 +94,72 @@ const Filter = ({
           </FilterGroup>
           <FilterGroup id="modelo">
             <h3 className="heading-4">Modelo</h3>
+            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
-              <li>Civic</li>
-              <li>Corolla</li>
-              <li>Cruze</li>
-              <li>Fit</li>
-              <li>Gal</li>
-              <li>Ka</li>
-              <li>Onix</li>
-              <li>Porsche 718</li>
+              {modelsReduced.map((item: string[]) => {
+                return <li id={item.toString()} onClick={() => filterByModel(item)} >{item}</li>
+              })}
             </FilterList>
           </FilterGroup>
           <FilterGroup id="cor">
             <h3 className="heading-4">Cor</h3>
+            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
-              <li>Azu</li>
-              <li>Branca</li>
-              <li>Cinza</li>
-              <li>Prata</li>
-              <li>Preta</li>
-              <li>Verde</li>
+              {colorsReduced.map((item: string) => {
+                return <li id={item} onClick={() => filterByColor(item)}>{item}</li>
+              })}
             </FilterList>
           </FilterGroup>
           <FilterGroup id="ano">
             <h3 className="heading-4">Ano</h3>
+            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
-              <li>2022</li>
-              <li>2021</li>
-              <li>2018</li>
-              <li>2015</li>
-              <li>2013</li>
-              <li>2012</li>
-              <li>2010</li>
+              {yearsReduced.map((item: string) => {
+                return <li id={item} onClick={() => filterByYear(item)}>{item}</li>
+              })}
             </FilterList>
           </FilterGroup>
           <FilterGroup id="combustivel">
             <h3 className="heading-4">Combustível</h3>
+            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
-              <li>Diesel</li>
-              <li>Etanol</li>
-              <li>Gasolina</li>
-              <li>Flex</li>
+              <li id="1" onClick={() => filterByFuel('1')}>Flex</li>
+              <li id="2" onClick={() => filterByFuel('2')}>Hibrido</li>
+              <li id="3" onClick={() => filterByFuel('3')}>Elétrico</li>
             </FilterList>
           </FilterGroup>
           <FilterGroup id="km">
             <h3 className="heading-4">Km</h3>
             <InputGroup>
-              <input type="text" placeholder="Mínima" />
-              <input type="text" placeholder="Máxima" />
+              <input type="text" name="kmMin" value={formValues.kmMin} placeholder="Mínima" onChange={(event) => {
+                handleInputChange(event)
+              }}/>
+              <input type="text" name="kmMax" value={formValues.kmMax} placeholder="Máxima" onChange={(event) => {
+                handleInputChange(event)
+                filterByKm(formValues.kmMin, event.target.value)}
+                }/>
             </InputGroup>
           </FilterGroup>
           <FilterGroup id="preco">
             <h3 className="heading-4">Preço</h3>
             <InputGroup>
-              <input type="text" placeholder="Mínima" />
-              <input type="text" placeholder="Máxima" />
+              <input type="text" name="priceMin" value={formValues.priceMin} placeholder="Mínima" onChange={(event) => {
+                handleInputChange(event)
+              }}/>
+              <input type="text" name="priceMax" value={formValues.priceMax} placeholder="Máxima" onChange={(event) => {
+                handleInputChange(event)
+                return filterByPrice(formValues.priceMin, event.target.value)
+              }}/>
             </InputGroup>
           </FilterGroup>
 
-          <button className="btn btn-primary w-100">Limpar filtros</button>
+          <button className="btn btn-primary w-100" onClick={() => {
+            setList([])
+            formValues.kmMin = ''
+            formValues.kmMax = ''
+            formValues.priceMin = ''
+            formValues.priceMax = ''
+          }}>Limpar filtros</button>
         </FilterGroupWrapper>
       </FilterContainer>
     </>
