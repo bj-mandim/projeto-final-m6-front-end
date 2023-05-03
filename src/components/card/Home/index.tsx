@@ -2,6 +2,8 @@ import { CardsList, StyledCards } from "./style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
 import { StyleAvatar, StyleAvatarUserAdminPage } from "../../avatar/style";
+import { UserContext } from "../../../contexts/userContext";
+import { ICard } from "../../../interfaces/Car";
 import { UserContext, iUser } from "../../../contexts/userContext";
 
 interface iCardProps {
@@ -44,7 +46,6 @@ export interface ICard {
 
 const Card = () => {
   const { getCardId, listCards }: any = useContext(ContextApi);
-  console.log(listCards);
 
   return (
     <>
@@ -77,7 +78,6 @@ const Card = () => {
                         <div>{car.user.name[0].toUpperCase()}</div>
                       )}
                     </StyleAvatar>
-                    {/* <img src={car.images[0].url} alt="user-photo" /> */}
                     <p className="body-2">{car.user.name}</p>
                   </div>
 
@@ -99,9 +99,10 @@ const Card = () => {
   );
 };
 
-const CardUserPage = () => {
+export const CardUserPage = () => {
   const { getCardId }: any = useContext(ContextApi);
   const { userPage }: any = useContext(UserContext);
+  console.log(userPage);
 
   return (
     <>

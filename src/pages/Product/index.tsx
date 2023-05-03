@@ -81,12 +81,10 @@ function Product() {
                 <Button
                   onClick={() => {
                     listUserId(card.user.id);
-                    navigate(`/user-page`);
                   }}
                 >
                   Ver todos anúncios
                 </Button>
-                {/* ao clicar, redireciona para a /user-product */}
               </SecondAside>
             </SecondMain>
           </Article>

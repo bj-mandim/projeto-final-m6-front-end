@@ -1,21 +1,15 @@
 import { StyleAvatar } from "./style";
-
-interface IAvatarProps {
-  user: {
-    name: string;
-    image_url: string | null;
-  };
-}
+import { IAvatarProps } from "../../interfaces/Others";
 
 const Avatar = ({ user, setOptionsOpen }: any) => {
   return (
     <StyleAvatar onClick={() => setOptionsOpen(true)}>
-      {user.image_url ? (
+      {user && user.image_url? (
         <img src={user.image_url} alt="" />
       ) : (
-        <div>{user.name[0].toUpperCase()}</div>
+        <div>{user && user.name[0].toUpperCase()}</div>
       )}
-      <>{user.name}</>
+      <>{user && user.name}</>
     </StyleAvatar>
   );
 };

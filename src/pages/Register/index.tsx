@@ -3,18 +3,18 @@ import { Header } from "../../components/header";
 import { Form } from "../../components/form/style";
 import { Footer } from "../../components/footer";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { UserContext, iFormSignup } from "../../contexts/userContext";
+import { UserContext } from "../../contexts/userContext";
+import { iFormSignup } from "../../interfaces/User";
 import { useContext, useState } from "react";
 import { Article } from "../../components/form/style";
 import { useForm } from "react-hook-form";
 import { schemaRegister } from "../../validators";
 
 const Register = () => {
-
   const {
     register,
     handleSubmit,
-    formState: {errors}
+    formState: { errors },
   } = useForm<iFormSignup>({
     resolver: yupResolver(schemaRegister),
   });
@@ -27,7 +27,7 @@ const Register = () => {
   const { registerUser } = useContext(UserContext);
 
   function validatedAccountType(data: iFormSignup) {
-    console.log(data)
+    console.log(data);
     if (advertiserAnnouncer && advertiserAnnouncer !== "") {
       data.is_announcer = true;
       setAdvertiserAnnouncer(false);
@@ -51,97 +51,89 @@ const Register = () => {
 
         <div className="content_register">
           <label htmlFor="name">Nome</label>
-            <input
-              placeholder="Ex. Samuel Leão"
-              {...register('name')}
-            />
+          <input placeholder="Ex. Samuel Leão" {...register("name")} />
 
           <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              placeholder="Ex: samuel@kenzie.com.br"
-              {...register('email')}
-            />
+          <input
+            type="email"
+            placeholder="Ex: samuel@kenzie.com.br"
+            {...register("email")}
+          />
 
-        <label htmlFor="CPF">CPF</label>
-            <input
-              type="text"
-              placeholder="000.000.000-00"
-              {...register('cpf')}
-            />
+          <label htmlFor="CPF">CPF</label>
+          <input
+            type="text"
+            placeholder="000.000.000-00"
+            {...register("cpf")}
+          />
 
-        <label htmlFor="phone">Celular</label>
-            <input
-              type="text"
-              placeholder="(DDD)90000-0000"
-              {...register('phone')}
-            />
+          <label htmlFor="phone">Celular</label>
+          <input
+            type="text"
+            placeholder="(DDD)90000-0000"
+            {...register("phone")}
+          />
 
-        <label htmlFor="birth">Data de Nascimento</label>
-            <input
-              type="test"
-              placeholder="00/00/00"
-              {...register('birth')}
-            
-            />
+          <label htmlFor="birth">Data de Nascimento</label>
+          <input type="test" placeholder="00/00/00" {...register("birth")} />
 
-        <label htmlFor="description">Descrição</label>
-            <input
-              type="text"
-              placeholder="Digitar descrição"
-              {...register('description')}
-            />
+          <label htmlFor="description">Descrição</label>
+          <input
+            type="text"
+            placeholder="Digitar descrição"
+            {...register("description")}
+          />
 
           <p>
             <br />
             <strong>Informações de Endereço</strong>
           </p>
-        
-        <label htmlFor="cep">CEP</label>
-            <input
-              type="text"
-              placeholder="00000-000"
-              {...register('address.cep')}
-            />
 
-        <label htmlFor="state">Estado</label>
-            <input
-              type="text"
-              placeholder="Digitar Estado"
-              {...register('address.state')}
-            />
+          <label htmlFor="cep">CEP</label>
+          <input
+            type="text"
+            placeholder="00000-000"
+            {...register("address.cep")}
+          />
 
-        <label htmlFor="city">Cidade</label>
-            <input
-              type="text"
-              placeholder="Digitar Cidade"
-              {...register('address.city')}
-            />
+          <label htmlFor="state">Estado</label>
+          <input
+            type="text"
+            placeholder="Digitar Estado"
+            {...register("address.state")}
+          />
 
-        <label htmlFor="street">Rua</label>
-            <input
-              type="text"
-              placeholder="Digitar Rua"
-              {...register('address.street')}
-            />
+          <label htmlFor="city">Cidade</label>
+          <input
+            type="text"
+            placeholder="Digitar Cidade"
+            {...register("address.city")}
+          />
+
+          <label htmlFor="street">Rua</label>
+          <input
+            type="text"
+            placeholder="Digitar Rua"
+            {...register("address.street")}
+          />
 
           <div className="inline-fields">
-              <div>
-                <label htmlFor="number">Número</label>
-                    <input
-                      type="text"
-                      placeholder="Digitar número"
-                      {...register('address.number')}
-                    />
-              </div>
+            <div>
+              <label htmlFor="number">Número</label>
+              <input
+                type="text"
+                placeholder="Digitar número"
+                {...register("address.number")}
+              />
+            </div>
 
             <div>
               <label htmlFor="complement">Complemento</label>
-                  <input
-                    type="text"
-                    placeholder="Ex. apart 307"
-                    {...register('address.complement')}
-                  />
+              <input
+                type="text"
+                placeholder="Ex. apart 307"
+                {...register("address.complement")}
+              />
             </div>
           </div>
 
@@ -171,24 +163,24 @@ const Register = () => {
           )}
 
           <label htmlFor="password">Senha</label>
-            <input
-              type="password"
-              placeholder="Digitar Senha"
-              {...register('password')}
-            />
-            <span>{errors.password?.message}</span>
+          <input
+            type="password"
+            placeholder="Digitar Senha"
+            {...register("password")}
+          />
+          <span>{errors.password?.message}</span>
 
           <label htmlFor="confirmPassword">Confirmar senha</label>
-            <input
-              type="password"
-              placeholder="Confirmar Senha"
-              {...register('confirmPassword')}
-            />
+          <input
+            type="password"
+            placeholder="Confirmar Senha"
+            {...register("confirmPassword")}
+          />
 
-            <br/><br/><br/>
-            <button className="btn btn-primary w-100">
-            Cadastrar
-          </button>
+          <br />
+          <br />
+          <br />
+          <button className="btn btn-primary w-100">Cadastrar</button>
         </div>
         {/* <Link to={"/login"} className="btn btn-outline-2"> Voltar ao Login</Link> */}
       </Form>

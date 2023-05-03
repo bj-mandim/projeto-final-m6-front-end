@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import Card from "../../components/card/Home";
+import Card, { CardUserPage } from "../../components/card/Home";
 import { Footer } from "../../components/footer";
-import { HeaderLogin } from "../../components/header";
+import { Header, HeaderLogin } from "../../components/header";
 import Pagination from "../../components/pagination";
 import { ProfileUser } from "../../components/profile";
 import { UserContext } from "../../contexts/userContext";
@@ -21,7 +21,7 @@ function UserPage() {
           </Article>
 
           <h3 className="heading-6">Anúncios</h3>
-          <Card />
+          <CardUserPage />
 
           <Pagination />
         </ContainerUser>
@@ -30,7 +30,7 @@ function UserPage() {
     </>
   ) : (
     <>
-      <HeaderLogin />
+      <Header />
       <Section>
         <ContainerUser>
           <Article>
