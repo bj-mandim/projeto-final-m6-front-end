@@ -30,8 +30,8 @@ function ApiState({ children }: iChildren) {
   console.log(token);
 
   //CARDS ROTAS
-  function getCards() {
-    apiCards
+  async function getCards() {
+    await apiCards
       .get(`/cars`)
       .then((res) => {
         setListCards(res.data);
