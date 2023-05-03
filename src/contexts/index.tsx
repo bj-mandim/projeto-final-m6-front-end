@@ -3,6 +3,7 @@ import { apiCards, apiKenzieCards } from "./api";
 import { useLocation, useNavigate } from "react-router-dom";
 import filter from "../pages/AdminPage/filter";
 import { iUser } from "../interfaces/User";
+import { toast } from "react-toastify";
 
 interface iChildren {
   children: React.ReactNode;
@@ -46,7 +47,7 @@ function ApiState({ children }: iChildren) {
       .then((res) => {
         setCard(res.data);
         setIdCar(id);
-        localStorage.setItem("@Last_view_car",id)
+        localStorage.setItem("@Last_view_car", id);
         navigate("/product");
       })
       .catch((err) => {
@@ -79,11 +80,12 @@ function ApiState({ children }: iChildren) {
       })
       .then((res) => {
         setUserPage(res.data);
-        localStorage.setItem("@Last_view_user",res.data.id)
+        localStorage.setItem("@Last_view_user", res.data.id);
+        navigate(`/user-page`);
       })
       .catch((err) => {
         console.log(err);
-        navigate("/");
+        toast.error("Não foi possível carregar a página do usuário");
       });
   }
 
@@ -131,8 +133,7 @@ function ApiState({ children }: iChildren) {
   useEffect(() => {
     if (location.pathname === "/product") {
       checkCarId();
-    }
-    else if (location.pathname === "/user-page") {
+    } else if (location.pathname === "/user-page") {
       checkPageUserId();
     }
   }, []);
@@ -162,7 +163,7 @@ function ApiState({ children }: iChildren) {
         setadressModalOpen,
         listUserId,
         setUserPage,
-        userPage
+        userPage,
       }}
     >
       {children}

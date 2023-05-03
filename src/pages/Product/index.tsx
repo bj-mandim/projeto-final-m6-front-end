@@ -81,7 +81,6 @@ function Product() {
                 <Button
                   onClick={() => {
                     listUserId(card.user.id);
-                    navigate(`/user-page`);
                   }}
                 >
                   Ver todos anúncios
