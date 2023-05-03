@@ -49,7 +49,7 @@ const Card = () => {
   return (
     <>
       <CardsList>
-        {lista.map((car: ICard) => {
+        {listCards.map((car: ICard) => {
           return (
             <>
               <StyledCards
