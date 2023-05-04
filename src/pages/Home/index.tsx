@@ -14,8 +14,8 @@ import { CarsContext } from "../../contexts/carsContext";
 function Home() {
   const { listCards }: any = useContext(ContextApi);
   const { user }: any = useContext(UserContext);
-  const listaFeita = listCards
-  const { list }: any = useContext(CarsContext)
+  const listaFeita = listCards;
+  const { list }: any = useContext(CarsContext);
 
   console.log(listCards);
 
@@ -48,11 +48,17 @@ function Home() {
       <Banner />
 
       <HomeContainer>
-        {/* <Filter 
-                    brands={brands} models={[]} colors={[]} years={[]} fuels={[]} handleSetQuery={function (type: string, value: string): void {
-                      throw new Error("Function not implemented.");
-                    } }        /> */}
-        <Card />
+        <Filter
+          brands={brands}
+          models={[]}
+          colors={[]}
+          years={[]}
+          fuels={[]}
+          handleSetQuery={function (type: string, value: string): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+        {list.length > 0 ? <Card lista={list} /> : <Card lista={listaFeita} />}
       </HomeContainer>
 
       <Pagination />
@@ -66,11 +72,17 @@ function Home() {
       <Banner />
 
       <HomeContainer>
-        <Filter 
-              brands={brands} models={[]} colors={[]} years={[]} fuels={[]} handleSetQuery={function (type: string, value: string): void {
-                throw new Error("Function not implemented.");
-              } }        />
-        { list.length > 0 ? <Card lista={list}/> : <Card lista={listaFeita}/>}
+        <Filter
+          brands={brands}
+          models={[]}
+          colors={[]}
+          years={[]}
+          fuels={[]}
+          handleSetQuery={function (type: string, value: string): void {
+            throw new Error("Function not implemented.");
+          }}
+        />
+        {list.length > 0 ? <Card lista={list} /> : <Card lista={listaFeita} />}
       </HomeContainer>
 
       <Pagination />

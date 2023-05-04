@@ -3,8 +3,8 @@ import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
 import { StyleAvatar, StyleAvatarUserAdminPage } from "../../avatar/style";
 import { UserContext } from "../../../contexts/userContext";
-import { ICard } from "../../../interfaces/Car";
-import { UserContext, iUser } from "../../../contexts/userContext";
+import { iUser } from "../../../interfaces/User";
+/* import { ICard } from "../../../interfaces/Car"; */
 
 interface iCardProps {
   getCars: ICard[];
@@ -25,7 +25,7 @@ interface IUser {
   birth: string;
   image: {
     url: string;
-  }
+  };
 }
 
 export interface ICard {
@@ -59,7 +59,7 @@ const Card = () => {
                 }}
               >
                 <div className="boxImage">
-                  <img src={car.images[0]?.url} alt="car-image" />
+                  <img src={car.images[0]?.url} alt="carImage" />
                   <span className="status" id="ativo">
                     Ativo
                   </span>
