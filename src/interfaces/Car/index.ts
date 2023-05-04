@@ -22,6 +22,19 @@ export interface ICarsCreate {
     image_two?: string;
     image_three?: string;
   };
+  comments: IComment[];
+}
+
+export interface IComment {
+  id: string;
+  message: string;
+  createdAt: Date;
+  updatedAt: Date;
+  User: {
+    id: string;
+    image_url?: string;
+    name: string;
+  };
 }
 
 export interface IBrandObject {
@@ -47,8 +60,11 @@ export interface ICarsContext {
   setBrandSelect: React.Dispatch<React.SetStateAction<string>>;
   model: IModel[];
   modelSelect: string;
+  createComment: (comment: IComment, id: string) => Promise<void>;
   setModelSelect: React.Dispatch<React.SetStateAction<string>>;
   createCars: (data: ICarsCreate) => Promise<void>;
+  updateComment: (id: string, data: { message: string }) => Promise<void>;
+  deleteComment: (id: string) => Promise<void>;
 }
 
 export interface IModel {
