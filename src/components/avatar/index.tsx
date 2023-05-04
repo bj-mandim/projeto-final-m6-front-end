@@ -1,7 +1,7 @@
 import { StyleAvatar } from "./style";
 import { IAvatarProps } from "../../interfaces/Others";
 
-const Avatar = ({ user, setOptionsOpen }: any) => {
+const Avatar = ({ user, setOptionsOpen }: IAvatarProps) => {
   return (
     <StyleAvatar onClick={() => setOptionsOpen(true)}>
       {user && user.image_url? (

@@ -1,14 +1,13 @@
 import { ReactNode } from "react";
+import { iUser } from "../User";
 
 export interface iProvidersProps {
   children: ReactNode;
 }
 
 export interface IAvatarProps {
-  user: {
-    name: string;
-    image_url: string | null;
-  };
+  user: iUser;
+  setOptionsOpen:any;
 } //criar dessa interface, outra que suporte os novos dados que chegaram no avatar.
 
 export interface iButtonProps {

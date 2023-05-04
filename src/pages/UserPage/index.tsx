@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Card, { CardUserPage } from "../../components/card/Home";
+import Card from "../../components/card/Home";
 import { Footer } from "../../components/footer";
 import { Header, HeaderLogin } from "../../components/header";
 import Pagination from "../../components/pagination";
@@ -9,11 +9,11 @@ import { Article, Section } from "../Product/styles";
 import { ContainerUser } from "./style";
 
 function UserPage() {
-  const { user }: any = useContext(UserContext);
+  const { user,userPage } = useContext(UserContext);
 
-  return user ? (
+  return  (
     <>
-      <HeaderLogin />
+      {user? ( <HeaderLogin />):(<Header />)}
       <Section>
         <ContainerUser>
           <Article>
@@ -21,31 +21,14 @@ function UserPage() {
           </Article>
 
           <h3 className="heading-6">Anúncios</h3>
-          <CardUserPage />
+          {userPage && <Card lista={userPage.cars.map((car)=>{return{...car,user:userPage}})}/>}
 
           <Pagination />
         </ContainerUser>
       </Section>
       <Footer />
     </>
-  ) : (
-    <>
-      <Header />
-      <Section>
-        <ContainerUser>
-          <Article>
-            <ProfileUser />
-          </Article>
-
-          <h3 className="heading-6">Anúncios</h3>
-          <Card />
-
-          <Pagination />
-        </ContainerUser>
-      </Section>
-      <Footer />
-    </>
-  );
+  )
 }
 
 export default UserPage;

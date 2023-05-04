@@ -4,9 +4,15 @@ import { useContext } from "react";
 import { StyleAvatar } from "../../avatar/style";
 import { UserContext } from "../../../contexts/userContext";
 import { ICard } from "../../../interfaces/Car";
+import { iUser } from "../../../interfaces/User";
+import Avatar from "../../avatar";
 
-const Card = ({ lista }: any) => {
-  const { getCardId }: any = useContext(ContextApi);
+interface iCarProps{
+  lista:ICard[]
+}
+
+const Card = ({ lista }: iCarProps) => {
+  const { getCardId, setOptionsOpen }= useContext(ContextApi);
 
   return (
     <>
@@ -32,13 +38,7 @@ const Card = ({ lista }: any) => {
                   <p className="body-2">{car.description}</p>
 
                   <div className="boxUser">
-                    <StyleAvatar>
-                      {car.user.image_url ? (
-                        <img src={car.user.image_url} alt="" />
-                      ) : (
-                        <div>{car.user.name[0].toUpperCase()}</div>
-                      )}
-                    </StyleAvatar>
+                    <Avatar user={car.user} setOptionsOpen={setOptionsOpen}/>
                     <p className="body-2">{car.user.name}</p>
                   </div>
 
