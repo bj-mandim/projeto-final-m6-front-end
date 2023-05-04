@@ -1,48 +1,11 @@
 import { CardsList, StyledCards } from "./style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
-import { CarsContext } from "../../../contexts/carsContext";
+import { ICard } from "../../../interfaces/Car/car.interface";
 
-interface iCardProps {
-  getCars: ICard[];
-}
-
-interface IImages {
-  id: string;
-  url: string;
-}
-interface IUser {
-  id: string;
-  name: string;
-  email: string;
-  is_announcer: boolean;
-  description: string;
-  phone: string;
-  cpf: string;
-  birth: string;
-  image: {
-    url: string;
-  }
-}
-
-interface ICard {
-  brand: string;
-  color: string;
-  description: string;
-  fipe_table: number;
-  fuel: string;
-  id: string;
-  images: IImages[];
-  is_active: boolean;
-  km: number;
-  model: string;
-  price: string;
-  year: number;
-  user: IUser;
-}
-
-const Card = ({lista}: any) => {
+const Card = ({ lista }: any) => {
   const { getCardId }: any = useContext(ContextApi);
+  console.log(lista, "LISTA FILTRO");
 
   return (
     <>
@@ -56,7 +19,7 @@ const Card = ({lista}: any) => {
                 }}
               >
                 <div className="boxImage">
-                  <img src={car.images[0]?.url} alt="car-image" />
+                  <img src={car.images[0]?.url} alt="carImage" />
                   <span className="status" id="ativo">
                     Ativo
                   </span>
@@ -68,7 +31,7 @@ const Card = ({lista}: any) => {
                   <p className="body-2">{car.description}</p>
 
                   <div className="boxUser">
-                    <img src={car.user.image?.url} alt="user-photo" />
+                    <img src={car.user.image?.url} alt="userPhoto" />
                     <p className="body-2">{car.user.name}</p>
                   </div>
 
