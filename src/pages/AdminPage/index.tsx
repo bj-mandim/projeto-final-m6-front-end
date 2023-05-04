@@ -1,4 +1,4 @@
-import { Header, HeaderLogin } from "../../components/header";
+import { HeaderLogin } from "../../components/header";
 import { Section, Article } from "./styles";
 import { Profile } from "../../components/profile";
 import CardUserAdmin from "../../components/card/UserAdminPage";
@@ -11,7 +11,6 @@ import Pagination from "../../components/pagination";
 import { Footer } from "../../components/footer";
 import Button from "../../components/button/style";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/userContext";
 
 function AdminPage() {
   const {

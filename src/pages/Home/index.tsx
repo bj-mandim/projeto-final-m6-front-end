@@ -17,8 +17,6 @@ function Home() {
   const listaFeita = listCards;
   const { list }: any = useContext(CarsContext);
 
-  console.log(listCards);
-
   const [cars, setCars] = useState<ICarsReturn[]>([]);
   const [query, setQuery] = useState("");
   const [brands, setBrands] = useState<string[]>([]);

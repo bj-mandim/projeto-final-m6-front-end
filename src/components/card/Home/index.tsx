@@ -1,56 +1,17 @@
 import { CardsList, StyledCards } from "./style";
 import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
-import { StyleAvatar, StyleAvatarUserAdminPage } from "../../avatar/style";
+import { StyleAvatar } from "../../avatar/style";
 import { UserContext } from "../../../contexts/userContext";
-import { iUser } from "../../../interfaces/User";
-/* import { ICard } from "../../../interfaces/Car"; */
+import { ICard } from "../../../interfaces/Car";
 
-interface iCardProps {
-  getCars: ICard[];
-}
-
-interface IImages {
-  id: string;
-  url: string;
-}
-interface IUser {
-  id: string;
-  name: string;
-  email: string;
-  is_announcer: boolean;
-  description: string;
-  phone: string;
-  cpf: string;
-  birth: string;
-  image: {
-    url: string;
-  };
-}
-
-export interface ICard {
-  brand: string;
-  color: string;
-  description: string;
-  fipe_table: number;
-  fuel: string;
-  id: string;
-  images: IImages[];
-  is_active: boolean;
-  km: number;
-  model: string;
-  price: string;
-  year: number;
-  user: iUser;
-}
-
-const Card = () => {
-  const { getCardId, listCards }: any = useContext(ContextApi);
+const Card = ({ lista }: any) => {
+  const { getCardId }: any = useContext(ContextApi);
 
   return (
     <>
       <CardsList>
-        {listCards.map((car: ICard) => {
+        {lista.map((car: ICard) => {
           return (
             <>
               <StyledCards
@@ -116,7 +77,7 @@ export const CardUserPage = () => {
                 }}
               >
                 <div className="boxImage">
-                  <img src={car.images[0].url} alt="car-image" />
+                  <img src={car.images[0].url} alt="carImage" />
                   <span className="status" id="ativo">
                     Ativo
                   </span>
