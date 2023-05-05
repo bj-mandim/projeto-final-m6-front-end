@@ -1,39 +1,40 @@
 import { useNavigate } from "react-router-dom";
 import { Div } from "./style";
+import { ContextApi } from "../../contexts";
+import { useContext } from "react";
 
+//Necessario arrumar as interfaces do ContextApi
+interface iCardMaybe{
+	card:{
+		comments:{id:string ,user:{name:String}, created_at:String, comment:string}[]
+	}
+
+}
 
 function Comment() {
 
   const navigate = useNavigate();
-  
+  const {card}:iCardMaybe = useContext(ContextApi)
+  console.log(card.comments[0])
   return (
     <>
-			<Div>
-				<h3>Comentários</h3>
-				<section>
-					<div className="comment">
+		<Div>
+			<h3>Comentários</h3>
+			<ul>
+				{card.comments.map(comment=>
+					<section key={comment.id}>
+	
+							<div className="comment">
 						
-						<h4>Júlia Lima</h4>
-						<span>Há 4 dias</span>
-					</div>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>	
-				</section>
-				<section>
-					<div className="comment">
-						{/* <img src={} alt="avatar" /> */}
-						<h4>Marcos Antônio</h4>
-						<span>Há 4 dias</span>
-					</div>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. .</p>	
-				</section>
-                <section>
-					<div className="comment">
-						<h4>Camila Silva</h4>
-						<span>Há 4 dias</span>
-					</div>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. .</p>	
-				</section>
-			</Div>
+							<h4>{comment.user.name}</h4>
+							<span>Criado em {comment.created_at.split(`T`)[0]}</span>
+							</div>
+							<p>{comment.comment}</p>	
+				
+					</section>
+				)}
+			</ul>
+		</Div>
     </>
   );
 }

@@ -53,3 +53,7 @@ export interface iUserContext {
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
+export interface iFormComment{
+  comment:string
+}

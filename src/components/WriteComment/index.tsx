@@ -1,22 +1,36 @@
 import { useNavigate } from "react-router-dom";
  import { Div } from "./style";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
+
+
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
+import { schemaComment } from "../../validators";
+import { ContextApi } from "../../contexts";
+import { iFormComment } from "../../interfaces/User";
+
 
 function WriteComment() {
 
   const navigate = useNavigate();
+  const {user}= useContext(UserContext)
+  const {makeComment}= useContext(ContextApi)
+
+  const {register,handleSubmit,formState:{errors}} = useForm<iFormComment>({resolver:yupResolver(schemaComment)})
   
-  return (
+  return user && (
     <>
 			<Div>
 				<section>
 					<div className="profile">
-						{/* <img src={img} alt="" /> */}
-						<h4>Samuel Leão</h4>
+						<h4>{user.name}</h4>
 					</div>
-					<div className="writer-box">
-						<textarea placeholder="Carro muito confortável, foi uma ótima experiência de compra..."/>
+					<form className="writer-box" onSubmit={handleSubmit(makeComment)}>
+						<textarea {...register("comment")} placeholder="Dê sua opinião"/>
+						<span>{errors.comment?.message}</span>
 						<button className="btn btn-primary btn-medium">Comentar</button>
-					</div>
+					</form>
 				</section>
 			</Div>
     </>
