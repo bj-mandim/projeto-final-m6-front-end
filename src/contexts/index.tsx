@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import filter from "../pages/AdminPage/filter";
 import { iUser } from "../interfaces/User";
 import { toast } from "react-toastify";
+import { IComment } from "../interfaces/Car";
 
 interface iChildren {
   children: React.ReactNode;
@@ -114,6 +115,38 @@ function ApiState({ children }: iChildren) {
       });
   }
 
+  //Comentários
+  async function makeComment(comment:any){
+    const token = localStorage.getItem("@Token_cars_shop");
+    if (token) {
+      try {
+        const { data } = await apiCards.post(`cars/${idCar}/comments`,comment, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        attComments()
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
+  async function attComments(){
+    const token = localStorage.getItem("@Token_cars_shop");
+    if (token) {
+      try {
+        const { data } = await apiCards.get(`cars/${idCar}/comments`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setCard({...card,comments:data})
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
   function checkCarId() {
     const id = localStorage.getItem("@Last_view_car");
 
@@ -164,6 +197,7 @@ function ApiState({ children }: iChildren) {
         listUserId,
         setUserPage,
         userPage,
+        makeComment
       }}
     >
       {children}

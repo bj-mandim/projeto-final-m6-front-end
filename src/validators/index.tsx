@@ -43,3 +43,7 @@ export const schemaRegister = yup.object({
     complement: yup.string().notRequired(),
   }),
 });
+
+export const schemaComment = yup.object({
+  comment: yup.string().required("É preciso ter algo para comentar"),
+});
