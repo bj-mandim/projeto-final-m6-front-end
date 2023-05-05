@@ -7,8 +7,9 @@ import { iFormSignup } from "../interfaces/User";
 import { iUser } from "../interfaces/User";
 import { iProvidersProps } from "../interfaces/Others";
 import  { ContextApi } from ".";
+import { iUserContext } from "../interfaces/User";
 
-export const UserContext = createContext({} as any);
+export const UserContext = createContext({} as iUserContext);
 
 const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);

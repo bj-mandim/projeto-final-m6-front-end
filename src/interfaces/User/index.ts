@@ -1,3 +1,5 @@
+import { ICard } from "../Car";
+
 export interface iFormLogin {
   email: string;
   password: string;
@@ -44,7 +46,7 @@ export interface iUser {
     number: number; //Verificar compatibilidade com o front
     complement: string;
   };
-  //acrescentar os carros no iUser
+  cars:ICard[]
 }
 
 export interface iUserContext {
@@ -52,6 +54,9 @@ export interface iUserContext {
   loginUser: (data: iFormLogin) => Promise<void>;
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  user: iUser|null;
+  userPage: iUser;
+  setUserPage(userPage:iUser):void;
 }
 
 export interface iFormComment{
