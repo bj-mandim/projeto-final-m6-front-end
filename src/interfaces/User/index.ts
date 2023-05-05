@@ -57,8 +57,21 @@ export interface iUserContext {
   user: iUser|null;
   userPage: iUser;
   setUserPage(userPage:iUser):void;
+  recoveryPassUser: (email: iRecoveyPass) => Promise<void>;
+  changePassUser: (data: iChangePass) => Promise<void>;
+  setToken: any
 }
 
 export interface iFormComment{
   comment:string
+}
+
+export interface iRecoveyPass{
+  email: string;
+}
+
+export interface iChangePass{
+  password: string;
+  confirmPassword: string;
+  resetToken: string;
 }

@@ -1,25 +1,38 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Header } from "../../components/header";
 import { Form } from "../../components/form/style";
 import { Footer } from "../../components/footer";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaNewPass } from "../../validators";
+import { iChangePass } from "../../interfaces/User";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
 
 function ForgotPassword() {
+    const { resetToken } = useParams()
+    
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<iChangePass>({ resolver: yupResolver(schemaNewPass) });
+
+    const { changePassUser, setToken } = useContext(UserContext)
+    setToken(resetToken)
     return (
         <>
         <Header></Header>
-        <Form>
+        <Form onSubmit={handleSubmit(changePassUser)}>
             <h2 className="header">Esqueceu sua senha?</h2>
     
             <div className="content_login">
                 <label htmlFor="email">Informe sua nova senha.</label>
-                <input type="email" id="email" placeholder="Digitar senha" />
+                <input type="password" id="newPassword" placeholder="Digitar senha" {...register("password")}/>
                 <label htmlFor="email">Confirme sua nova senha.</label>
-                <input type="email" id="email" placeholder="Digitar senha" />
+                <input type="password" id="confirmPassword" placeholder="Digitar senha" {...register("confirmPassword")}/>
                 <button type="submit" className="btn btn-primary w-100" style={{marginTop: 32}}>Salvar</button>
             </div>
-            
-            <p className="btn btn-medium btn-success" style={{lineHeight: 1}}>Senha redefinida com sucesso!</p>
-            
             <br/>
             <Link to={"/login"} className="extra-text">{'<-'} Voltar à página de login</Link>
         </Form>

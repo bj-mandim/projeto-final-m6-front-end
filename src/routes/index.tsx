@@ -8,6 +8,7 @@ import AdminPage from "../pages/AdminPage";
 import PageNotFound from "../pages/PageNotFound";
 import ForgotPassword from "../pages/ForgotPass";
 import UserPage from "../pages/UserPage";
+import ForgotPassEmail from "../pages/ForgotPass/forgotPassEmail";
 
 function RoutesComponent() {
   return (
@@ -22,7 +23,8 @@ function RoutesComponent() {
         <Route path="/product" element={<Product />} />
         <Route path="/admin-page" element={<AdminPage />} />
         <Route path="/user-page" element={<UserPage />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/forgot-password/:resetToken" element={<ForgotPassword />} />
+        <Route path="/forgot-pass" element={<ForgotPassEmail />} />
       </Routes>
     </>
   );
