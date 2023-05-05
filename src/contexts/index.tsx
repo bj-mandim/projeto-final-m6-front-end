@@ -119,14 +119,16 @@ function ApiState({ children }: iChildren) {
     const token = localStorage.getItem("@Token_cars_shop");
     if (token) {
       try {
-        const { data } = await apiCards.post(`cars/${idCar}/comments`,comment, {
+        await apiCards.post(`cars/${idCar}/comments`,comment, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         attComments()
+        toast.success("Comentário criado com Sucesso!");
       } catch (error) {
         console.log(error)
+        toast.error("Erro ao criar o comentário!");
       }
     }
     }
