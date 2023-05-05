@@ -28,7 +28,6 @@ function ApiState({ children }: iChildren) {
   const [userPage, setUserPage] = useState<iUser | null>(null);
 
   const token = localStorage.getItem("authToken");
-  console.log(token);
 
   //CARDS ROTAS
   async function getCards() {
@@ -130,11 +129,9 @@ function ApiState({ children }: iChildren) {
         console.log(error)
       }
     }
-  }
+    }
 
   async function attComments(){
-    const token = localStorage.getItem("@Token_cars_shop");
-    if (token) {
       try {
         const { data } = await apiCards.get(`cars/${idCar}/comments`, {
           headers: {
@@ -145,8 +142,8 @@ function ApiState({ children }: iChildren) {
       } catch (error) {
         console.log(error)
       }
-    }
   }
+
   function checkCarId() {
     const id = localStorage.getItem("@Last_view_car");
 

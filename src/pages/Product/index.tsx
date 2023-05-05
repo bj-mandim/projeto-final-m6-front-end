@@ -1,4 +1,5 @@
 import { HeaderLogin } from "../../components/header";
+import { Header } from "../../components/header";
 import { Footer } from "../../components/footer";
 import { IoClose } from "react-icons/io5";
 import {
@@ -20,16 +21,18 @@ import { StyleModal } from "../../components/modal/style";
 import { FormModal } from "../../components/form/style";
 import Button from "../../components/button/style";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/userContext";
 
 function Product() {
   const { card, isOpen, setIsOpen, idCar, listUserId }: any =
     useContext(ContextApi);
+    const {user} = useContext(UserContext)
 
   const navigate = useNavigate();
 
   return (
     <>
-      <HeaderLogin />
+      {user?  <HeaderLogin /> : <Header/>}
       <Section>
         {idCar && (
           <Article>
