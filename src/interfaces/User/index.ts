@@ -57,6 +57,7 @@ export interface iUserContext {
   user: iUser|null;
   userPage: iUser;
   setUserPage(userPage:iUser):void;
+  patchUser(data:iFormSignup):void
 }
 
 export interface iFormComment{

@@ -6,7 +6,7 @@ import { iFormLogin } from "../interfaces/User";
 import { iFormSignup } from "../interfaces/User";
 import { iUser } from "../interfaces/User";
 import { iProvidersProps } from "../interfaces/Others";
-import  { ContextApi } from ".";
+import { ContextApi } from ".";
 import { iUserContext } from "../interfaces/User";
 
 export const UserContext = createContext({} as iUserContext);
@@ -14,7 +14,7 @@ export const UserContext = createContext({} as iUserContext);
 const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
   const [user, setUser] = useState<iUser | null>(null);
-  const {userPage, setUserPage} = useContext(ContextApi)
+  const { userPage, setUserPage } = useContext(ContextApi);
 
   // const token = localStorage.getItem("@Token_cars_shop");
   const navigate = useNavigate();
@@ -70,9 +70,51 @@ const Providers = ({ children }: iProvidersProps) => {
     }
   }
 
-  useEffect(()=>{
-    getProfile()
-  },[])
+  //Alterar tipagem de data
+  async function patchUser(info: any) {
+    for (let x in info) {
+      if (!info[x]) {
+        delete info[x];
+      }
+
+      if (x === "address") {
+        for (let x in info.address) {
+          if (!info.address[x]) {
+            delete info.address[x];
+          }
+        }
+        if (!Object.keys(info.address).length) {
+          delete info.address;
+        }
+      }
+    }
+
+    if (Object.keys(info).length > 0) {
+      const token = localStorage.getItem("@Token_cars_shop");
+      if (token) {
+        try {
+          const { data } = await apiCards.patch<iUser>(
+            `users/${user?.id}`,
+            info,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          toast.success("Usuário atualizado com sucesso!");
+          setUser(data);
+        } catch (error) {
+          toast.error("Falha em atualizar o usuário");
+          console.log(error);
+        }
+      }
+    }
+  }
+
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   return (
     <UserContext.Provider
@@ -84,6 +126,7 @@ const Providers = ({ children }: iProvidersProps) => {
         user,
         userPage,
         setUserPage,
+        patchUser,
       }}
     >
       {children}
