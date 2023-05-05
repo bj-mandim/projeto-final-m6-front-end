@@ -7,7 +7,7 @@ export interface iProvidersProps {
 
 export interface IAvatarProps {
   user: iUser;
-  setOptionsOpen:any;
+  setOptionsOpen: any;
 } //criar dessa interface, outra que suporte os novos dados que chegaram no avatar.
 
 export interface iButtonProps {
@@ -18,5 +18,9 @@ export interface iButtonProps {
 
 export interface IImages {
   id: string;
+  url: string;
+}
+
+export interface IImage {
   url: string;
 }

@@ -49,6 +49,19 @@ const Button = styled.button<iButtonProps>`
           }
         `;
 
+      case "model-form":
+        return css`
+          background: var(--grey0);
+          border-color: var(--grey0);
+          color: #ffffff;
+          margin: 20px auto 0px auto;
+
+          &:hover {
+            background: var(--grey1);
+            border-color: var(--grey1);
+          }
+        `;
+
       case "max_min_filter":
         return css`
           background: var(--grey5);

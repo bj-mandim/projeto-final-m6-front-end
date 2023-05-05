@@ -6,7 +6,7 @@ import { iFormLogin } from "../interfaces/User";
 import { iFormSignup } from "../interfaces/User";
 import { iUser } from "../interfaces/User";
 import { iProvidersProps } from "../interfaces/Others";
-import  { ContextApi } from ".";
+import { ContextApi } from ".";
 import { iUserContext } from "../interfaces/User";
 
 export const UserContext = createContext({} as iUserContext);
@@ -14,9 +14,7 @@ export const UserContext = createContext({} as iUserContext);
 const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
   const [user, setUser] = useState<iUser | null>(null);
-  const {userPage, setUserPage} = useContext(ContextApi)
-
-  // const token = localStorage.getItem("@Token_cars_shop");
+  const { userPage, setUserPage } = useContext(ContextApi);
   const navigate = useNavigate();
 
   async function loginUser(data: iFormLogin): Promise<void> {
@@ -70,9 +68,9 @@ const Providers = ({ children }: iProvidersProps) => {
     }
   }
 
-  useEffect(()=>{
-    getProfile()
-  },[])
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   return (
     <UserContext.Provider

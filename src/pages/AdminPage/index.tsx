@@ -11,6 +11,11 @@ import Pagination from "../../components/pagination";
 import { Footer } from "../../components/footer";
 import Button from "../../components/button/style";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaCreateAnnouncement } from "../../validators";
+import { iFormCreateAnnouncement } from "../../interfaces/Car";
+import { CarsContext } from "../../contexts/carsContext";
 
 function AdminPage() {
   const {
@@ -30,6 +35,16 @@ function AdminPage() {
     setadressModalOpen,
   }: any = useContext(ContextApi);
   const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iFormCreateAnnouncement>({
+    resolver: yupResolver(schemaCreateAnnouncement),
+  });
+
+  const { createAnnouncement }: any = useContext(CarsContext);
 
   function fipeTable(model: any, brand: any) {
     if (brand!) {
@@ -55,10 +70,22 @@ function AdminPage() {
         <StyleModal>
           <div className="modal-wrapper">
             <div className="container-form">
-              <FormModal>
+              <FormModal
+                onSubmit={handleSubmit((info) => {
+                  createAnnouncement({
+                    ...info,
+                    fipe_table: `${price}.00`,
+                    is_active: true,
+                  });
+                })}
+              >
                 <div className="modal-header">
                   <h2 className="header_register">Criar Anuncio</h2>
-                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                  <Button
+                    type="button"
+                    model="model-5"
+                    onClick={() => setIsOpen(false)}
+                  >
                     <IoClose />
                   </Button>
                 </div>
@@ -70,13 +97,19 @@ function AdminPage() {
                     type="name"
                     id="marca"
                     placeholder="Ex. Mercedes Benz"
+                    {...register("brand")}
                   />
+                  <span>{errors.brand?.message}</span>
+
                   <label htmlFor="email">Modelo</label>
                   <input
                     type="name"
                     id="modelo"
                     placeholder="Ex. A 200 CGI ADVANCE SEDAN"
+                    {...register("model")}
                   />
+                  <span>{errors.model?.message}</span>
+
                   <div className="inline-fields">
                     <div>
                       <label htmlFor="email">Ano</label>
@@ -92,7 +125,10 @@ function AdminPage() {
                         type="text"
                         id="ano"
                         placeholder="Ex. 2018"
+                        {...register("year")}
                       />
+
+                      <span>{errors.year?.message}</span>
                     </div>
 
                     <div>
@@ -100,8 +136,11 @@ function AdminPage() {
                       <input
                         type="text"
                         id="combustivel"
-                        placeholder="Ex. 100"
+                        placeholder="Ex. Elétrico"
+                        {...register("fuel")}
                       />
+
+                      <span>{errors.fuel?.message}</span>
                     </div>
                   </div>
                   <div className="inline-fields">
@@ -111,23 +150,44 @@ function AdminPage() {
                         type="text"
                         id="quilometragem"
                         placeholder="Ex. 201"
+                        {...register("km")}
                       />
+
+                      <span>{errors.km?.message}</span>
                     </div>
 
                     <div>
                       <label htmlFor="email">Cor</label>
-                      <input type="text" id="cor" placeholder="Ex. Rosa" />
+                      <input
+                        type="text"
+                        id="cor"
+                        placeholder="Ex. Rosa"
+                        {...register("color")}
+                      />
+
+                      <span>{errors.color?.message}</span>
                     </div>
                   </div>
                   <div className="inline-fields">
                     <div>
                       <label htmlFor="email">Tabela FIPE</label>
-                      <input type="text" placeholder={`R$: ${price}`} />
+                      <input
+                        type="text"
+                        placeholder={`R$: ${price}`}
+                        {...register("fipe_table")}
+                      />
                     </div>
 
                     <div>
                       <label htmlFor="email">Preço</label>
-                      <input type="text" id="preco" placeholder="Ex. 100000" />
+                      <input
+                        type="text"
+                        id="preco"
+                        placeholder="Ex. 100000"
+                        {...register("price")}
+                      />
+
+                      <span>{errors.price?.message}</span>
                     </div>
                   </div>
                   <label htmlFor="email">Descrição</label>
@@ -135,26 +195,35 @@ function AdminPage() {
                     type="text"
                     id="descricao"
                     placeholder="Ex. O carro se encontra em tais condições..."
+                    {...register("description")}
                   />
+
+                  <span>{errors.description?.message}</span>
+
                   <label htmlFor="email">Imagem da capa</label>
                   <input
                     type="text"
                     id="img-capa"
                     placeholder="Ex. https://imagem.com"
+                    {...register("images")}
                   />
                   <label htmlFor="email">Primeira Imagem da galeria</label>
                   <input
                     type="text"
                     id="img-capa2"
                     placeholder="Ex. https://imagem.com"
+                    {...register("images")}
                   />
                   <label htmlFor="email">Segunda Imagem da galeria</label>
                   <input
                     type="text"
                     id="img-capa3"
                     placeholder="Ex. https://imagem.com"
+                    {...register("images.0.url")}
                   />
+                  <span>{errors.images?.message}</span>
                 </div>
+                <Button model="model-form">Criar Anúncio</Button>
               </FormModal>
             </div>
           </div>
