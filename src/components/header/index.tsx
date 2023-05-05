@@ -131,6 +131,7 @@ export const HeaderLogin = () => {
     optionsOpen,
     infosOpen,
     adressModalOpen,
+    carModalOpen,
   }: any = useContext(ContextApi);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -473,6 +474,106 @@ export const HeaderLogin = () => {
                         id="complemento"
                         placeholder="Ex. Apart 12"
                       />
+                    </div>
+                  </div>
+                </div>
+              </FormModal>
+            </div>
+          </div>
+        </StyleModal>
+      )}
+
+      {carModalOpen && (
+        <StyleModal>
+          <div className="modal-wrapper">
+            <div className="container-form">
+              <FormModal>
+                <div className="modal-header">
+                  <h2 className="header_register">Editar Anúncio</h2>
+                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                    <IoClose />
+                  </Button>
+                </div>
+                <br />
+                <strong>Informações do veículo</strong>
+                <div className="content_register">
+                  <label htmlFor="email">Marca</label>
+                  <input type="name" id="marca" placeholder="Mercedes Benz" />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Modelo</label>
+                      <input
+                        type="text"
+                        id="A 200 CGI ADVANCE SEDAN"
+                        placeholder="Ex. Espírito Santo"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Ano</label>
+                      <input type="text" id="cidade" placeholder="2018" />
+                    </div>
+                  </div>
+                  <label htmlFor="email">Combustível</label>
+                  <input
+                    type="text"
+                    id="combustível"
+                    placeholder="Gasolina / Etanol"
+                  />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="email">Quilometragem</label>
+                      <input
+                        type="number"
+                        id="quilometragem"
+                        placeholder="30.000"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Cor</label>
+                      <input type="text" id="cor" placeholder="Branco" />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Preço tabela FIPE</label>
+                      <input
+                        type="text"
+                        id="tabela fipe"
+                        placeholder="R$ 48.000,00"
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Preço</label>
+                      <input
+                        type="text"
+                        id="preço"
+                        placeholder="R$ 50.000,00"
+                      />
+                    </div>
+                    <label htmlFor="email">Imagem da capa</label>
+                    <input
+                      type="text"
+                      id="img-capa"
+                      placeholder="Ex. https://imagem.com"
+                    />
+                    <label htmlFor="email">Primeira Imagem da galeria</label>
+                    <input
+                      type="text"
+                      id="img-capa2"
+                      placeholder="Ex. https://imagem.com"
+                    />
+                    <label htmlFor="email">Segunda Imagem da galeria</label>
+                    <input
+                      type="text"
+                      id="img-capa3"
+                      placeholder="Ex. https://imagem.com"
+                    />
+
+                    <div>
+                      <button>Exluir Anúncio</button>
+                      <button>Salvar Alterações</button>
                     </div>
                   </div>
                 </div>
