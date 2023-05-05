@@ -1,7 +1,8 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { apiCards, apiKenzieCards } from "./api";
-import { IComment } from "../interfaces/Car";
+import { IComment, iFormCreateAnnouncement } from "../interfaces/Car";
 import { toast } from "react-toastify";
+import { ContextApi } from ".";
 
 interface iChildren {
   children: React.ReactNode;
@@ -15,6 +16,8 @@ function ApiStateCars({ children }: iChildren) {
   const [list, setList]: any = useState([]);
   const [color, setColor] = useState([]);
   const [year, setYear] = useState([]);
+
+  const { getCards }: any = useContext(ContextApi);
 
   async function getBrandsApi() {
     const data = await apiKenzieCards
@@ -38,6 +41,28 @@ function ApiStateCars({ children }: iChildren) {
         console.log(err);
       });
     return data;
+  }
+
+  async function createAnnouncement(
+    dataUser: iFormCreateAnnouncement
+  ): Promise<void> {
+    const token = localStorage.getItem("@Token_cars_shop");
+    console.log(dataUser);
+    if (token) {
+      try {
+        await apiCards.post<iFormCreateAnnouncement>(`cars`, dataUser, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        getCards();
+        toast.success("Anúncio criado!");
+      } catch (error) {
+        localStorage.removeItem("@Token_cars_shop");
+        console.log(error);
+        toast.error("Algo deu errado, confira as informações!");
+      }
+    }
   }
 
   async function filterByBrand(brand: string) {
@@ -177,6 +202,7 @@ function ApiStateCars({ children }: iChildren) {
         createComment,
         updateComment,
         deleteComment,
+        createAnnouncement,
       }}
     >
       {children}

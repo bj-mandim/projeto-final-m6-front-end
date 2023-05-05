@@ -7,12 +7,12 @@ import { ICard } from "../../../interfaces/Car";
 import { iUser } from "../../../interfaces/User";
 import Avatar from "../../avatar";
 
-interface iCarProps{
-  lista:ICard[]
+interface iCarProps {
+  lista: ICard[];
 }
 
 const Card = ({ lista }: iCarProps) => {
-  const { getCardId, setOptionsOpen }= useContext(ContextApi);
+  const { getCardId, setOptionsOpen } = useContext(ContextApi);
 
   return (
     <>
@@ -38,8 +38,7 @@ const Card = ({ lista }: iCarProps) => {
                   <p className="body-2">{car.description}</p>
 
                   <div className="boxUser">
-                    <Avatar user={car.user} setOptionsOpen={setOptionsOpen}/>
-                    <p className="body-2">{car.user.name}</p>
+                    <Avatar user={car.user} setOptionsOpen={setOptionsOpen} />
                   </div>
 
                   <div className="boxExtraInfo">

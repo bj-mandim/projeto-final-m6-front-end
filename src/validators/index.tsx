@@ -18,7 +18,6 @@ export const schemaRegister = yup.object({
   birth: yup.string().required("Data de nascimento obrigatória"),
   description: yup.string().required("Descrição obrigatória"),
   phone: yup.string().required("Número de telefone é obrigatório"),
-  // .matches(brazilianPhoneRegex, "O número digitado é inválido"),
   password: yup
     .string()
     .required("Senha obrigatória!")
@@ -40,6 +39,20 @@ export const schemaRegister = yup.object({
     number: yup.string().required("Numero obrigatório"),
     complement: yup.string().notRequired(),
   }),
+});
+
+export const schemaCreateAnnouncement = yup.object({
+  brand: yup.string().required("Marca obrigatória"),
+  model: yup.string().required("Modelo obrigatório"),
+  year: yup.number().required("Ano obrigatório"),
+  is_active: yup.boolean().notRequired(),
+  fuel: yup.string().required("Combustível obrigatório"),
+  km: yup.number().required("Quilometragem obrigatória"),
+  color: yup.string().required("Cor obrigatória"),
+  fipe_table: yup.string().notRequired(),
+  price: yup.string().required("Preço obrigatório"),
+  description: yup.string().required("Descrição obrigatória"),
+  images: yup.array(),
 });
 
 export const schemaComment = yup.object({

@@ -431,6 +431,7 @@ export const HeaderLogin = () => {
                       <label htmlFor="email">Deslogar do Perfil</label>
                       <Button
                         onClick={(e) => {
+                          localStorage.clear();
                           navigate("/");
                           setInfosOpen(false);
                         }}

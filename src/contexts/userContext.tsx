@@ -15,8 +15,6 @@ const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
   const [user, setUser] = useState<iUser | null>(null);
   const { userPage, setUserPage } = useContext(ContextApi);
-
-  // const token = localStorage.getItem("@Token_cars_shop");
   const navigate = useNavigate();
 
   async function loginUser(data: iFormLogin): Promise<void> {
