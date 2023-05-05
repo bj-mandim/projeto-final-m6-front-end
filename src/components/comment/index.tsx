@@ -15,7 +15,6 @@ function Comment() {
 
   const navigate = useNavigate();
   const {card}:iCardMaybe = useContext(ContextApi)
-  console.log(card.comments[0])
   return (
     <>
 		<Div>
