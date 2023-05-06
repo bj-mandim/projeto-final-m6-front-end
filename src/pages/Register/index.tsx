@@ -52,6 +52,7 @@ const Register = () => {
         <div className="content_register">
           <label htmlFor="name">Nome</label>
           <input placeholder="Ex. Samuel Leão" {...register("name")} />
+          <span>{errors.name?.message}</span>
 
           <label htmlFor="email">Email</label>
           <input
@@ -59,6 +60,7 @@ const Register = () => {
             placeholder="Ex: samuel@kenzie.com.br"
             {...register("email")}
           />
+          <span>{errors.email?.message}</span>
 
           <label htmlFor="CPF">CPF</label>
           <input
@@ -66,6 +68,7 @@ const Register = () => {
             placeholder="000.000.000-00"
             {...register("cpf")}
           />
+          <span>{errors.cpf?.message}</span>
 
           <label htmlFor="phone">Celular</label>
           <input
@@ -73,6 +76,7 @@ const Register = () => {
             placeholder="(DDD)90000-0000"
             {...register("phone")}
           />
+          <span>{errors.phone?.message}</span>
 
           <label htmlFor="birth">Data de Nascimento</label>
           <input type="test" placeholder="00/00/00" {...register("birth")} />
@@ -83,6 +87,7 @@ const Register = () => {
             placeholder="Digitar descrição"
             {...register("description")}
           />
+          <span>{errors.description?.message}</span>
 
           <p>
             <br />
@@ -95,6 +100,7 @@ const Register = () => {
             placeholder="00000-000"
             {...register("address.cep")}
           />
+          <span>{errors.address?.cep?.message}</span>
 
           <label htmlFor="state">Estado</label>
           <input
@@ -102,6 +108,7 @@ const Register = () => {
             placeholder="Digitar Estado"
             {...register("address.state")}
           />
+          <span>{errors.address?.state?.message}</span>
 
           <label htmlFor="city">Cidade</label>
           <input
@@ -109,6 +116,7 @@ const Register = () => {
             placeholder="Digitar Cidade"
             {...register("address.city")}
           />
+          <span>{errors.address?.city?.message}</span>
 
           <label htmlFor="street">Rua</label>
           <input
@@ -116,6 +124,7 @@ const Register = () => {
             placeholder="Digitar Rua"
             {...register("address.street")}
           />
+          <span>{errors.address?.street?.message}</span>
 
           <div className="inline-fields">
             <div>
@@ -125,6 +134,7 @@ const Register = () => {
                 placeholder="Digitar número"
                 {...register("address.number")}
               />
+              <span>{errors.address?.number?.message}</span>
             </div>
 
             <div>
@@ -134,6 +144,7 @@ const Register = () => {
                 placeholder="Ex. apart 307"
                 {...register("address.complement")}
               />
+              <span>{errors.address?.complement?.message}</span>
             </div>
           </div>
 
@@ -176,13 +187,13 @@ const Register = () => {
             placeholder="Confirmar Senha"
             {...register("confirmPassword")}
           />
+          <span>{errors.confirmPassword?.message}</span>
 
           <br />
           <br />
           <br />
           <button className="btn btn-primary w-100">Cadastrar</button>
         </div>
-        {/* <Link to={"/login"} className="btn btn-outline-2"> Voltar ao Login</Link> */}
       </Form>
       <Footer />
     </>

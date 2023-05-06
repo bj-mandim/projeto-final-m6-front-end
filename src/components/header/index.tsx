@@ -11,6 +11,10 @@ import { ContextApi } from "../../contexts";
 import { UserContext } from "../../contexts/userContext";
 import { StyleModal } from "../modal/style";
 import { FormModal } from "../form/style";
+import { useForm } from "react-hook-form";
+import { iFormSignup } from "../../interfaces/User";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { schemaPatchUser } from "../../validators";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -131,9 +135,18 @@ export const HeaderLogin = () => {
     optionsOpen,
     infosOpen,
     adressModalOpen,
+    carModalOpen,
   }: any = useContext(ContextApi);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { patchUser }: any = useContext(UserContext);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<iFormSignup>({ resolver: yupResolver(schemaPatchUser) });
+
   return (
     <>
       <HeaderWrapper id="header">
@@ -241,54 +254,66 @@ export const HeaderLogin = () => {
         <StyleModal>
           <div className="modal-wrapper">
             <div className="container-form">
-              <FormModal>
+              <FormModal
+                onSubmit={handleSubmit((info) => {
+                  patchUser(info);
+                  reset();
+                  setInfosOpen(false);
+                })}
+              >
                 <div className="modal-header">
-                  <h2 className="header_register">Editar Perfil</h2>
+                  <h2 className="header_register">Editar Perfil!!!</h2>
                   <Button
                     model="model-5"
+                    type="button"
                     onClick={() => {
-                      setIsOpen(false);
+                      setInfosOpen(false);
                     }}
                   >
                     <IoClose />
                   </Button>
                 </div>
                 <br />
-                <strong>Informações do usuário</strong>
+                <strong>Informações do usuário!</strong>
                 <div className="content_register">
-                  <label htmlFor="email">Nome</label>
+                  <label htmlFor="name">Nome</label>
                   <input
-                    type="name"
-                    id="name"
+                    type="text"
                     placeholder="Ex. Vitória Simões"
+                    {...register("name")}
                   />
                   <label htmlFor="email">Email</label>
                   <input
-                    type="name"
-                    id="name"
+                    type="email"
                     placeholder="Ex. vitoriasomoes2023@mail.com"
+                    {...register("email")}
                   />
-                  <label htmlFor="email">CPF</label>
-                  <input
-                    type="name"
-                    id="name"
-                    placeholder="Ex. 999.999.999-00"
-                  />
-                  <label htmlFor="email">Celular</label>
-                  <input
-                    type="name"
-                    id="name"
-                    placeholder="Ex. (027)99999-9999"
-                  />
-                  <label htmlFor="email">Data de Nascimento</label>
-                  <input type="name" id="name" placeholder="Ex. 09/09/09" />
-                  <label htmlFor="email">Descrição</label>
+                  <label htmlFor="cpf">CPF</label>
                   <input
                     type="text"
-                    id="name"
+                    placeholder="Ex. 999.999.999-00"
+                    {...register("cpf")}
+                  />
+                  <label htmlFor="phone">Celular</label>
+                  <input
+                    type="text"
+                    placeholder="Ex. (027)99999-9999"
+                    {...register("phone")}
+                  />
+                  <label htmlFor="birth">Data de Nascimento</label>
+                  <input
+                    type="text"
+                    placeholder="Ex. 09/09/09"
+                    {...register("birth")}
+                  />
+                  <label htmlFor="description">Descrição</label>
+                  <input
+                    type="text"
                     placeholder="Ex. local da descrição..."
+                    {...register("description")}
                   />
                 </div>
+                <Button>Alterar</Button>
               </FormModal>
             </div>
           </div>
@@ -406,6 +431,7 @@ export const HeaderLogin = () => {
                       <label htmlFor="email">Deslogar do Perfil</label>
                       <Button
                         onClick={(e) => {
+                          localStorage.clear();
                           navigate("/");
                           setInfosOpen(false);
                         }}
@@ -423,56 +449,175 @@ export const HeaderLogin = () => {
         <StyleModal>
           <div className="modal-wrapper">
             <div className="container-form">
-              <FormModal>
+              <FormModal
+                onSubmit={handleSubmit((info) => {
+                  patchUser(info);
+                  reset();
+                  setadressModalOpen(false);
+                })}
+              >
                 <div className="modal-header">
                   <h2 className="header_register">Editar Endereço</h2>
+                  <Button
+                    model="model-5"
+                    type="button"
+                    onClick={() => setadressModalOpen(false)}
+                  >
+                    <IoClose />
+                  </Button>
+                </div>
+                <br />
+                <strong>Informações do endereço usuário!!!</strong>
+                <div className="content_register">
+                  <label htmlFor="address.cep">CEP</label>
+                  <input
+                    type="text"
+                    placeholder="Ex. 89888.888"
+                    {...register("address.cep")}
+                  />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="address.state">Estado</label>
+                      <input
+                        type="text"
+                        placeholder="Ex. Espírito Santo"
+                        {...register("address.state")}
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="address.city">Cidade</label>
+                      <input
+                        type="text"
+                        placeholder="Ex. Guarapari"
+                        {...register("address.city")}
+                      />
+                    </div>
+                  </div>
+                  <label htmlFor="address.street">Rua</label>
+                  <input
+                    type="text"
+                    placeholder="Ex. Rua de Ninguem"
+                    {...register("address.street")}
+                  />
+                  <div className="inline-fields">
+                    <div>
+                      <label htmlFor="address.number">Número</label>
+                      <input
+                        type="number"
+                        placeholder="Ex. 218"
+                        {...register("address.number")}
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="address.complement">Complemento</label>
+                      <input
+                        type="text"
+                        placeholder="Ex. Apart 12"
+                        {...register("address.complement")}
+                      />
+                    </div>
+                  </div>
+                </div>
+                <Button>Editar</Button>
+              </FormModal>
+            </div>
+          </div>
+        </StyleModal>
+      )}
+
+      {carModalOpen && (
+        <StyleModal>
+          <div className="modal-wrapper">
+            <div className="container-form">
+              <FormModal>
+                <div className="modal-header">
+                  <h2 className="header_register">Editar Anúncio</h2>
                   <Button model="model-5" onClick={() => setIsOpen(false)}>
                     <IoClose />
                   </Button>
                 </div>
                 <br />
-                <strong>Informações do endereço usuário</strong>
+                <strong>Informações do veículo</strong>
                 <div className="content_register">
-                  <label htmlFor="email">CEP</label>
-                  <input type="name" id="cep" placeholder="Ex. 89888.888" />
+                  <label htmlFor="email">Marca</label>
+                  <input type="name" id="marca" placeholder="Mercedes Benz" />
                   <div className="inline-fields">
                     <div>
-                      <label htmlFor="email">Estado</label>
+                      <label htmlFor="email">Modelo</label>
                       <input
                         type="text"
-                        id="estado"
+                        id="A 200 CGI ADVANCE SEDAN"
                         placeholder="Ex. Espírito Santo"
                       />
                     </div>
 
                     <div>
-                      <label htmlFor="email">Cidade</label>
-                      <input
-                        type="text"
-                        id="cidade"
-                        placeholder="Ex. Guarapari"
-                      />
+                      <label htmlFor="email">Ano</label>
+                      <input type="text" id="cidade" placeholder="2018" />
                     </div>
                   </div>
-                  <label htmlFor="email">Rua</label>
+                  <label htmlFor="email">Combustível</label>
                   <input
                     type="text"
-                    id="rua"
-                    placeholder="Ex. Rua de Ninguem"
+                    id="combustível"
+                    placeholder="Gasolina / Etanol"
                   />
                   <div className="inline-fields">
                     <div>
-                      <label htmlFor="email">Número</label>
-                      <input type="number" id="numero" placeholder="Ex. 218" />
+                      <label htmlFor="email">Quilometragem</label>
+                      <input
+                        type="number"
+                        id="quilometragem"
+                        placeholder="30.000"
+                      />
                     </div>
 
                     <div>
-                      <label htmlFor="email">Complemento</label>
+                      <label htmlFor="email">Cor</label>
+                      <input type="text" id="cor" placeholder="Branco" />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Preço tabela FIPE</label>
                       <input
                         type="text"
-                        id="complemento"
-                        placeholder="Ex. Apart 12"
+                        id="tabela fipe"
+                        placeholder="R$ 48.000,00"
                       />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email">Preço</label>
+                      <input
+                        type="text"
+                        id="preço"
+                        placeholder="R$ 50.000,00"
+                      />
+                    </div>
+                    <label htmlFor="email">Imagem da capa</label>
+                    <input
+                      type="text"
+                      id="img-capa"
+                      placeholder="Ex. https://imagem.com"
+                    />
+                    <label htmlFor="email">Primeira Imagem da galeria</label>
+                    <input
+                      type="text"
+                      id="img-capa2"
+                      placeholder="Ex. https://imagem.com"
+                    />
+                    <label htmlFor="email">Segunda Imagem da galeria</label>
+                    <input
+                      type="text"
+                      id="img-capa3"
+                      placeholder="Ex. https://imagem.com"
+                    />
+
+                    <div>
+                      <button>Exluir Anúncio</button>
+                      <button>Salvar Alterações</button>
                     </div>
                   </div>
                 </div>

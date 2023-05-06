@@ -1,8 +1,23 @@
 import { ReactNode } from "react";
-import { IImages } from "../Others";
+import { IImage, IImages } from "../Others";
 import { iUser } from "../User";
 
 //contexts/AdsContext:
+
+export interface iFormCreateAnnouncement {
+  brand: string;
+  model: string;
+  year: number;
+  fuel: string;
+  km: number;
+  color: string;
+  price: string;
+  fipe_table: string;
+  description: string;
+  is_active: boolean;
+  images: IImage[];
+}
+
 export interface IProvidersCarsProps {
   children: ReactNode;
 }

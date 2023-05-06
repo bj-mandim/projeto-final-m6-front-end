@@ -22,7 +22,7 @@ const Login = () => {
   return (
     <>
       <Header></Header>
-      {/*       <Section> */}
+
       <Form onSubmit={handleSubmit(loginUser)}>
         <h2 className="header">Login</h2>
 
@@ -52,7 +52,7 @@ const Login = () => {
           </Link>
         </div>
       </Form>
-      {/*       </Section> */}
+
       <Footer />
     </>
   );
