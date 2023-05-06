@@ -41,7 +41,7 @@ const Login = () => {
             {...register("password")}
           />
 
-          <Link to={"/forgot-password"} className="forgot-pass">
+          <Link to={"/forgot-pass"} className="forgot-pass">
             Esqueci minha senha
           </Link>
 

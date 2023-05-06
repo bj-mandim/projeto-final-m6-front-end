@@ -139,7 +139,7 @@ export const HeaderLogin = () => {
   }: any = useContext(ContextApi);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const { patchUser } = useContext(UserContext);
+  const { patchUser }: any = useContext(UserContext);
   const {
     register,
     handleSubmit,

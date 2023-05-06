@@ -46,7 +46,7 @@ export interface iUser {
     number: number; //Verificar compatibilidade com o front
     complement: string;
   };
-  cars:ICard[]
+  cars: ICard[];
 }
 
 export interface iUserContext {
@@ -54,12 +54,25 @@ export interface iUserContext {
   loginUser: (data: iFormLogin) => Promise<void>;
   globalLoading: boolean;
   setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  user: iUser|null;
+  user: iUser | null;
   userPage: iUser;
-  setUserPage(userPage:iUser):void;
-  patchUser(data:iFormSignup):void
+  setUserPage(userPage: iUser): void;
+  recoveryPassUser: (email: iRecoveyPass) => Promise<void>;
+  changePassUser: (data: iChangePass) => Promise<void>;
+  setToken: any;
+  patchUser(data: iFormSignup): void;
 }
 
-export interface iFormComment{
-  comment:string
+export interface iFormComment {
+  comment: string;
+}
+
+export interface iRecoveyPass {
+  email: string;
+}
+
+export interface iChangePass {
+  password: string;
+  confirmPassword: string;
+  resetToken: string;
 }

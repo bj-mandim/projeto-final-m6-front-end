@@ -8,6 +8,26 @@ export const schemaLogin = yup.object({
   password: yup.string().required("Senha obrigatória"),
 });
 
+export const schemaRecoveryPass = yup.object({
+  email: yup.string().required("E-mail obrigatório"),
+});
+
+export const schemaNewPass = yup.object({
+  password: yup
+    .string()
+    .required("Senha obrigatória!")
+    .matches(/[A-Z]/, "A senha deve conter pelo menos 1 letra maiúscula")
+    .matches(/[a-z]/, "A senha deve conter pelo menos 1 letra minuscula")
+    .matches(/(\d)/, "A senha deve conter pelo menos um número")
+    .matches(/.{8,}/, "A senha deve conter no mínimo 8 digitos"),
+  confirmPassword: yup
+    .string()
+    .oneOf(
+      [yup.ref("password")],
+      "As senhas devem ser idênticas"
+    ),
+})
+
 export const schemaRegister = yup.object({
   name: yup.string().required("Nome obrigatório"),
   email: yup

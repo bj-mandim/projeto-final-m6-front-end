@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { apiCards } from "./api";
-import { iFormLogin } from "../interfaces/User";
+import { iChangePass, iFormLogin, iRecoveyPass } from "../interfaces/User";
 import { iFormSignup } from "../interfaces/User";
 import { iUser } from "../interfaces/User";
 import { iProvidersProps } from "../interfaces/Others";
@@ -15,6 +15,7 @@ const Providers = ({ children }: iProvidersProps) => {
   const [globalLoading, setGlobalLoading] = useState<boolean>(false);
   const [user, setUser] = useState<iUser | null>(null);
   const { userPage, setUserPage } = useContext(ContextApi);
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
 
   async function loginUser(data: iFormLogin): Promise<void> {
@@ -33,6 +34,32 @@ const Providers = ({ children }: iProvidersProps) => {
     } finally {
       setGlobalLoading(false);
     }
+  }
+
+  async function recoveryPassUser(email: iRecoveyPass) {
+    await apiCards
+      .post("/users/resetPassword", email)
+      .then((res) => {
+        toast.success("Link para recuperação de senha enviado com sucesso");
+      })
+      .catch((err) => {
+        console.log(err);
+        toast.error("Email inválido");
+      });
+  }
+
+  async function changePassUser(data: iChangePass) {
+    await apiCards
+      .patch(`/users/resetPassword/${token}`, data)
+      .then((res) => {
+        toast.success("Senha alterada com sucesso");
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   async function registerUser(data: iFormSignup): Promise<void> {
@@ -124,6 +151,9 @@ const Providers = ({ children }: iProvidersProps) => {
         user,
         userPage,
         setUserPage,
+        recoveryPassUser,
+        changePassUser,
+        setToken,
         patchUser,
       }}
     >
