@@ -115,35 +115,35 @@ function ApiState({ children }: iChildren) {
   }
 
   //Comentários
-  async function makeComment(comment:any){
+  async function makeComment(comment: any) {
     const token = localStorage.getItem("@Token_cars_shop");
     if (token) {
       try {
-        await apiCards.post(`cars/${idCar}/comments`,comment, {
+        await apiCards.post(`cars/${idCar}/comments`, comment, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        attComments()
+        attComments();
         toast.success("Comentário criado com Sucesso!");
       } catch (error) {
-        console.log(error)
+        console.log(error);
         toast.error("Erro ao criar o comentário!");
       }
     }
-    }
+  }
 
-  async function attComments(){
-      try {
-        const { data } = await apiCards.get(`cars/${idCar}/comments`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setCard({...card,comments:data})
-      } catch (error) {
-        console.log(error)
-      }
+  async function attComments() {
+    try {
+      const { data } = await apiCards.get(`cars/${idCar}/comments`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCard({ ...card, comments: data });
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function checkCarId() {
@@ -196,7 +196,8 @@ function ApiState({ children }: iChildren) {
         listUserId,
         setUserPage,
         userPage,
-        makeComment
+        makeComment,
+        getCards,
       }}
     >
       {children}
