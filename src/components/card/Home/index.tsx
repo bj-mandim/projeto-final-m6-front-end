@@ -3,13 +3,8 @@ import { ContextApi } from "../../../contexts";
 import { useContext } from "react";
 import { StyleAvatar } from "../../avatar/style";
 import { UserContext } from "../../../contexts/userContext";
-import { ICard } from "../../../interfaces/Car";
-import { iUser } from "../../../interfaces/User";
+import { ICard, iCarProps } from "../../../interfaces/Car";
 import Avatar from "../../avatar";
-
-interface iCarProps {
-  lista: ICard[];
-}
 
 const Card = ({ lista }: iCarProps) => {
   const { getCardId, setOptionsOpen } = useContext(ContextApi);
@@ -62,7 +57,6 @@ const Card = ({ lista }: iCarProps) => {
 export const CardUserPage = () => {
   const { getCardId }: any = useContext(ContextApi);
   const { userPage }: any = useContext(UserContext);
-  console.log(userPage);
 
   return (
     <>

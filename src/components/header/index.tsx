@@ -118,13 +118,6 @@ export const Header = () => {
   );
 };
 
-/* const user = {
-  name: "Vitória Simões",
-  image_url:
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIqt6O6bqpcON7yrS0AoagxeM8LZje-nzH2g&usqp=CAU",
-}; 
-*/
-
 export const HeaderLogin = () => {
   const { user }: any = useContext(UserContext);
   const {
@@ -262,7 +255,7 @@ export const HeaderLogin = () => {
                 })}
               >
                 <div className="modal-header">
-                  <h2 className="header_register">Editar Perfil!!!</h2>
+                  <h2 className="header_register">Editar Perfil</h2>
                   <Button
                     model="model-5"
                     type="button"
@@ -282,38 +275,55 @@ export const HeaderLogin = () => {
                     placeholder="Ex. Vitória Simões"
                     {...register("name")}
                   />
+
+                  <span>{errors.name?.message}</span>
+
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
                     placeholder="Ex. vitoriasomoes2023@mail.com"
                     {...register("email")}
                   />
+
+                  <span>{errors.email?.message}</span>
+
                   <label htmlFor="cpf">CPF</label>
                   <input
                     type="text"
                     placeholder="Ex. 999.999.999-00"
                     {...register("cpf")}
                   />
+
+                  <span>{errors.cpf?.message}</span>
+
                   <label htmlFor="phone">Celular</label>
                   <input
                     type="text"
                     placeholder="Ex. (027)99999-9999"
                     {...register("phone")}
                   />
+
+                  <span>{errors.phone?.message}</span>
+
                   <label htmlFor="birth">Data de Nascimento</label>
                   <input
                     type="text"
                     placeholder="Ex. 09/09/09"
                     {...register("birth")}
                   />
+
+                  <span>{errors.birth?.message}</span>
+
                   <label htmlFor="description">Descrição</label>
                   <input
                     type="text"
                     placeholder="Ex. local da descrição..."
                     {...register("description")}
                   />
+
+                  <span>{errors.description?.message}</span>
                 </div>
-                <Button>Alterar</Button>
+                <Button>Enviar</Button>
               </FormModal>
             </div>
           </div>

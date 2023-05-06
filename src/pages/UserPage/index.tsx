@@ -9,11 +9,11 @@ import { Article, Section } from "../Product/styles";
 import { ContainerUser } from "./style";
 
 function UserPage() {
-  const { user,userPage } = useContext(UserContext);
+  const { user, userPage } = useContext(UserContext);
 
-  return  (
+  return (
     <>
-      {user? ( <HeaderLogin />):(<Header />)}
+      {user ? <HeaderLogin /> : <Header />}
       <Section>
         <ContainerUser>
           <Article>
@@ -21,16 +21,20 @@ function UserPage() {
           </Article>
 
           <h3 className="heading-6">Anúncios</h3>
-          {userPage && <Card lista={userPage.cars.map((car)=>{return{...car,user:userPage}})}/>}
+          {userPage && (
+            <Card
+              lista={userPage.cars.map((car) => {
+                return { ...car, user: userPage };
+              })}
+            />
+          )}
 
           <Pagination />
         </ContainerUser>
       </Section>
       <Footer />
     </>
-  )
+  );
 }
 
 export default UserPage;
-
-//fazer a parte do User

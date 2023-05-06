@@ -95,7 +95,6 @@ const Providers = ({ children }: iProvidersProps) => {
     }
   }
 
-  //Alterar tipagem de data
   async function patchUser(info: any) {
     for (let x in info) {
       if (!info[x]) {

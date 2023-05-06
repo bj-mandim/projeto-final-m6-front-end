@@ -2,8 +2,6 @@ import { ReactNode } from "react";
 import { IImage, IImages } from "../Others";
 import { iUser } from "../User";
 
-//contexts/AdsContext:
-
 export interface iFormCreateAnnouncement {
   brand: string;
   model: string;
@@ -91,29 +89,8 @@ export interface IModel {
   year: number;
 }
 
-/* export interface ICardProps {
-	car: {
-		images: {
-		      image: string;
-		};
-		model: string;
-		description: string;
-		user: {
-			name: string;
-			image_url: string;
-			id: string;
-		};
-		km: number;
-		year: number;
-		price: number;
-		is_active: boolean;
-	};
-} */
-
-export interface iCardProps {
-  getCardId: any;
-  listCards: any;
-  //interface o componente card/home/index.tsx
+export interface iCarProps {
+  lista: ICard[];
 }
 
 export interface ICardListProps {

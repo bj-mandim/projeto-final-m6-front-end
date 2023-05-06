@@ -1,6 +1,5 @@
 import * as yup from "yup";
 
-const brazilianPhoneRegex = /^\d{2}\d{4,5}\d{4}$/gi;
 const cep = /^[0-9]{5}[0-9]{3}$/;
 
 export const schemaLogin = yup.object({
@@ -22,11 +21,8 @@ export const schemaNewPass = yup.object({
     .matches(/.{8,}/, "A senha deve conter no mínimo 8 digitos"),
   confirmPassword: yup
     .string()
-    .oneOf(
-      [yup.ref("password")],
-      "As senhas devem ser idênticas"
-    ),
-})
+    .oneOf([yup.ref("password")], "As senhas devem ser idênticas"),
+});
 
 export const schemaRegister = yup.object({
   name: yup.string().required("Nome obrigatório"),

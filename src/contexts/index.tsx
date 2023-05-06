@@ -4,11 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import filter from "../pages/AdminPage/filter";
 import { iUser } from "../interfaces/User";
 import { toast } from "react-toastify";
-import { IComment } from "../interfaces/Car";
-
-interface iChildren {
-  children: React.ReactNode;
-}
+import { iChildren } from "../interfaces/Others";
 
 export const ContextApi = createContext({} as any);
 
@@ -29,7 +25,6 @@ function ApiState({ children }: iChildren) {
 
   const token = localStorage.getItem("authToken");
 
-  //CARDS ROTAS
   async function getCards() {
     await apiCards
       .get(`/cars`)
@@ -56,8 +51,6 @@ function ApiState({ children }: iChildren) {
       });
   }
 
-  //TABELA FIPE ROTAS
-
   function getFipeTable(brand: string, model: string) {
     apiKenzieCards
       .get(`/cars?brand=${brand}`)
@@ -68,8 +61,6 @@ function ApiState({ children }: iChildren) {
         console.log(err);
       });
   }
-
-  //USER ROTAS (LIST USER ID GABRIEL)
 
   function listUserId(id: string) {
     apiCards
@@ -89,32 +80,6 @@ function ApiState({ children }: iChildren) {
       });
   }
 
-  //REDEFINIR SENHA ROTAS
-
-  function sendEmailUser(email: string) {
-    apiCards
-      .post(`/users/resetPassword`)
-      .then((res) => {
-        //retorno de uma mensagem toast, token enviado;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  function resetPasswordUser(password: string, token: string) {
-    apiCards
-      .patch(`/users/resetPassword/${token}`)
-      .then((res) => {
-        //retorno de uma mensagem toast, token enviado;
-        //O token enviado na requisição a cima tem que passar pra cá para colocar no bearer
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
-  //Comentários
   async function makeComment(comment: any) {
     const token = localStorage.getItem("@Token_cars_shop");
     if (token) {

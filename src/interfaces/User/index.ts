@@ -21,7 +21,7 @@ export interface iFormSignup {
     state: string;
     city: string;
     street: string;
-    number: string; //number
+    number: string;
     complement: string;
   };
 }
@@ -35,7 +35,7 @@ export interface iUser {
   phone: string;
   cpf: string;
   birth: string;
-  reset_token: null; //Verificar esse retorno
+  reset_token: null;
   image_url?: string;
   address: {
     id: string;
@@ -43,7 +43,7 @@ export interface iUser {
     state: string;
     city: string;
     street: string;
-    number: number; //Verificar compatibilidade com o front
+    number: number;
     complement: string;
   };
   cars: ICard[];

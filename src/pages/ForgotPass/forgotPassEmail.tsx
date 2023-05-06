@@ -16,25 +16,39 @@ function ForgotPassEmail() {
     formState: { errors },
   } = useForm<iRecoveyPass>({ resolver: yupResolver(schemaRecoveryPass) });
 
-  const { recoveryPassUser } = useContext(UserContext)
+  const { recoveryPassUser } = useContext(UserContext);
 
   return (
-      <>
+    <>
       <Header></Header>
       <Form onSubmit={handleSubmit(recoveryPassUser)}>
-          <h2 className="header">Esqueceu sua senha?</h2>
-  
-          <div className="content_login">
-              <label htmlFor="email">Digite seu email.</label>
-              <input type="email" id="email" placeholder="exemplo@email.com"  {...register("email")}/>
-              <button type="submit" className="btn btn-primary w-100" style={{marginTop: 32}}>Enviar</button>
-          </div>
-          <br/>
-          <Link to={"/login"} className="extra-text">{'<-'} Voltar à página de login</Link>
+        <h2 className="header">Esqueceu sua senha?</h2>
+
+        <div className="content_login">
+          <label htmlFor="email">Digite seu email.</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="exemplo@email.com"
+            {...register("email")}
+          />
+          <span>{errors.email?.message}</span>
+          <button
+            type="submit"
+            className="btn btn-primary w-100"
+            style={{ marginTop: 32 }}
+          >
+            Enviar
+          </button>
+        </div>
+        <br />
+        <Link to={"/login"} className="extra-text">
+          {"<-"} Voltar à página de login
+        </Link>
       </Form>
       <Footer />
     </>
-  )
+  );
 }
 
-export default ForgotPassEmail
+export default ForgotPassEmail;

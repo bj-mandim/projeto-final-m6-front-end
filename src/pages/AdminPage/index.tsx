@@ -10,7 +10,6 @@ import { StyleModal } from "../../components/modal/style";
 import Pagination from "../../components/pagination";
 import { Footer } from "../../components/footer";
 import Button from "../../components/button/style";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -22,21 +21,14 @@ function AdminPage() {
   const {
     isOpen,
     setIsOpen,
-    infosOpen,
     getFipeTable,
     model,
     brand,
     setBrand,
     setModel,
     price,
-    optionsOpen,
-    setInfosOpen,
-    setOptionsOpen,
-    adressModalOpen,
-    setadressModalOpen,
   }: any = useContext(ContextApi);
   const { user } = useContext(UserContext);
-  const navigate = useNavigate();
   const arrayID: any = [];
   for (let i = 0; i <= 7; i++) {
     arrayID.push({ id: i });

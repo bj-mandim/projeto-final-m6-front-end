@@ -20,19 +20,16 @@ import { ContextApi } from "../../contexts";
 import { StyleModal } from "../../components/modal/style";
 import { FormModal } from "../../components/form/style";
 import Button from "../../components/button/style";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/userContext";
 
 function Product() {
   const { card, isOpen, setIsOpen, idCar, listUserId }: any =
     useContext(ContextApi);
-    const {user} = useContext(UserContext)
-
-  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
 
   return (
     <>
-      {user?  <HeaderLogin /> : <Header/>}
+      {user ? <HeaderLogin /> : <Header />}
       <Section>
         {idCar && (
           <Article>
@@ -108,7 +105,7 @@ function Product() {
           <div className="modal-wrapper">
             <FormModal>
               <div className="modal-header">
-                <span>Mercedes Benz A 2000 CGI ADVANCE SEDAN</span>
+                <span>{card.model}</span>
                 <Button model="model-5" onClick={() => setIsOpen(false)}>
                   <IoClose />
                 </Button>

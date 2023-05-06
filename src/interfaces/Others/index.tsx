@@ -5,10 +5,14 @@ export interface iProvidersProps {
   children: ReactNode;
 }
 
+export interface iChildren {
+  children: React.ReactNode;
+}
+
 export interface IAvatarProps {
   user: iUser;
   setOptionsOpen: any;
-} //criar dessa interface, outra que suporte os novos dados que chegaram no avatar.
+}
 
 export interface iButtonProps {
   medium?: boolean;

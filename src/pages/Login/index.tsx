@@ -21,7 +21,7 @@ const Login = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
 
       <Form onSubmit={handleSubmit(loginUser)}>
         <h2 className="header">Login</h2>
@@ -34,12 +34,16 @@ const Login = () => {
             {...register("email")}
           />
 
+          <span>{errors.email?.message}</span>
+
           <label htmlFor="password">Senha</label>
           <input
             type="password"
             placeholder="Digitar senha"
             {...register("password")}
           />
+
+          <span>{errors.password?.message}</span>
 
           <Link to={"/forgot-pass"} className="forgot-pass">
             Esqueci minha senha
