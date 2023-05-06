@@ -48,15 +48,17 @@ function ApiStateCars({ children }: iChildren) {
   ): Promise<void> {
     const token = localStorage.getItem("@Token_cars_shop");
     console.log(dataUser);
+    console.log(token, "TOOOOKEN");
     if (token) {
+      console.log(token);
       try {
         await apiCards.post<iFormCreateAnnouncement>(`cars`, dataUser, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        getCards();
         toast.success("Anúncio criado!");
+        console.log("CARAAAAI");
       } catch (error) {
         localStorage.removeItem("@Token_cars_shop");
         console.log(error);

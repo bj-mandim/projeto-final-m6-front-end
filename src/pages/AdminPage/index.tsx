@@ -37,6 +37,10 @@ function AdminPage() {
   }: any = useContext(ContextApi);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
+  const arrayID: any = [];
+  for (let i = 0; i <= 7; i++) {
+    arrayID.push({ id: i });
+  }
 
   const {
     register,
@@ -112,34 +116,7 @@ function AdminPage() {
                     />
                     <span>{errors.model?.message}</span>
 
-                    <div className="inline-fields">
-                      <div>
-                        <label htmlFor="email">Editar Dados</label>
-                        <Button
-                          onClick={(e) => {
-                            setOptionsOpen(false);
-                            setInfosOpen(true);
-                          }}
-                        >
-                          Dados
-                        </Button>
-                      </div>
-
-                      <div>
-                        <label htmlFor="email">Editar Endereço</label>
-                        <Button
-                          onClick={(e) => {
-                            setOptionsOpen(false);
-                            setadressModalOpen(true);
-                          }}
-                        >
-                          Endereço
-                        </Button>
-                      </div>
-                    </div>
                     <div className="content_register">
-                      <label htmlFor="email">Deslogar do Perfil</label>
-
                       <label htmlFor="email">Ano</label>
                       <input
                         onClick={(e) => {
@@ -153,6 +130,7 @@ function AdminPage() {
                         type="text"
                         id="ano"
                         placeholder="Ex. 2018"
+                        {...register("year")}
                       />
 
                       <span>{errors.year?.message}</span>
@@ -228,178 +206,23 @@ function AdminPage() {
 
                     <span>{errors.description?.message}</span>
 
-                    <label htmlFor="email">Imagem da capa</label>
-                    <input
-                      type="text"
-                      id="img-capa"
-                      placeholder="Ex. https://imagem.com"
-                      {...register("images")}
-                    />
-                    <label htmlFor="email">Primeira Imagem da galeria</label>
-                    <input
-                      type="text"
-                      id="img-capa2"
-                      placeholder="Ex. https://imagem.com"
-                      {...register("images")}
-                    />
-                    <label htmlFor="email">Segunda Imagem da galeria</label>
-                    <input
-                      type="text"
-                      id="img-capa3"
-                      placeholder="Ex. https://imagem.com"
-                      {...register("images.0.url")}
-                    />
-                    <span>{errors.images?.message}</span>
+                    {arrayID.map((field: any, index: any) => {
+                      return (
+                        <>
+                          <label htmlFor="email">Cole a URL da Imagem</label>
+                          <input
+                            key={field.id}
+                            type="text"
+                            id="img-capa2"
+                            placeholder="Ex. https://imagem.com"
+                            {...register(`images.${index}.url`)}
+                          />
+                          <span>{errors.images?.message}</span>
+                        </>
+                      );
+                    })}
                   </div>
                   <Button model="model-form">Criar Anúncio</Button>
-                </FormModal>
-              </div>
-            </div>
-          </StyleModal>
-        )}
-        {infosOpen && (
-          <StyleModal>
-            <div className="modal-wrapper">
-              <div className="container-form">
-                <FormModal>
-                  <div className="modal-header">
-                    <h2 className="header_register">Editar Perfil</h2>
-                    <Button model="model-5" onClick={() => setIsOpen(false)}>
-                      <IoClose />
-                    </Button>
-                  </div>
-                  <br />
-                  <strong>Informações do usuário</strong>
-                  <div className="content_register">
-                    <label htmlFor="email">Nome</label>
-                    <input
-                      type="name"
-                      id="name"
-                      placeholder="Ex. Vitória Simões"
-                    />
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="name"
-                      id="name"
-                      placeholder="Ex. vitoriasomoes2023@mail.com"
-                    />
-                    <label htmlFor="email">CPF</label>
-                    <input
-                      type="name"
-                      id="name"
-                      placeholder="Ex. 999.999.999-00"
-                    />
-                    <label htmlFor="email">Celular</label>
-                    <input
-                      type="name"
-                      id="name"
-                      placeholder="Ex. (027)99999-9999"
-                    />
-                    <label htmlFor="email">Data de Nascimento</label>
-                    <input type="name" id="name" placeholder="Ex. 09/09/09" />
-                    <label htmlFor="email">Descrição</label>
-                    <input
-                      type="text"
-                      id="name"
-                      placeholder="Ex. local da descrição..."
-                    />
-                  </div>
-                </FormModal>
-              </div>
-            </div>
-          </StyleModal>
-        )}
-        {optionsOpen && (
-          <StyleModal>
-            <div className="modal-wrapper">
-              <div className="container-form">
-                <FormModal>
-                  <div className="modal-header">
-                    <h2 className="header_register">Options User</h2>
-                    <Button model="model-5" onClick={() => setIsOpen(false)}>
-                      <IoClose />
-                    </Button>
-                  </div>
-                  <br />
-                  <strong>Selecione a opção desejada</strong>
-                  <div className="inline-fields">
-                    <div>
-                      <label htmlFor="email">Editar Dados</label>
-                      <Button
-                        onClick={(e) => {
-                          navigate("/");
-                        }}
-                      >
-                        Sair
-                      </Button>
-                    </div>
-                  </div>
-                </FormModal>
-              </div>
-            </div>
-          </StyleModal>
-        )}
-        {adressModalOpen && (
-          <StyleModal>
-            <div className="modal-wrapper">
-              <div className="container-form">
-                <FormModal>
-                  <div className="modal-header">
-                    <h2 className="header_register">Editar Endereço</h2>
-                    <Button model="model-5" onClick={() => setIsOpen(false)}>
-                      <IoClose />
-                    </Button>
-                  </div>
-                  <br />
-                  <strong>Informações do endereço usuário</strong>
-                  <div className="content_register">
-                    <label htmlFor="email">CEP</label>
-                    <input type="name" id="cep" placeholder="Ex. 89888.888" />
-                    <div className="inline-fields">
-                      <div>
-                        <label htmlFor="email">Estado</label>
-                        <input
-                          type="text"
-                          id="estado"
-                          placeholder="Ex. Espírito Santo"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="email">Cidade</label>
-                        <input
-                          type="text"
-                          id="cidade"
-                          placeholder="Ex. Guarapari"
-                        />
-                      </div>
-                    </div>
-                    <label htmlFor="email">Rua</label>
-                    <input
-                      type="text"
-                      id="rua"
-                      placeholder="Ex. Rua de Ninguem"
-                    />
-                    <div className="inline-fields">
-                      <div>
-                        <label htmlFor="email">Número</label>
-                        <input
-                          type="number"
-                          id="numero"
-                          placeholder="Ex. 218"
-                        />
-                      </div>
-
-                      <div>
-                        <label htmlFor="email">Complemento</label>
-                        <input
-                          type="text"
-                          id="complemento"
-                          placeholder="Ex. Apart 12"
-                        />
-                      </div>
-                    </div>
-                  </div>
                 </FormModal>
               </div>
             </div>
