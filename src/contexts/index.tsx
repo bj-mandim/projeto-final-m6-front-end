@@ -163,6 +163,7 @@ function ApiState({ children }: iChildren) {
         userPage,
         makeComment,
         getCards,
+        attComments,
       }}
     >
       {children}
