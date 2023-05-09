@@ -45,7 +45,8 @@ function AdminPage() {
     resolver: yupResolver(schemaCreateAnnouncement),
   });
 
-  const { createAnnouncement }: any = useContext(CarsContext);
+  const { createAnnouncement, updateAnnouncement }: any =
+    useContext(CarsContext);
 
   function fipeTable(model: any, brand: any) {
     if (brand!) {
@@ -230,7 +231,7 @@ function AdminPage() {
               <div className="container-form">
                 <FormModal
                   onSubmit={handleSubmit((info) => {
-                    createAnnouncement({
+                    updateAnnouncement({
                       ...info,
                       fipe_table: `${price}.00`,
                       is_active: true,

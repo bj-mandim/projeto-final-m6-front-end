@@ -1,6 +1,10 @@
 import { createContext, useEffect, useState } from "react";
 import { apiCards, apiKenzieCards } from "./api";
-import { IComment, iFormCreateAnnouncement } from "../interfaces/Car";
+import {
+  IComment,
+  iFormCreateAnnouncement,
+  iFormUpdateAnnouncement,
+} from "../interfaces/Car";
 import { toast } from "react-toastify";
 import { iChildren } from "../interfaces/Others";
 
@@ -49,6 +53,27 @@ function ApiStateCars({ children }: iChildren) {
           },
         });
         toast.success("Anúncio criado!");
+      } catch (error) {
+        localStorage.removeItem("@Token_cars_shop");
+        console.log(error);
+        toast.error("Algo deu errado, confira as informações!");
+      }
+    }
+  }
+
+  async function updateAnnouncement(
+    dataUser: iFormUpdateAnnouncement,
+    id: string
+  ): Promise<void> {
+    const token = localStorage.getItem("@Token_cars_shop");
+    if (token) {
+      try {
+        await apiCards.patch<iFormUpdateAnnouncement>(`cars/${id}`, dataUser, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        toast.success("Anúncio editado com sucesso!");
       } catch (error) {
         localStorage.removeItem("@Token_cars_shop");
         console.log(error);
@@ -195,6 +220,7 @@ function ApiStateCars({ children }: iChildren) {
         updateComment,
         deleteComment,
         createAnnouncement,
+        updateAnnouncement,
       }}
     >
       {children}
