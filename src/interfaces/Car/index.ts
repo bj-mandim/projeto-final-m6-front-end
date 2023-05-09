@@ -16,6 +16,19 @@ export interface iFormCreateAnnouncement {
   images: IImage[];
 }
 
+export interface iFormUpdateAnnouncement {
+  brand?: string;
+  model?: string;
+  year?: number;
+  fuel?: string;
+  km?: number;
+  color?: string;
+  price?: string;
+  fipe_table?: string;
+  description?: string;
+  is_active?: boolean;
+  images?: IImage[];
+}
 export interface IProvidersCarsProps {
   children: ReactNode;
 }
