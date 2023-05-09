@@ -28,6 +28,7 @@ function AdminPage() {
     setModel,
     price,
     carModalOpen,
+    setCarModalOpen,
   }: any = useContext(ContextApi);
   const { user } = useContext(UserContext);
 
@@ -241,7 +242,7 @@ function AdminPage() {
                     <Button
                       type="button"
                       model="model-5"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => setCarModalOpen(false)}
                     >
                       <IoClose />
                     </Button>
@@ -256,7 +257,6 @@ function AdminPage() {
                       placeholder="Ex. Mercedes Benz"
                       {...register("brand")}
                     />
-                    <span>{errors.brand?.message}</span>
 
                     <label htmlFor="email">Modelo</label>
                     <input
@@ -265,7 +265,6 @@ function AdminPage() {
                       placeholder="Ex. A 200 CGI ADVANCE SEDAN"
                       {...register("model")}
                     />
-                    <span>{errors.model?.message}</span>
 
                     <div className="content_register">
                       <label htmlFor="email">Ano</label>
@@ -283,8 +282,6 @@ function AdminPage() {
                         placeholder="Ex. 2018"
                         {...register("year")}
                       />
-
-                      <span>{errors.year?.message}</span>
                     </div>
 
                     <div>
@@ -295,8 +292,6 @@ function AdminPage() {
                         placeholder="Ex. Elétrico"
                         {...register("fuel")}
                       />
-
-                      <span>{errors.fuel?.message}</span>
                     </div>
                   </div>
                   <div className="inline-fields">
@@ -308,8 +303,6 @@ function AdminPage() {
                         placeholder="Ex. 201"
                         {...register("km")}
                       />
-
-                      <span>{errors.km?.message}</span>
                     </div>
 
                     <div>
@@ -320,8 +313,6 @@ function AdminPage() {
                         placeholder="Ex. Rosa"
                         {...register("color")}
                       />
-
-                      <span>{errors.color?.message}</span>
                     </div>
                   </div>
                   <div className="inline-fields">
@@ -342,8 +333,6 @@ function AdminPage() {
                         placeholder="Ex. 100000"
                         {...register("price")}
                       />
-
-                      <span>{errors.price?.message}</span>
                     </div>
                   </div>
                   <div>
@@ -354,8 +343,6 @@ function AdminPage() {
                       placeholder="Ex. O carro se encontra em tais condições..."
                       {...register("description")}
                     />
-
-                    <span>{errors.description?.message}</span>
 
                     {arrayID.map((field: any, index: any) => {
                       return (
@@ -368,7 +355,6 @@ function AdminPage() {
                             placeholder="Ex. https://imagem.com"
                             {...register(`images.${index}.url`)}
                           />
-                          <span>{errors.images?.message}</span>
                         </>
                       );
                     })}
