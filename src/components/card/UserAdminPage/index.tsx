@@ -19,11 +19,7 @@ const CardUserAdmin = () => {
         {user.cars.map((car: ICard) => {
           return (
             <>
-              <StyledCards
-                onClick={() => {
-                  getCardId(car.id);
-                }}
-              >
+              <StyledCards>
                 <div className="boxImage">
                   <img src={car.images[0].url} alt="carImage" />
                   <span className="status" id="ativo">
@@ -63,7 +59,12 @@ const CardUserAdmin = () => {
                     >
                       Editar
                     </Button>
-                    <button className="btn btn-outline btn-medium">
+                    <button
+                      onClick={() => {
+                        getCardId(car.id);
+                      }}
+                      className="btn btn-outline btn-medium"
+                    >
                       Ver Detalhes
                     </button>
                   </Flex>

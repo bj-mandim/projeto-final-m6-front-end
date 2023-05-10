@@ -74,6 +74,20 @@ export const schemaCreateAnnouncement = yup.object({
   images: yup.array(),
 });
 
+export const schemaPatchAnnouncement = yup.object({
+  brand: yup.string(),
+  model: yup.string(),
+  year: yup.string(),
+  is_active: yup.boolean(),
+  fuel: yup.string(),
+  km: yup.string(),
+  color: yup.string(),
+  fipe_table: yup.string(),
+  price: yup.string(),
+  description: yup.string(),
+  images: yup.array(),
+});
+
 export const schemaComment = yup.object({
   comment: yup.string().required("É preciso ter algo para comentar"),
 });

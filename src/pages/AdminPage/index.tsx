@@ -13,7 +13,10 @@ import Button from "../../components/button/style";
 import { UserContext } from "../../contexts/userContext";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { schemaCreateAnnouncement } from "../../validators";
+import {
+  schemaCreateAnnouncement,
+  schemaPatchAnnouncement,
+} from "../../validators";
 import {
   iFormCreateAnnouncement,
   iFormUpdateAnnouncement,
@@ -40,12 +43,12 @@ function AdminPage() {
     arrayID.push({ id: i });
   }
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<iFormCreateAnnouncement>({
+  const formCreateAnnounce = useForm<iFormCreateAnnouncement>({
     resolver: yupResolver(schemaCreateAnnouncement),
+  });
+
+  const formEditAnnounce = useForm<iFormUpdateAnnouncement>({
+    resolver: yupResolver(schemaPatchAnnouncement),
   });
 
   const { createAnnouncement, updateAnnouncement }: any =
@@ -76,7 +79,7 @@ function AdminPage() {
             <div className="modal-wrapper">
               <div className="container-form">
                 <FormModal
-                  onSubmit={handleSubmit((info) => {
+                  onSubmit={formCreateAnnounce.handleSubmit((info) => {
                     createAnnouncement({
                       ...info,
                       fipe_table: `${price}.00`,
@@ -102,18 +105,22 @@ function AdminPage() {
                       type="name"
                       id="marca"
                       placeholder="Ex. Mercedes Benz"
-                      {...register("brand")}
+                      {...formCreateAnnounce.register("brand")}
                     />
-                    <span>{errors.brand?.message}</span>
+                    <span>
+                      {formCreateAnnounce.formState.errors.brand?.message}
+                    </span>
 
                     <label htmlFor="email">Modelo</label>
                     <input
                       type="name"
                       id="modelo"
                       placeholder="Ex. A 200 CGI ADVANCE SEDAN"
-                      {...register("model")}
+                      {...formCreateAnnounce.register("model")}
                     />
-                    <span>{errors.model?.message}</span>
+                    <span>
+                      {formCreateAnnounce.formState.errors.model?.message}
+                    </span>
 
                     <div className="content_register">
                       <label htmlFor="email">Ano</label>
@@ -129,10 +136,12 @@ function AdminPage() {
                         type="text"
                         id="ano"
                         placeholder="Ex. 2018"
-                        {...register("year")}
+                        {...formCreateAnnounce.register("year")}
                       />
 
-                      <span>{errors.year?.message}</span>
+                      <span>
+                        {formCreateAnnounce.formState.errors.year?.message}
+                      </span>
                     </div>
 
                     <div>
@@ -141,10 +150,12 @@ function AdminPage() {
                         type="text"
                         id="combustivel"
                         placeholder="Ex. Elétrico"
-                        {...register("fuel")}
+                        {...formCreateAnnounce.register("fuel")}
                       />
 
-                      <span>{errors.fuel?.message}</span>
+                      <span>
+                        {formCreateAnnounce.formState.errors.fuel?.message}
+                      </span>
                     </div>
                   </div>
                   <div className="inline-fields">
@@ -154,10 +165,12 @@ function AdminPage() {
                         type="text"
                         id="quilometragem"
                         placeholder="Ex. 201"
-                        {...register("km")}
+                        {...formCreateAnnounce.register("km")}
                       />
 
-                      <span>{errors.km?.message}</span>
+                      <span>
+                        {formCreateAnnounce.formState.errors.km?.message}
+                      </span>
                     </div>
 
                     <div>
@@ -166,10 +179,12 @@ function AdminPage() {
                         type="text"
                         id="cor"
                         placeholder="Ex. Rosa"
-                        {...register("color")}
+                        {...formCreateAnnounce.register("color")}
                       />
 
-                      <span>{errors.color?.message}</span>
+                      <span>
+                        {formCreateAnnounce.formState.errors.color?.message}
+                      </span>
                     </div>
                   </div>
                   <div className="inline-fields">
@@ -178,7 +193,7 @@ function AdminPage() {
                       <input
                         type="text"
                         placeholder={`R$: ${price}`}
-                        {...register("fipe_table")}
+                        {...formCreateAnnounce.register("fipe_table")}
                       />
                     </div>
 
@@ -188,10 +203,12 @@ function AdminPage() {
                         type="text"
                         id="preco"
                         placeholder="Ex. 100000"
-                        {...register("price")}
+                        {...formCreateAnnounce.register("price")}
                       />
 
-                      <span>{errors.price?.message}</span>
+                      <span>
+                        {formCreateAnnounce.formState.errors.price?.message}
+                      </span>
                     </div>
                   </div>
                   <div>
@@ -200,10 +217,12 @@ function AdminPage() {
                       type="text"
                       id="descricao"
                       placeholder="Ex. O carro se encontra em tais condições..."
-                      {...register("description")}
+                      {...formCreateAnnounce.register("description")}
                     />
 
-                    <span>{errors.description?.message}</span>
+                    <span>
+                      {formCreateAnnounce.formState.errors.description?.message}
+                    </span>
 
                     {arrayID.map((field: any, index: any) => {
                       return (
@@ -214,9 +233,16 @@ function AdminPage() {
                             type="text"
                             id="img-capa2"
                             placeholder="Ex. https://imagem.com"
-                            {...register(`images.${index}.url`)}
+                            {...formCreateAnnounce.register(
+                              `images.${index}.url`
+                            )}
                           />
-                          <span>{errors.images?.message}</span>
+                          <span>
+                            {
+                              formCreateAnnounce.formState.errors.images
+                                ?.message
+                            }
+                          </span>
                         </>
                       );
                     })}
@@ -233,7 +259,7 @@ function AdminPage() {
             <div className="modal-wrapper">
               <div className="container-form">
                 <FormModal
-                  onSubmit={handleSubmit((info) => {
+                  onSubmit={formEditAnnounce.handleSubmit((info) => {
                     updateAnnouncement({
                       ...info,
                       fipe_table: `${price}.00`,
@@ -259,16 +285,22 @@ function AdminPage() {
                       type="name"
                       id="marca"
                       placeholder="Ex. Mercedes Benz"
-                      {...register("brand")}
+                      {...formEditAnnounce.register("brand")}
                     />
+                    <span>
+                      {formEditAnnounce.formState.errors.brand?.message}
+                    </span>
 
                     <label htmlFor="email">Modelo</label>
                     <input
                       type="name"
                       id="modelo"
                       placeholder="Ex. A 200 CGI ADVANCE SEDAN"
-                      {...register("model")}
+                      {...formEditAnnounce.register("model")}
                     />
+                    <span>
+                      {formEditAnnounce.formState.errors.model?.message}
+                    </span>
 
                     <div className="content_register">
                       <label htmlFor="email">Ano</label>
@@ -282,11 +314,13 @@ function AdminPage() {
                           fipeTable(model, brand);
                         }}
                         type="text"
-                        id="ano"
                         placeholder="Ex. 2018"
-                        {...register("year")}
+                        {...formEditAnnounce.register("year")}
                       />
                     </div>
+                    <span>
+                      {formEditAnnounce.formState.errors.year?.message}
+                    </span>
 
                     <div>
                       <label htmlFor="email">Combustível</label>
@@ -294,7 +328,7 @@ function AdminPage() {
                         type="text"
                         id="combustivel"
                         placeholder="Ex. Elétrico"
-                        {...register("fuel")}
+                        {...formEditAnnounce.register("fuel")}
                       />
                     </div>
                   </div>
@@ -305,7 +339,7 @@ function AdminPage() {
                         type="text"
                         id="quilometragem"
                         placeholder="Ex. 201"
-                        {...register("km")}
+                        {...formEditAnnounce.register("km")}
                       />
                     </div>
 
@@ -315,7 +349,7 @@ function AdminPage() {
                         type="text"
                         id="cor"
                         placeholder="Ex. Rosa"
-                        {...register("color")}
+                        {...formEditAnnounce.register("color")}
                       />
                     </div>
                   </div>
@@ -325,7 +359,7 @@ function AdminPage() {
                       <input
                         type="text"
                         placeholder={`R$: ${price}`}
-                        {...register("fipe_table")}
+                        {...formEditAnnounce.register("fipe_table")}
                       />
                     </div>
 
@@ -335,7 +369,7 @@ function AdminPage() {
                         type="text"
                         id="preco"
                         placeholder="Ex. 100000"
-                        {...register("price")}
+                        {...formEditAnnounce.register("price")}
                       />
                     </div>
                   </div>
@@ -345,7 +379,7 @@ function AdminPage() {
                       type="text"
                       id="descricao"
                       placeholder="Ex. O carro se encontra em tais condições..."
-                      {...register("description")}
+                      {...formEditAnnounce.register("description")}
                     />
 
                     {arrayID.map((field: any, index: any) => {
@@ -357,7 +391,9 @@ function AdminPage() {
                             type="text"
                             id="img-capa2"
                             placeholder="Ex. https://imagem.com"
-                            {...register(`images.${index}.url`)}
+                            {...formEditAnnounce.register(
+                              `images.${index}.url`
+                            )}
                           />
                         </>
                       );
