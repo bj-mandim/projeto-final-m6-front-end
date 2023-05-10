@@ -54,6 +54,7 @@ const CardUserAdmin = () => {
                   <Flex gap={"8px"} style={{ marginTop: 16 }}>
                     <Button
                       onClick={() => {
+                        getCardId(car.id);
                         setCarModalOpen(true);
                       }}
                     >
@@ -62,6 +63,7 @@ const CardUserAdmin = () => {
                     <button
                       onClick={() => {
                         getCardId(car.id);
+                        navigate("/product");
                       }}
                       className="btn btn-outline btn-medium"
                     >

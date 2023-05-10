@@ -35,6 +35,7 @@ function AdminPage() {
     price,
     carModalOpen,
     setCarModalOpen,
+    idCar,
   }: any = useContext(ContextApi);
   const { user } = useContext(UserContext);
 
@@ -260,11 +261,8 @@ function AdminPage() {
               <div className="container-form">
                 <FormModal
                   onSubmit={formEditAnnounce.handleSubmit((info) => {
-                    updateAnnouncement({
-                      ...info,
-                      fipe_table: `${price}.00`,
-                      is_active: true,
-                    });
+                    updateAnnouncement(info, idCar);
+                    setCarModalOpen(false);
                   })}
                 >
                   <div className="modal-header">
