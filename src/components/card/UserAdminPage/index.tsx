@@ -58,7 +58,6 @@ const CardUserAdmin = () => {
                   <Flex gap={"8px"} style={{ marginTop: 16 }}>
                     <Button
                       onClick={() => {
-                        navigate("/admin-page");
                         setCarModalOpen(true);
                       }}
                     >
