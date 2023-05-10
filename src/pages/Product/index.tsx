@@ -13,7 +13,7 @@ import {
   SecondMain,
   Section,
 } from "./styles";
-import Comment from "../../components/comment";
+import { Comment } from "../../components/comment";
 import { useContext } from "react";
 import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";

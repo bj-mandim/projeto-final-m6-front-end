@@ -33,7 +33,10 @@ export const schemaRegister = yup.object({
   cpf: yup.string().required("Cpf obrigatório"),
   birth: yup.string().required("Data de nascimento obrigatória"),
   description: yup.string().required("Descrição obrigatória"),
-  phone: yup.string().required("Número de telefone é obrigatório"),
+  phone: yup
+    .string()
+    .required("Número de telefone é obrigatório")
+    .length(15, "Numero de telefone deve ter 15 caracteres"),
   password: yup
     .string()
     .required("Senha obrigatória!")

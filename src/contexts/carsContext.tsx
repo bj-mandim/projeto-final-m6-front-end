@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { apiCards, apiKenzieCards } from "./api";
 import { IComment, iFormCreateAnnouncement } from "../interfaces/Car";
 import { toast } from "react-toastify";
 import { iChildren } from "../interfaces/Others";
+import { ContextApi } from ".";
 
-export const CarsContext = createContext({});
+export const CarsContext = createContext({} as any);
 
 function ApiStateCars({ children }: iChildren) {
   const [model, setModel]: any = useState();
@@ -12,6 +13,7 @@ function ApiStateCars({ children }: iChildren) {
   const [list, setList]: any = useState([]);
   const [color, setColor] = useState([]);
   const [year, setYear] = useState([]);
+  const { attComments } = useContext(ContextApi);
 
   async function getBrandsApi() {
     const data = await apiKenzieCards
@@ -148,21 +150,35 @@ function ApiStateCars({ children }: iChildren) {
     id: string,
     data: { message: string }
   ): Promise<void> {
+    const token = localStorage.getItem("@Token_cars_shop");
     try {
-      apiKenzieCards.post(`/cars/comments/${id}`, data);
+      await apiCards.patch(`cars/comments/${id}`, data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      attComments();
       toast.success("Comentário editado com Sucesso!");
     } catch (error) {
       console.log(error);
+      attComments();
       toast.error("Erro ao editar o comentário!");
     }
   }
 
   async function deleteComment(id: string): Promise<void> {
+    const token = localStorage.getItem("@Token_cars_shop");
     try {
-      apiKenzieCards.delete(`/cars/comments/${id}`);
+      await apiCards.delete(`cars/comments/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      attComments();
       toast.success("Comentário deletado com Sucesso!");
     } catch (error) {
       console.log(error);
+      attComments();
       toast.error("Erro ao deletar o comentário!");
     }
   }
