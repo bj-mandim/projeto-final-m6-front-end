@@ -128,8 +128,9 @@ export const HeaderLogin = () => {
     optionsOpen,
     infosOpen,
     adressModalOpen,
-    carModalOpen,
-  }: any = useContext(ContextApi);
+  }: /*     carModalOpen,
+    setCarModalOpen, */
+  any = useContext(ContextApi);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { patchUser }: any = useContext(UserContext);
@@ -325,7 +326,7 @@ export const HeaderLogin = () => {
 
                   <span>{errors.description?.message}</span>
                 </div>
-                <Button>Enviar</Button>
+                <Button model="model-form">Enviar</Button>
               </FormModal>
             </div>
           </div>
@@ -532,7 +533,7 @@ export const HeaderLogin = () => {
                     </div>
                   </div>
                 </div>
-                <Button>Editar</Button>
+                <Button model="model-form">Editar</Button>
               </FormModal>
             </div>
           </div>

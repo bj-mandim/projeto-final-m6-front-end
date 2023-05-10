@@ -19,6 +19,7 @@ function ApiState({ children }: iChildren) {
   const [infosOpen, setInfosOpen] = useState(false);
   const [optionsOpen, setOptionsOpen] = useState(false);
   const [model, setModel] = useState();
+  const [carModalOpen, setCarModalOpen] = useState(false);
   const [brand, setBrand] = useState();
   const [price, setPrice] = useState("");
   const [userPage, setUserPage] = useState<iUser | null>(null);
@@ -164,6 +165,8 @@ function ApiState({ children }: iChildren) {
         makeComment,
         getCards,
         attComments,
+        carModalOpen,
+        setCarModalOpen,
       }}
     >
       {children}

@@ -14,7 +14,10 @@ import { UserContext } from "../../contexts/userContext";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { schemaCreateAnnouncement } from "../../validators";
-import { iFormCreateAnnouncement } from "../../interfaces/Car";
+import {
+  iFormCreateAnnouncement,
+  iFormUpdateAnnouncement,
+} from "../../interfaces/Car";
 import { CarsContext } from "../../contexts/carsContext";
 
 function AdminPage() {
