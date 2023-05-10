@@ -44,7 +44,6 @@ function ApiState({ children }: iChildren) {
         setCard(res.data);
         setIdCar(id);
         localStorage.setItem("@Last_view_car", id);
-        navigate("/product");
       })
       .catch((err) => {
         console.log(err);

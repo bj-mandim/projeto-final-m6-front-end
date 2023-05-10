@@ -63,23 +63,32 @@ function ApiStateCars({ children }: iChildren) {
     }
   }
 
-  async function updateAnnouncement(
-    dataUser: iFormUpdateAnnouncement,
-    id: string
-  ): Promise<void> {
-    const token = localStorage.getItem("@Token_cars_shop");
-    if (token) {
-      try {
-        await apiCards.patch<iFormUpdateAnnouncement>(`cars/${id}`, dataUser, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        toast.success("Anúncio editado com sucesso!");
-      } catch (error) {
-        localStorage.removeItem("@Token_cars_shop");
-        console.log(error);
-        toast.error("Algo deu errado, confira as informações!");
+  async function updateAnnouncement(info: any, id: string): Promise<void> {
+    for (let x in info) {
+      if (!info[x]) {
+        delete info[x];
+      }
+      if (x === "images") {
+        delete info.images;
+      }
+    }
+
+    if (Object.keys(info).length > 0) {
+      const token = localStorage.getItem("@Token_cars_shop");
+      if (token) {
+        try {
+          console.log(id, info);
+          await apiCards.patch<iFormUpdateAnnouncement>(`cars/${id}`, info, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          toast.success("Anúncio editado com sucesso!");
+        } catch (error) {
+          localStorage.removeItem("@Token_cars_shop");
+          console.log(error);
+          toast.error("Algo deu errado, confira as informações!");
+        }
       }
     }
   }
@@ -91,6 +100,7 @@ function ApiStateCars({ children }: iChildren) {
     });
     setList(filtered);
   }
+
   async function filterByModel(model: string) {
     const data = await getAllCars();
     const filtered = data.filter((item: any) => {
