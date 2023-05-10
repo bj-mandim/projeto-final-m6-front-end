@@ -5,9 +5,11 @@ import { StyleAvatar } from "../../avatar/style";
 import { UserContext } from "../../../contexts/userContext";
 import { ICard, iCarProps } from "../../../interfaces/Car";
 import Avatar from "../../avatar";
+import { useNavigate } from "react-router-dom";
 
 const Card = ({ lista }: iCarProps) => {
   const { getCardId, setOptionsOpen } = useContext(ContextApi);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -18,6 +20,7 @@ const Card = ({ lista }: iCarProps) => {
               <StyledCards
                 onClick={() => {
                   getCardId(car.id);
+                  navigate("/product");
                 }}
               >
                 <div className="boxImage">
