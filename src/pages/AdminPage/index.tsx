@@ -38,6 +38,7 @@ function AdminPage() {
     idCar,
   }: any = useContext(ContextApi);
   const { user } = useContext(UserContext);
+  const { deleteAnnouncement } = useContext(CarsContext);
 
   const arrayID: any = [];
   for (let i = 0; i <= 7; i++) {
@@ -397,7 +398,16 @@ function AdminPage() {
                       );
                     })}
                   </div>
-                  <Button model="model-form">Excluir Anúncio</Button>
+                  <Button
+                    type="button"
+                    model="model-form"
+                    onClick={() => {
+                      deleteAnnouncement(idCar);
+                      setCarModalOpen(false);
+                    }}
+                  >
+                    Excluir Anúncio
+                  </Button>
                   <Button model="model-form">Salvar Alterações</Button>
                 </FormModal>
               </div>

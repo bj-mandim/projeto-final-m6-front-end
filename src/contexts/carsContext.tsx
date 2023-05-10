@@ -8,6 +8,7 @@ import {
 import { toast } from "react-toastify";
 import { iChildren } from "../interfaces/Others";
 import { ContextApi } from ".";
+import { UserContext } from "./userContext";
 
 export const CarsContext = createContext({} as any);
 
@@ -18,6 +19,7 @@ function ApiStateCars({ children }: iChildren) {
   const [color, setColor] = useState([]);
   const [year, setYear] = useState([]);
   const { attComments } = useContext(ContextApi);
+  const { getProfile } = useContext(UserContext);
 
   async function getBrandsApi() {
     const data = await apiKenzieCards
@@ -59,6 +61,8 @@ function ApiStateCars({ children }: iChildren) {
         localStorage.removeItem("@Token_cars_shop");
         console.log(error);
         toast.error("Algo deu errado, confira as informações!");
+      } finally {
+        getProfile();
       }
     }
   }
@@ -77,7 +81,6 @@ function ApiStateCars({ children }: iChildren) {
       const token = localStorage.getItem("@Token_cars_shop");
       if (token) {
         try {
-          console.log(id, info);
           await apiCards.patch<iFormUpdateAnnouncement>(`cars/${id}`, info, {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -88,7 +91,30 @@ function ApiStateCars({ children }: iChildren) {
           localStorage.removeItem("@Token_cars_shop");
           console.log(error);
           toast.error("Algo deu errado, confira as informações!");
+        } finally {
+          getProfile();
         }
+      }
+    }
+  }
+
+  async function deleteAnnouncement(id: string): Promise<void> {
+    const token = localStorage.getItem("@Token_cars_shop");
+
+    if (token) {
+      try {
+        await apiCards.delete<iFormUpdateAnnouncement>(`cars/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        toast.success("Anúncio deletado com sucesso!");
+      } catch (error) {
+        localStorage.removeItem("@Token_cars_shop");
+        console.log(error);
+        toast.error("Algo deu errado!");
+      } finally {
+        getProfile();
       }
     }
   }
@@ -247,6 +273,7 @@ function ApiStateCars({ children }: iChildren) {
         deleteComment,
         createAnnouncement,
         updateAnnouncement,
+        deleteAnnouncement,
       }}
     >
       {children}
