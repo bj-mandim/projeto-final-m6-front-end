@@ -5,10 +5,13 @@ import { Flex } from "@chakra-ui/react";
 import { UserContext } from "../../../contexts/userContext";
 import { StyleAvatar } from "../../avatar/style";
 import { ICard } from "../../../interfaces/Car";
+import Button from "../../button/style";
+import { useNavigate } from "react-router-dom";
 
 const CardUserAdmin = () => {
-  const { getCardId }: any = useContext(ContextApi);
+  const { getCardId, setCarModalOpen }: any = useContext(ContextApi);
   const { user }: any = useContext(UserContext);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -53,9 +56,14 @@ const CardUserAdmin = () => {
                     <span className="price heading-7">{`R$: ${car.price}`}</span>
                   </div>
                   <Flex gap={"8px"} style={{ marginTop: 16 }}>
-                    <button className="btn btn-outline btn-medium">
+                    <Button
+                      onClick={() => {
+                        navigate("/admin-page");
+                        setCarModalOpen(true);
+                      }}
+                    >
                       Editar
-                    </button>
+                    </Button>
                     <button className="btn btn-outline btn-medium">
                       Ver Detalhes
                     </button>

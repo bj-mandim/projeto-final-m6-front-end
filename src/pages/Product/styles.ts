@@ -7,7 +7,8 @@ export const Section = styled.section`
     content: "";
     position: absolute;
     width: 100%;
-    display: block;
+    display: flex;
+    align-items: center;
     min-height: 500px;
     background: var(--brand1);
 
@@ -30,8 +31,6 @@ export const Article = styled.article`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 `;
 

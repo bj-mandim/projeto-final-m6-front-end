@@ -129,6 +129,7 @@ export const HeaderLogin = () => {
     infosOpen,
     adressModalOpen,
     carModalOpen,
+    setCarModalOpen,
   }: any = useContext(ContextApi);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
@@ -323,7 +324,7 @@ export const HeaderLogin = () => {
 
                   <span>{errors.description?.message}</span>
                 </div>
-                <Button>Enviar</Button>
+                <Button model="model-form">Enviar</Button>
               </FormModal>
             </div>
           </div>
@@ -530,7 +531,7 @@ export const HeaderLogin = () => {
                     </div>
                   </div>
                 </div>
-                <Button>Editar</Button>
+                <Button model="model-form">Editar</Button>
               </FormModal>
             </div>
           </div>
@@ -544,7 +545,10 @@ export const HeaderLogin = () => {
               <FormModal>
                 <div className="modal-header">
                   <h2 className="header_register">Editar Anúncio</h2>
-                  <Button model="model-5" onClick={() => setIsOpen(false)}>
+                  <Button
+                    model="model-5"
+                    onClick={() => setCarModalOpen(false)}
+                  >
                     <IoClose />
                   </Button>
                 </div>
@@ -626,8 +630,8 @@ export const HeaderLogin = () => {
                     />
 
                     <div>
-                      <button>Exluir Anúncio</button>
-                      <button>Salvar Alterações</button>
+                      <Button model="model-form">Exluir Anúncio</Button>
+                      <Button model="model-form">Salvar Alterações</Button>
                     </div>
                   </div>
                 </div>
