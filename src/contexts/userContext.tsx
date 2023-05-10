@@ -154,6 +154,7 @@ const Providers = ({ children }: iProvidersProps) => {
         changePassUser,
         setToken,
         patchUser,
+        getProfile,
       }}
     >
       {children}

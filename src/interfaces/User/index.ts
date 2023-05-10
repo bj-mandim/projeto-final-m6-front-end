@@ -61,6 +61,7 @@ export interface iUserContext {
   changePassUser: (data: iChangePass) => Promise<void>;
   setToken: any;
   patchUser(data: iFormSignup): void;
+  getProfile(): void;
 }
 
 export interface iFormComment {
