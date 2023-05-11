@@ -26,6 +26,7 @@ export const Article = styled.article`
   max-width: 1400px;
   gap: 48px;
   padding-top: 64px;
+  padding-bottom: 64px;
   z-index: 1;
   position: relative;
 
@@ -34,209 +35,28 @@ export const Article = styled.article`
   }
 `;
 
-export const Main = styled.div`
+export const Main = styled.main`
   display: flex;
   flex-direction: column;
+  gap: 16px;
+  padding: 0 16px;
 
-  @media (min-width: 600px) {
+  @media (min-width: 767px) {
     flex: 0 0 70%;
     max-width: 768px;
-  }
-
-  @media (max-width: 768px) {
-  }
-`;
-
-export const SecondMain = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
-  gap: 30px;
-
-  @media (min-width: 600px) {
-    flex: 0 0 30%;
-  }
-
-  @media (max-width: 768px) {
-    margin-top: 0px;
-  }
-`;
-
-export const Figure = styled.figure`
-  height: 260px;
-  background-color: var(--grey10);
-  border-radius: 4px;
-  text-align: center;
-  margin: 0;
-
-  img {
-    width: 100%;
-    max-width: 470px;
-    min-width: 260px;
-  }
-`;
-
-export const Div = styled.div`
-  border-radius: 4px;
-  background-color: var(--whiteFixed);
-  margin-top: 30px;
-  padding: 20px;
-
-  h3 {
-    height: 80px;
-    width: 100%;
-    text-align: center;
-    margin: 0 auto;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-  }
-
-  .container-infos {
-    width: 100%;
-  }
-
-  .priceAndSpan {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-family: "Inter";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-  }
-  .span {
-    font-family: "Inter";
-    display: flex;
-    flex-direction: row;
-    width: 50%;
-    gap: 20px;
-  }
-
-  .price {
-    font-family: "Inter";
-    width: 100px;
-  }
-
-  span {
-    width: 70px;
-    height: 28px;
-    display: flex;
-    justify-content: space-around;
-    background-color: var(--brand4);
-    color: var(--brand2);
-    padding-top: 5px;
-    border-radius: 4px;
-  }
-`;
-
-export const DivDescription = styled.div`
-  border-radius: 4px;
-  background-color: var(--whiteFixed);
-  margin-top: 30px;
-  padding: 20px;
-  margin-bottom: 30px;
-
-  h3 {
-    height: 40px;
-    width: 100%;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-  }
-
-  p {
-    font-family: "Inter";
-    color: var(--grey2);
-    width: 100%;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    height: 130px;
-    text-overflow: ellipsis;
-    overflow-x: hidden;
+    margin-bottom: 24px;
   }
 `;
 
 export const Aside = styled.aside`
-  border-radius: 4px;
-  background-color: var(--whiteFixed);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 30px;
-
-  .small-images {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: stretch;
-    gap: 10px;
-
-    img {
-      background-color: var(--grey8);
-      width: 30%;
-      height: auto;
-      min-height: 100px;
-      object-fit: contain;
-    }
-  }
-
-  .defaultphoto {
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
-  }
-
-  @media (max-width: 900px) {
-    .small-images {
-      align-self: center;
-      justify-content: center;
-    }
-  }
-`;
-
-export const SecondAside = styled.aside`
-  border-radius: 4px;
-  background-color: var(--whiteFixed);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  padding: 15px;
+  gap: 16px;
+  padding: 0 16px;
 
-  img {
-    width: 60px;
-    height: 60px;
-    border-radius: 50px;
-  }
-  p {
-    font-family: "Inter";
-    height: 1-00px;
-    text-align: center;
-    margin: 0 auto;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 15px;
-    color: var(--grey2);
-  }
-
-  button {
-    width: 206px;
-    height: 48px;
-    background-color: var(--grey0);
-    color: var(--whiteFixed);
-    border-radius: 4px;
-    border: none;
-  }
-
-  @media (max-width: 370px) {
-    button {
-      width: 150px;
-      background-color: var(--grey0);
-      color: var(--whiteFixed);
-      border-radius: 4px;
-      border: none;
-    }
+  @media (min-width: 600px) {
+    flex: 0 0 30%;
   }
 `;
 
@@ -292,4 +112,68 @@ export const Modal = styled.div`
       height: 100%;
     }
   }
+`;
+
+export const WhiteSection = styled.section`
+  padding: 44px;
+  border-radius: 4px;
+  background-color: var(--whiteFixed);
+  font-family: "Inter";
+  width: -webkit-fill-available;
+
+  @media (max-width: 767px) {
+    padding: 24px;
+  }
+
+  &.principal-img {
+    padding: 0px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+    max-height: 355px;
+
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 32px;
+  }
+
+  p {
+    color: var(--grey2);
+  }
+
+  .small-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 16px;
+
+    @media (max-width: 768px) {
+      gap: 8px;
+    }
+
+    img {
+      background-color: var(--grey8);
+      width: 30%;
+      height: auto;
+      min-height: 100px;
+      object-fit: cover;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+  }
+`;
+
+export const PrimerInfo = styled.span`
+  background-color: var(--brand4);
+  color: var(--brand2);
+  border-radius: 4px;
+  padding: 6px;
 `;

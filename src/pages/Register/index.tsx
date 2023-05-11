@@ -50,7 +50,7 @@ const Register = () => {
         <div className="content_register">
           <label htmlFor="name">Nome</label>
           <input placeholder="Ex. Samuel Leão" {...register("name")} />
-          <span>{errors.name?.message}</span>
+          <span className="error-message">{errors.name?.message}</span>
 
           <label htmlFor="email">Email</label>
           <input
@@ -58,7 +58,7 @@ const Register = () => {
             placeholder="Ex: samuel@kenzie.com.br"
             {...register("email")}
           />
-          <span>{errors.email?.message}</span>
+          <span className="error-message">{errors.email?.message}</span>
 
           <label htmlFor="CPF">CPF</label>
           <input
@@ -66,7 +66,7 @@ const Register = () => {
             placeholder="000.000.000-00"
             {...register("cpf")}
           />
-          <span>{errors.cpf?.message}</span>
+          <span className="error-message">{errors.cpf?.message}</span>
 
           <label htmlFor="phone">Celular</label>
           <input
@@ -74,7 +74,7 @@ const Register = () => {
             placeholder="(DDD)90000-0000"
             {...register("phone")}
           />
-          <span>{errors.phone?.message}</span>
+          <span className="error-message">{errors.phone?.message}</span>
 
           <label htmlFor="birth">Data de Nascimento</label>
           <input type="test" placeholder="00/00/00" {...register("birth")} />
@@ -85,7 +85,7 @@ const Register = () => {
             placeholder="Digitar descrição"
             {...register("description")}
           />
-          <span>{errors.description?.message}</span>
+          <span className="error-message">{errors.description?.message}</span>
 
           <p>
             <br />
@@ -98,7 +98,7 @@ const Register = () => {
             placeholder="00000-000"
             {...register("address.cep")}
           />
-          <span>{errors.address?.cep?.message}</span>
+          <span className="error-message">{errors.address?.cep?.message}</span>
 
           <label htmlFor="state">Estado</label>
           <input
@@ -106,7 +106,7 @@ const Register = () => {
             placeholder="Digitar Estado"
             {...register("address.state")}
           />
-          <span>{errors.address?.state?.message}</span>
+          <span className="error-message">{errors.address?.state?.message}</span>
 
           <label htmlFor="city">Cidade</label>
           <input
@@ -114,7 +114,7 @@ const Register = () => {
             placeholder="Digitar Cidade"
             {...register("address.city")}
           />
-          <span>{errors.address?.city?.message}</span>
+          <span className="error-message">{errors.address?.city?.message}</span>
 
           <label htmlFor="street">Rua</label>
           <input
@@ -122,7 +122,7 @@ const Register = () => {
             placeholder="Digitar Rua"
             {...register("address.street")}
           />
-          <span>{errors.address?.street?.message}</span>
+          <span className="error-message">{errors.address?.street?.message}</span>
 
           <div className="inline-fields">
             <div>
@@ -132,7 +132,7 @@ const Register = () => {
                 placeholder="Digitar número"
                 {...register("address.number")}
               />
-              <span>{errors.address?.number?.message}</span>
+              <span className="error-message">{errors.address?.number?.message}</span>
             </div>
 
             <div>
@@ -142,7 +142,7 @@ const Register = () => {
                 placeholder="Ex. apart 307"
                 {...register("address.complement")}
               />
-              <span>{errors.address?.complement?.message}</span>
+              <span className="error-message">{errors.address?.complement?.message}</span>
             </div>
           </div>
 
@@ -177,7 +177,7 @@ const Register = () => {
             placeholder="Digitar Senha"
             {...register("password")}
           />
-          <span>{errors.password?.message}</span>
+          <span className="error-message">{errors.password?.message}</span>
 
           <label htmlFor="confirmPassword">Confirmar senha</label>
           <input
@@ -185,7 +185,7 @@ const Register = () => {
             placeholder="Confirmar Senha"
             {...register("confirmPassword")}
           />
-          <span>{errors.confirmPassword?.message}</span>
+          <span className="error-message">{errors.confirmPassword?.message}</span>
 
           <br />
           <br />

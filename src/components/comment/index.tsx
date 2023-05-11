@@ -1,4 +1,4 @@
-import { Div } from "./style";
+import { WhiteSection } from "../../pages/Product/styles";
 import { ContextApi } from "../../contexts";
 import { useContext } from "react";
 import { CommentCard } from "../commentCard";
@@ -21,14 +21,12 @@ export function Comment() {
   const { card }: iCardMaybe = useContext(ContextApi);
   return (
     <>
-      <Div>
+      <WhiteSection>
         <h3>Comentários</h3>
-        <ul>
-          {card.comments.map((comment) => {
-            return <CommentCard key={comment.id} comment={comment} />;
-          })}
-        </ul>
-      </Div>
+        {card.comments.map((comment) => {
+          return <CommentCard key={comment.id} comment={comment} />;
+        })}
+      </WhiteSection>
     </>
   );
 }

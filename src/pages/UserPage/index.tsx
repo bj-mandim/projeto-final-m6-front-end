@@ -2,10 +2,9 @@ import { useContext } from "react";
 import Card from "../../components/card/Home";
 import { Footer } from "../../components/footer";
 import { Header, HeaderLogin } from "../../components/header";
-import Pagination from "../../components/pagination";
 import { ProfileUser } from "../../components/profile";
 import { UserContext } from "../../contexts/userContext";
-import { Article, Section } from "../Product/styles";
+import { Section, Article } from "../AdminPage/styles";
 import { ContainerUser } from "./style";
 
 function UserPage() {
@@ -15,12 +14,11 @@ function UserPage() {
     <>
       {user ? <HeaderLogin /> : <Header />}
       <Section>
-        <ContainerUser>
-          <Article>
+          <Article style={{ marginBottom: 64 }}>
             <ProfileUser />
-          </Article>
+            <h3 className="heading-6">Anúncios</h3>
+          
 
-          <h3 className="heading-6">Anúncios</h3>
           {userPage && (
             <Card
               lista={userPage.cars.map((car) => {
@@ -28,9 +26,7 @@ function UserPage() {
               })}
             />
           )}
-
-          <Pagination />
-        </ContainerUser>
+          </Article>
       </Section>
       <Footer />
     </>

@@ -47,7 +47,7 @@ export const ProfileUser = () => {
     <>
     {userPage && 
       <ProfileWrapper>
-        <figure className="anunciante">
+        <figure className="anunciante" style={{ margin: 0 }}>
           <StyleAvatarUserAdminPage>
             {userPage.image_url ? (
               <img src={userPage.image_url} alt="" />

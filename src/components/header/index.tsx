@@ -153,6 +153,7 @@ export const HeaderLogin = () => {
             maxW={"300px"}
             maxH={"30px"}
             id="logo"
+            cursor="pointer"
             onClick={() => navigate("/")}
           />
           <nav id="nav">
@@ -164,8 +165,9 @@ export const HeaderLogin = () => {
               w={"300px"}
               justify={"space-evenly"}
               id="menu-desktop"
+              cursor="pointer"
             >
-              <Avatar user={user} setOptionsOpen={setOptionsOpen} />
+              <Avatar user={user} setOptionsOpen={setOptionsOpen}/>
             </HStack>
 
             <IconButton
@@ -228,19 +230,9 @@ export const HeaderLogin = () => {
               </li>
             </ul>
             <nav id="nav-mobile">
-              <Button
-                onClick={() => navigate("/login")}
-                model="option-modal"
-                className="body-1-600"
-              >
-                Fazer Login
-              </Button>
-              <Link
-                href="http://localhost:3000/register"
-                className="btn btn-outline"
-              >
-                Cadastrar
-              </Link>
+              <Link>Modelos</Link>
+              <Link>Motos</Link>
+              <Link>Leilão</Link>
             </nav>
           </Flex>
         )}
@@ -540,163 +532,6 @@ export const HeaderLogin = () => {
         </StyleModal>
       )}
 
-      {/* {carModalOpen && (
-        <StyleModal>
-          <div className="modal-wrapper">
-            <div className="container-form">
-              <FormModal
-                onSubmit={handleSubmit((info) => {
-                  updateAnnouncement({
-                    ...info,
-                    fipe_table: `${price}.00`,
-                    is_active: true,
-                  });
-                })}
-              >
-                <div className="modal-header">
-                  <h2 className="header_register">Editar Anuncio</h2>
-                  <Button
-                    type="button"
-                    model="model-5"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <IoClose />
-                  </Button>
-                </div>
-                <br />
-                <strong>Informações do veículo</strong>
-                <div className="content_register">
-                  <label htmlFor="email">Marca</label>
-                  <input
-                    type="name"
-                    id="marca"
-                    placeholder="Ex. Mercedes Benz"
-                    {...register("brand")}
-                  />
-                  <span>{errors.brand?.message}</span>
-
-                  <label htmlFor="email">Modelo</label>
-                  <input
-                    type="name"
-                    id="modelo"
-                    placeholder="Ex. A 200 CGI ADVANCE SEDAN"
-                    {...register("model")}
-                  />
-                  <span>{errors.model?.message}</span>
-
-                  <div className="content_register">
-                    <label htmlFor="email">Ano</label>
-                    <input
-                      onClick={(e) => {
-                        e.preventDefault();
-                        const marcaValue = document.querySelector("#marca");
-                        const modeloValue = document.querySelector("#modelo");
-                        setBrand(marcaValue);
-                        setModel(modeloValue);
-                        fipeTable(model, brand);
-                      }}
-                      type="text"
-                      id="ano"
-                      placeholder="Ex. 2018"
-                      {...register("year")}
-                    />
-
-                    <span>{errors.year?.message}</span>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email">Combustível</label>
-                    <input
-                      type="text"
-                      id="combustivel"
-                      placeholder="Ex. Elétrico"
-                      {...register("fuel")}
-                    />
-
-                    <span>{errors.fuel?.message}</span>
-                  </div>
-                </div>
-                <div className="inline-fields">
-                  <div>
-                    <label htmlFor="email">Quilometragem</label>
-                    <input
-                      type="text"
-                      id="quilometragem"
-                      placeholder="Ex. 201"
-                      {...register("km")}
-                    />
-
-                    <span>{errors.km?.message}</span>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email">Cor</label>
-                    <input
-                      type="text"
-                      id="cor"
-                      placeholder="Ex. Rosa"
-                      {...register("color")}
-                    />
-
-                    <span>{errors.color?.message}</span>
-                  </div>
-                </div>
-                <div className="inline-fields">
-                  <div>
-                    <label htmlFor="email">Tabela FIPE</label>
-                    <input
-                      type="text"
-                      placeholder={`R$: ${price}`}
-                      {...register("fipe_table")}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email">Preço</label>
-                    <input
-                      type="text"
-                      id="preco"
-                      placeholder="Ex. 100000"
-                      {...register("price")}
-                    />
-
-                    <span>{errors.price?.message}</span>
-                  </div>
-                </div>
-                <div>
-                  <label htmlFor="email">Descrição</label>
-                  <input
-                    type="text"
-                    id="descricao"
-                    placeholder="Ex. O carro se encontra em tais condições..."
-                    {...register("description")}
-                  />
-
-                  <span>{errors.description?.message}</span>
-
-                  {arrayID.map((field: any, index: any) => {
-                    return (
-                      <>
-                        <label htmlFor="email">Cole a URL da Imagem</label>
-                        <input
-                          key={field.id}
-                          type="text"
-                          id="img-capa2"
-                          placeholder="Ex. https://imagem.com"
-                          {...register(`images.${index}.url`)}
-                        />
-                        <span>{errors.images?.message}</span>
-                      </>
-                    );
-                  })}
-                </div>
-                <Button model="model-form">Excluir Anúncio</Button>
-                <Button model="model-form">Salvar Alterações</Button>
-              </FormModal>
-            </div>
-          </div>
-        </StyleModal>
-      )} */}
     </>
   );
 };

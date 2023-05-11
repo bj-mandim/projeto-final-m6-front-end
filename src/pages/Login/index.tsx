@@ -34,7 +34,7 @@ const Login = () => {
             {...register("email")}
           />
 
-          <span>{errors.email?.message}</span>
+          <span className="error-message">{errors.email?.message}</span>
 
           <label htmlFor="password">Senha</label>
           <input
@@ -43,7 +43,7 @@ const Login = () => {
             {...register("password")}
           />
 
-          <span>{errors.password?.message}</span>
+          <span className="error-message">{errors.password?.message}</span>
 
           <Link to={"/forgot-pass"} className="forgot-pass">
             Esqueci minha senha
