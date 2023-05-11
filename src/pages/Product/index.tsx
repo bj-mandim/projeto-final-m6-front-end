@@ -8,11 +8,11 @@ import {
   Aside,
   Section,
   WhiteSection,
-  PrimerInfo
+  PrimerInfo,
 } from "./styles";
 import { Flex } from "@chakra-ui/react";
 import { Comment } from "../../components/comment";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";
 import { StyleModal } from "../../components/modal/style";
@@ -21,11 +21,29 @@ import { StyleAvatarUserAdminPage } from "../../components/avatar/style";
 import Button from "../../components/button/style";
 import { UserContext } from "../../contexts/userContext";
 
-
 function Product() {
   const { card, isOpen, setIsOpen, idCar, listUserId }: any =
     useContext(ContextApi);
-  const { user } = useContext(UserContext);
+  const { user }: any = useContext(UserContext);
+
+  function decodeTellphone(text: string) {
+    let tellDecoded = "";
+    const pedidoDecoded =
+      "Ol%C3%A1,%20achei%20seu%20an%C3%BAncio%20interessante!%20Poderia%20me%20passar%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20carro?%20";
+    for (let i = 0; i < text.length; i++) {
+      if (text[i] === "-") {
+        let replace = text.replace(text[i], "");
+        tellDecoded += replace;
+      }
+    }
+    let url = `https://api.whatsapp.com/send?phone=${tellDecoded}&text=${pedidoDecoded}`;
+    console.log(url, "URLLL");
+    return url;
+  }
+
+  useEffect(() => {
+    decodeTellphone(user.phone);
+  }, []);
 
   return (
     <>
@@ -34,22 +52,41 @@ function Product() {
         {idCar && (
           <Article>
             <Main>
-              <WhiteSection className="principal-img" onClick={() => setIsOpen(true)}>
+              <WhiteSection
+                className="principal-img"
+                onClick={() => setIsOpen(true)}
+              >
                 <img src={card.images[0].url} alt="" />
               </WhiteSection>
               <WhiteSection>
-                <h3 className="heading-6 text-center" style={{ marginBottom: 24 }}>{card.brand}</h3>
+                <h3
+                  className="heading-6 text-center"
+                  style={{ marginBottom: 24 }}
+                >
+                  {card.brand}
+                </h3>
 
-                <Flex gap={"16px"} justifyContent="space-between" w={"100%"} alignItems="center" flexWrap="wrap">
+                <Flex
+                  gap={"16px"}
+                  justifyContent="space-between"
+                  w={"100%"}
+                  alignItems="center"
+                  flexWrap="wrap"
+                >
                   <Flex gap={"16px"}>
                     <PrimerInfo>{card.year}</PrimerInfo>
                     <PrimerInfo>{card.km} KM</PrimerInfo>
                   </Flex>
                   <p className="heading heading-7">R$ {card.price}</p>
                 </Flex>
-                <button className="btn btn-primary btn-medium" style={{ marginTop: 16 }}>
+                {/* <button className="btn btn-primary btn-medium" style={{ marginTop: 16 }} onClick={
+                  () => {
+
+                  }
+                }>
                   Comprar
-                </button>
+                </button> */}
+                <a href={decodeTellphone(user.phone)}>Comprar</a>
               </WhiteSection>
               <WhiteSection>
                 <h3>Descrição</h3>
@@ -71,18 +108,20 @@ function Product() {
                 </div>
               </WhiteSection>
               <WhiteSection className="text-center">
-                <StyleAvatarUserAdminPage style={{ justifyContent: 'Center' }}>
-                  <div>
-                    {card.user.name[0].toUpperCase()}
-                  </div>
+                <StyleAvatarUserAdminPage style={{ justifyContent: "Center" }}>
+                  <div>{card.user.name[0].toUpperCase()}</div>
                 </StyleAvatarUserAdminPage>
                 <h3>{card.user.name}</h3>
                 <p>{card.user.description}</p>
-                <br/>
-                <a className="btn btn-grey-1" 
+                <br />
+                <a
+                  className="btn btn-grey-1"
                   onClick={() => {
                     listUserId(card.user.id);
-                  }}>Ver todos anúncios</a>
+                  }}
+                >
+                  Ver todos anúncios
+                </a>
               </WhiteSection>
             </Aside>
           </Article>
