@@ -38,13 +38,12 @@ function Product() {
       }
     }
     let url = `https://api.whatsapp.com/send?phone=${tellDecoded}&text=${pedidoDecoded}`;
-    // console.log(url, "URLLL");
     return url;
   }
 
   useEffect(() => {
     if (user) {
-      decodeTellphone(user.phone);
+      decodeTellphone(card.user.phone);
     }
   }, []);
 
@@ -105,54 +104,16 @@ function Product() {
               <WhiteSection>
                 <h3>Fotos</h3>
                 <div className="small-images">
-                  <img
-                    src={card.images[1].url}
-                    onClick={() => {
-                      setIsOpen(true);
-                      setImageView(2);
-                    }}
-                    alt=""
-                  />
-                  <img
-                    src={card.images[2].url}
-                    onClick={() => {
-                      setIsOpen(true);
-                      setImageView(3);
-                    }}
-                    alt=""
-                  />
-                  <img
-                    src={card.images[3].url}
-                    onClick={() => {
-                      setIsOpen(true);
-                      setImageView(4);
-                    }}
-                    alt=""
-                  />
-                  <img
-                    src={card.images[4].url}
-                    onClick={() => {
-                      setIsOpen(true);
-                      setImageView(5);
-                    }}
-                    alt=""
-                  />
-                  <img
-                    src={card.images[5].url}
-                    onClick={() => {
-                      setIsOpen(true);
-                      setImageView(6);
-                    }}
-                    alt=""
-                  />
-                  <img
-                    src={card.images[6].url}
-                    onClick={() => {
-                      setIsOpen(true);
-                      setImageView(7);
-                    }}
-                    alt=""
-                  />
+                  {card.images.map((image: any, index: number) => (
+                    <img
+                      src={card.images[index].url}
+                      onClick={() => {
+                        setIsOpen(true);
+                        setImageView(index + 1);
+                      }}
+                      alt={`Imagem ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </WhiteSection>
               <WhiteSection className="text-center">
