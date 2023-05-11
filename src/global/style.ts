@@ -92,8 +92,13 @@ const GlobalStyle = createGlobalStyle`
     h1, h2, h3, h4, h5, h6 {
         color: var(--grey1);
     }
+
+    .text-center {
+        text-align: center;
+    }
+
     .heading {
-        color: var(--grey1);
+        color: var(--grey1) !important;
         font-weight: 600;
 
         &-1 {
@@ -242,6 +247,11 @@ const GlobalStyle = createGlobalStyle`
 
         &-medium {
             padding: 18px;
+            font-size: var(--button-medium-text-size);
+        }
+
+        &-small {
+            padding: 12px;
             font-size: var(--button-medium-text-size);
         }
 
@@ -436,6 +446,12 @@ const GlobalStyle = createGlobalStyle`
             outline: none;
             border: 1px solid var(--brand1);
         }
+    }
+
+    .error-message {
+        color: var(--alert1);
+        font-size: 13px;
+        display: block;
     }
 
     .w-100 {

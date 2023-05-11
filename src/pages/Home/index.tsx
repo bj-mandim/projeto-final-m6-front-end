@@ -6,7 +6,6 @@ import Card from "../../components/card/Home";
 import { Footer } from "../../components/footer";
 import { ContextApi } from "../../contexts";
 import { HomeContainer } from "./styles";
-import Pagination from "../../components/pagination";
 import { ICarsReturn } from "../../interfaces/Car";
 import { UserContext } from "../../contexts/userContext";
 import { CarsContext } from "../../contexts/carsContext";
@@ -59,8 +58,6 @@ function Home() {
         {list.length > 0 ? <Card lista={list} /> : <Card lista={listaFeita} />}
       </HomeContainer>
 
-      <Pagination />
-
       <Footer />
     </>
   ) : (
@@ -82,8 +79,6 @@ function Home() {
         />
         {list.length > 0 ? <Card lista={list} /> : <Card lista={listaFeita} />}
       </HomeContainer>
-
-      <Pagination />
 
       <Footer />
     </>

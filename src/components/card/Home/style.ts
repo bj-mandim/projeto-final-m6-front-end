@@ -11,6 +11,7 @@ export const CardsList = styled.section`
     overflow: scroll;
     align-self: flex-start;
     max-width: 100%;
+    width: 100%;
   }
 `;
 
@@ -19,6 +20,7 @@ export const StyledCards = styled.figure`
   overflow: hidden;
   max-width: 312px;
   margin: 0;
+  cursor: pointer;
 
   font-family: "Lexend";
 

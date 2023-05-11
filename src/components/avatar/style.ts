@@ -62,3 +62,22 @@ export const StyleAvatarUserAdminPage = styled.div`
     font-size: 50px;
   }
 `;
+
+export const SmallAvatar = styled.div`
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  & > div {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: ${getColors()};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--whiteFixed);
+    font-weight: 600;
+    line-height: 24px;
+    font-size: 14px;
+  }
+`;

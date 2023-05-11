@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
- import { Div } from "./style";
+import { WhiteSection } from "../../pages/Product/styles";
+import { WriteBox } from "./style";
+import { SmallAvatar } from "../avatar/style";
+import { Flex } from "@chakra-ui/react";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
-
 
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
@@ -21,18 +23,19 @@ function WriteComment() {
   
   return user && (
     <>
-			<Div>
-				<section>
-					<div className="profile">
-						<h4>{user.name}</h4>
-					</div>
-					<form className="writer-box" onSubmit={handleSubmit(makeComment)}>
-						<textarea {...register("comment")} placeholder="Dê sua opinião"/>
-						<span>{errors.comment?.message}</span>
-						<button className="btn btn-primary btn-medium">Comentar</button>
-					</form>
-				</section>
-			</Div>
+		<WhiteSection>
+			<Flex alignItems="center" gap={'8px'}>
+				<SmallAvatar>
+					<div>{user.name[0].toUpperCase()}</div>
+				</SmallAvatar>
+				<h4>{user.name}</h4>
+			</Flex>
+			<WriteBox onSubmit={handleSubmit(makeComment)}>
+				<textarea {...register("comment")} placeholder="Dê sua opinião"/>
+				<span className="error-message">{errors.comment?.message}</span>
+				<button className="btn btn-primary btn-medium">Comentar</button>
+			</WriteBox>
+		</WhiteSection>
     </>
   );
 }

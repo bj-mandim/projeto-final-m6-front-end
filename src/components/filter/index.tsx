@@ -83,22 +83,22 @@ const Filter = ({
 
           <FilterGroup id="marca">
             <h3 className="heading-4">Marca</h3>
-            <p onClick={() => setList([])}>Limpar</p>
-            <ul>
+              <FilterList
+                  className="heading-6"
+                >
               {Object.keys(brand).map((keys) => (
                 <li id={keys} onClick={() => filterByBrand(keys)}>
                   {keys}
                 </li>
               ))}
+              </FilterList>
               <FilterList
                 className="heading-6"
                 onClick={() => getCarsBrand()}
               ></FilterList>
-            </ul>
           </FilterGroup>
           <FilterGroup id="modelo">
             <h3 className="heading-4">Modelo</h3>
-            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
               {modelsReduced.map((item: string[]) => {
                 return (
@@ -111,7 +111,6 @@ const Filter = ({
           </FilterGroup>
           <FilterGroup id="cor">
             <h3 className="heading-4">Cor</h3>
-            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
               {colorsReduced.map((item: string) => {
                 return (
@@ -124,7 +123,6 @@ const Filter = ({
           </FilterGroup>
           <FilterGroup id="ano">
             <h3 className="heading-4">Ano</h3>
-            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
               {yearsReduced.map((item: string) => {
                 return (
@@ -137,7 +135,6 @@ const Filter = ({
           </FilterGroup>
           <FilterGroup id="combustivel">
             <h3 className="heading-4">Combustível</h3>
-            <p onClick={() => setList([])}>Limpar</p>
             <FilterList className="heading-6">
               <li id="1" onClick={() => filterByFuel("1")}>
                 Flex

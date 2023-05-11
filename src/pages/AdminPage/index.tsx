@@ -7,7 +7,6 @@ import { useContext } from "react";
 import { IoClose } from "react-icons/io5";
 import { FormModal } from "../../components/form/style";
 import { StyleModal } from "../../components/modal/style";
-import Pagination from "../../components/pagination";
 import { Footer } from "../../components/footer";
 import Button from "../../components/button/style";
 import { UserContext } from "../../contexts/userContext";
@@ -73,7 +72,6 @@ function AdminPage() {
           </Article>
 
           <CardUserAdmin />
-          <Pagination />
         </Section>
         <Footer />
         {isOpen && (
