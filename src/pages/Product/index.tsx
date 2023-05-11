@@ -84,7 +84,14 @@ function Product() {
                   </Flex>
                   <p className="heading heading-7">R$ {card.price}</p>
                 </Flex>
-                {user && <a href={decodeTellphone(card.user.phone)}>Comprar</a>}
+                {/* <button className="btn btn-primary btn-medium" style={{ marginTop: 16 }} onClick={
+                  () => {
+
+                  }
+                }>
+                  Comprar
+                </button> */}
+                {user && <a className="btn btn-primary btn-medium" style={{ marginTop: 16, width: 68, }} href={decodeTellphone(user.phone)}>Comprar</a>}
               </WhiteSection>
               <WhiteSection>
                 <h3>Descrição</h3>

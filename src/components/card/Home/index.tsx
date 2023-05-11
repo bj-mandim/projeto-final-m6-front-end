@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 const Card = ({ lista }: iCarProps) => {
   const { getCardId, setOptionsOpen } = useContext(ContextApi);
   const navigate = useNavigate();
+  console.log(lista)
 
   return (
     <>
@@ -24,7 +25,7 @@ const Card = ({ lista }: iCarProps) => {
                 }}
               >
                 <div className="boxImage">
-                  <img src={car.images[0]?.url} alt="carImage" />
+                  <img src={car.images[0].url} alt="carImage" />
                   <span className="status" id="ativo">
                     Ativo
                   </span>
