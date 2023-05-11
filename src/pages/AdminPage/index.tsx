@@ -40,7 +40,7 @@ function AdminPage() {
   const { deleteAnnouncement } = useContext(CarsContext);
 
   const arrayID: any = [];
-  for (let i = 0; i <= 7; i++) {
+  for (let i = 0; i < 7; i++) {
     arrayID.push({ id: i });
   }
 
