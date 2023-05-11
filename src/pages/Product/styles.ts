@@ -152,7 +152,7 @@ export const WhiteSection = styled.section`
   .small-images {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     gap: 16px;
 
     @media (max-width: 768px) {

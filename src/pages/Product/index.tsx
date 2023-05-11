@@ -105,7 +105,7 @@ function Product() {
               <WhiteSection>
                 <h3>Fotos</h3>
                 <div className="small-images">
-                  <img
+                  {/* <img
                     src={card.images[1].url}
                     onClick={() => {
                       setIsOpen(true);
@@ -152,7 +152,17 @@ function Product() {
                       setImageView(7);
                     }}
                     alt=""
-                  />
+                  /> */}
+                  {card.images.map((image: any, index: number) => (
+                    <img
+                      src={card.images[index].url}
+                      onClick={() => {
+                        setIsOpen(true);
+                        setImageView(index + 1);
+                      }}
+                      alt={`Imagem ${index + 1}`}
+                    />
+                  ))}
                 </div>
               </WhiteSection>
               <WhiteSection className="text-center">
