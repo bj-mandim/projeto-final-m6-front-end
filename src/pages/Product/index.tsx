@@ -92,7 +92,7 @@ function Product() {
                 }>
                   Comprar
                 </button> */}
-                {user && <a href={decodeTellphone(user.phone)}>Comprar</a>}
+                {user && <a className="btn btn-primary btn-medium" style={{ marginTop: 16, width: 68, }} href={decodeTellphone(user.phone)}>Comprar</a>}
               </WhiteSection>
               <WhiteSection>
                 <h3>Descrição</h3>
