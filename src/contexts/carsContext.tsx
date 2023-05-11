@@ -18,6 +18,7 @@ function ApiStateCars({ children }: iChildren) {
   const [list, setList]: any = useState([]);
   const [color, setColor] = useState([]);
   const [year, setYear] = useState([]);
+  const [fuel, setFuel] = useState([]);
   const { attComments } = useContext(ContextApi);
   const { getProfile } = useContext(UserContext);
 
@@ -174,6 +175,13 @@ function ApiStateCars({ children }: iChildren) {
     setList(filtered);
   }
 
+  async function getAllFuel() {
+    const data = await getAllCars();
+    const fuels = data.map((item: any) => {
+      return item.fuel;
+    })
+    setFuel(fuels)
+  }
   async function filterByFuel(fuel: string) {
     const data = await getAllCars();
     const filtered = data.filter((item: any) => {
@@ -249,6 +257,7 @@ function ApiStateCars({ children }: iChildren) {
     getAllModels();
     getAllColors();
     getAllYears();
+    getAllFuel();
   }, []);
 
   return (
@@ -265,6 +274,7 @@ function ApiStateCars({ children }: iChildren) {
         filterByColor,
         year,
         filterByYear,
+        fuel,
         filterByFuel,
         filterByKm,
         filterByPrice,

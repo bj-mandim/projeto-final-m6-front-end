@@ -77,6 +77,9 @@ export const FilterGroup = styled.div`
         color: var(--grey0);
         margin-top: 0;
 	}
+    .heading-6 > li {
+        text-transform: capitalize;
+    }
 
     @media (max-width: 767px) {
         padding: 0 16px;

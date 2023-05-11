@@ -41,6 +41,7 @@ const Filter = ({
     filterByColor,
     year,
     filterByYear,
+    fuel,
     filterByFuel,
     filterByKm,
     filterByPrice,
@@ -62,6 +63,10 @@ const Filter = ({
   if (year) {
     yearsReduced = year.filter((item: any, i: any) => year.indexOf(item) === i);
     yearsReduced.sort();
+  }
+  let fuelReduced = [];
+  if (fuel) {
+    fuelReduced = fuel.filter((item: any, i: any) => fuel.indexOf(item) === i);
   }
 
   return (
@@ -136,7 +141,12 @@ const Filter = ({
           <FilterGroup id="combustivel">
             <h3 className="heading-4">Combustível</h3>
             <FilterList className="heading-6">
-              <li id="1" onClick={() => filterByFuel("1")}>
+              {fuelReduced.map((item: string) => {
+                return (
+                  <li onClick={() => filterByFuel(item)}>{item}</li>
+                )
+              })}
+              {/* <li id="1" onClick={() => filterByFuel("1")}>
                 Flex
               </li>
               <li id="2" onClick={() => filterByFuel("2")}>
@@ -144,7 +154,7 @@ const Filter = ({
               </li>
               <li id="3" onClick={() => filterByFuel("3")}>
                 Elétrico
-              </li>
+              </li> */}
             </FilterList>
           </FilterGroup>
           <FilterGroup id="km">
