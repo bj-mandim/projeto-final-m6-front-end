@@ -87,7 +87,7 @@ export const Modal = styled.div`
     justify-content: space-between;
     margin-bottom: 1rem;
 
-    button {
+    button, a {
       display: flex;
       align-items: center;
       justify-content: center;
