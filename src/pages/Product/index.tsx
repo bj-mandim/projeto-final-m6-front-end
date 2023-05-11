@@ -12,7 +12,7 @@ import {
 } from "./styles";
 import { Flex } from "@chakra-ui/react";
 import { Comment } from "../../components/comment";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import WriteComment from "../../components/WriteComment";
 import { ContextApi } from "../../contexts";
 import { StyleModal } from "../../components/modal/style";
@@ -25,6 +25,7 @@ function Product() {
   const { card, isOpen, setIsOpen, idCar, listUserId }: any =
     useContext(ContextApi);
   const { user }: any = useContext(UserContext);
+  const [imageView, setImageView] = useState(0);
 
   function decodeTellphone(text: string) {
     let tellDecoded = "";
@@ -37,12 +38,14 @@ function Product() {
       }
     }
     let url = `https://api.whatsapp.com/send?phone=${tellDecoded}&text=${pedidoDecoded}`;
-    console.log(url, "URLLL");
+    // console.log(url, "URLLL");
     return url;
   }
 
   useEffect(() => {
-    decodeTellphone(user.phone);
+    if (user) {
+      decodeTellphone(user.phone);
+    }
   }, []);
 
   return (
@@ -54,7 +57,10 @@ function Product() {
             <Main>
               <WhiteSection
                 className="principal-img"
-                onClick={() => setIsOpen(true)}
+                onClick={() => {
+                  setIsOpen(true);
+                  setImageView(1);
+                }}
               >
                 <img src={card.images[0].url} alt="" />
               </WhiteSection>
@@ -86,7 +92,7 @@ function Product() {
                 }>
                   Comprar
                 </button> */}
-                <a href={decodeTellphone(user.phone)}>Comprar</a>
+                {user && <a href={decodeTellphone(user.phone)}>Comprar</a>}
               </WhiteSection>
               <WhiteSection>
                 <h3>Descrição</h3>
@@ -99,12 +105,54 @@ function Product() {
               <WhiteSection>
                 <h3>Fotos</h3>
                 <div className="small-images">
-                  <img src={card.images[1].url} alt="" />
-                  <img src={card.images[2].url} alt="" />
-                  <img src={card.images[3].url} alt="" />
-                  <img src={card.images[4].url} alt="" />
-                  <img src={card.images[5].url} alt="" />
-                  <img src={card.images[6].url} alt="" />
+                  <img
+                    src={card.images[1].url}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setImageView(2);
+                    }}
+                    alt=""
+                  />
+                  <img
+                    src={card.images[2].url}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setImageView(3);
+                    }}
+                    alt=""
+                  />
+                  <img
+                    src={card.images[3].url}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setImageView(4);
+                    }}
+                    alt=""
+                  />
+                  <img
+                    src={card.images[4].url}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setImageView(5);
+                    }}
+                    alt=""
+                  />
+                  <img
+                    src={card.images[5].url}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setImageView(6);
+                    }}
+                    alt=""
+                  />
+                  <img
+                    src={card.images[6].url}
+                    onClick={() => {
+                      setIsOpen(true);
+                      setImageView(7);
+                    }}
+                    alt=""
+                  />
                 </div>
               </WhiteSection>
               <WhiteSection className="text-center">
@@ -129,7 +177,7 @@ function Product() {
       </Section>
       <Footer />
 
-      {isOpen && idCar && (
+      {isOpen && idCar && imageView && (
         <StyleModal
           id="wrapp"
           onClick={(e: React.MouseEvent<HTMLDivElement>) => {
@@ -148,7 +196,7 @@ function Product() {
                 </Button>
               </div>
               <div className="modal-img">
-                <img src={card.images[0].url} alt="" />
+                <img src={card.images[imageView - 1].url} alt="" />
               </div>
             </FormModal>
           </div>
