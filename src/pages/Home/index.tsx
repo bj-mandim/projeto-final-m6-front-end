@@ -40,17 +40,17 @@ function Home() {
     getCars();
   }, [query]);
 
-  // function getGoodPrice(car: ICarsReturn) {
-  //   const findModel = compareModels.find(
-  //     (apiModel) =>
-  //       apiModel.name.toLowerCase() == car.model.toLowerCase() &&
-  //       apiModel.year == car.year
-  //   );
-  //   if (findModel) {
-  //     return car.price <= findModel.price - findModel.price * 0.5;
-  //   }
-  //   return false;
-  // }
+  function getGoodPrice(car: ICarsReturn) {
+    const findModel = compareModels.find(
+      (apiModel) =>
+        apiModel.name.toLowerCase() == car.model.toLowerCase() &&
+        apiModel.year == car.year
+    );
+    if (findModel) {
+      return car.price <= findModel.price - findModel.price * 0.5;
+    }
+    return false;
+  }
 
   return user ? (
     <>
@@ -82,18 +82,14 @@ function Home() {
 
       <HomeContainer>
 
-      {/* <CardsList>
+      <CardsList>
           {cars.map((anuncio) => {
-            const teste = getGoodPrice(anuncio);
-            {
-              return teste ? (
-                <Card car={anuncio} key={anuncio.id} good_price />
-              ) : (
-                <Card car={anuncio} key={anuncio.id} />
-              );
-            }
+            const goodPrice = getGoodPrice(anuncio);
+            return (
+              <Card car={anuncio} key={anuncio.id} good_price={goodPrice} lista={[]} />
+            );
           })}
-        </CardsList> */}
+        </CardsList>
 
         <Filter
           brands={brands}

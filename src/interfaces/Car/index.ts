@@ -103,7 +103,9 @@ export interface IModel {
 }
 
 export interface iCarProps {
+  car?: ICarsReturn;
   lista: ICard[];
+  good_price?: boolean; 
 }
 
 export interface ICardListProps {
@@ -150,6 +152,7 @@ export interface ICard {
   km: number;
   model: string;
   price: string;
+  good_price?: boolean;
   year: number;
   user: iUser;
 }

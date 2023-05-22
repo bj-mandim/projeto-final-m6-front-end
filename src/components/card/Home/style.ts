@@ -67,7 +67,7 @@ export const StyledCards = styled.figure`
     }
   }
 
-  .moneySign {
+  .good_price {
     background: var(--green1);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 2px;

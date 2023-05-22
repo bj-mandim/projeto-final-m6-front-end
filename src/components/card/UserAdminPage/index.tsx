@@ -25,7 +25,7 @@ const CardUserAdmin = () => {
                   <span className="status" id="ativo">
                     Ativo
                   </span>
-                  <span className="moneySign">$</span>
+                  <span className="good_price">$</span>
                 </div>
 
                 <figcaption className="description">

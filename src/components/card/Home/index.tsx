@@ -7,7 +7,7 @@ import { ICard, iCarProps } from "../../../interfaces/Car";
 import Avatar from "../../avatar";
 import { useNavigate } from "react-router-dom";
 
-const Card = ({ lista }: iCarProps) => {
+const Card = ({ lista, good_price }: iCarProps) => {
   const { getCardId, setOptionsOpen } = useContext(ContextApi);
   const navigate = useNavigate();
   console.log(lista)
@@ -29,8 +29,11 @@ const Card = ({ lista }: iCarProps) => {
                   <span className="status" id="ativo">
                     Ativo
                   </span>
-                  <span className="moneySign">$</span>
+                  {/* <span className="good_price">$</span> */}
+                  {good_price && <div className="good_price">$</div>}
                 </div>
+
+                
 
                 <figcaption className="description">
                   <h3 className="heading-7">{car.model}</h3>
@@ -78,7 +81,7 @@ export const CardUserPage = () => {
                   <span className="status" id="ativo">
                     Ativo
                   </span>
-                  <span className="moneySign">$</span>
+                  <span className="good_price">$</span>
                 </div>
 
                 <figcaption className="description">
