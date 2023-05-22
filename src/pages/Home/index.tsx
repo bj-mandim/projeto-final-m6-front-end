@@ -22,23 +22,14 @@ function Home() {
   const [brands, setBrands] = useState<string[]>([]);
   const [compareModels, setCompareModels] = useState<IModel[]>([]);
 
-  async function getCars(): Promise<void> {
-    try {
-      const allCars = await listCards.get(`/cars ${query}`);
-      setCars(allCars.data.result);
-
-      const newBrands = allCars.data.result.map(
-        (car: ICarsReturn) => car.brand
-      );
-      setBrands([...new Set([...newBrands])]);
-    } catch (error) {
-      console.error(error);
-    }
+  function getBrands(): void {
+    const newBrands = listCards.map((car: ICarsReturn) => car.brand);
+    setBrands(newBrands);
   }
 
   useEffect(() => {
-    getCars();
-  }, [query]);
+    getBrands();
+  }, [listCards]);
 
   function getGoodPrice(car: ICarsReturn) {
     const findModel = compareModels.find(
@@ -47,7 +38,7 @@ function Home() {
         apiModel.year == car.year
     );
     if (findModel) {
-      return car.price <= findModel.price - findModel.price * 0.5;
+      return car.price <= findModel.price * 0.95;
     }
     return false;
   }
@@ -81,12 +72,16 @@ function Home() {
       <Banner />
 
       <HomeContainer>
-
-      <CardsList>
-          {cars.map((anuncio) => {
+        <CardsList>
+          {listCards.map((anuncio: any) => {
             const goodPrice = getGoodPrice(anuncio);
             return (
-              <Card car={anuncio} key={anuncio.id} good_price={goodPrice} lista={[]} />
+              <Card
+                car={anuncio}
+                key={anuncio.id}
+                good_price={goodPrice}
+                lista={[]}
+              />
             );
           })}
         </CardsList>

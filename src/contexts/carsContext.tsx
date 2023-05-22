@@ -49,23 +49,24 @@ function ApiStateCars({ children }: iChildren) {
   async function createAnnouncement(
     dataUser: iFormCreateAnnouncement
   ): Promise<void> {
-    const token = localStorage.getItem("@Token_cars_shop");
-    if (token) {
-      try {
-        await apiCards.post<iFormCreateAnnouncement>(`cars`, dataUser, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        toast.success("Anúncio criado!");
-      } catch (error) {
-        localStorage.removeItem("@Token_cars_shop");
-        console.log(error);
-        toast.error("Algo deu errado, confira as informações!");
-      } finally {
-        getProfile();
-      }
-    }
+    console.log(dataUser);
+    // const token = localStorage.getItem("@Token_cars_shop");
+    // if (token) {
+    //   try {
+    //     await apiCards.post<iFormCreateAnnouncement>(`cars`, dataUser, {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     });
+    //     toast.success("Anúncio criado!");
+    //   } catch (error) {
+    //     localStorage.removeItem("@Token_cars_shop");
+    //     console.log(error);
+    //     toast.error("Algo deu errado, confira as informações!");
+    //   } finally {
+    //     getProfile();
+    //   }
+    // }
   }
 
   async function updateAnnouncement(info: any, id: string): Promise<void> {
@@ -179,8 +180,8 @@ function ApiStateCars({ children }: iChildren) {
     const data = await getAllCars();
     const fuels = data.map((item: any) => {
       return item.fuel;
-    })
-    setFuel(fuels)
+    });
+    setFuel(fuels);
   }
   async function filterByFuel(fuel: string) {
     const data = await getAllCars();

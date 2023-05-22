@@ -84,6 +84,7 @@ function AdminPage() {
                       ...info,
                       fipe_table: `${price}.00`,
                       is_active: true,
+                      is_promotion: parseFloat(info.price) <= price * 0.95,
                     });
                   })}
                 >
