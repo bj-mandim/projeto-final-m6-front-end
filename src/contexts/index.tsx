@@ -12,6 +12,7 @@ function ApiState({ children }: iChildren) {
   const navigate = useNavigate();
   const location = useLocation();
   const [listCards, setListCards] = useState([]);
+  const [fipeBrands, setFipeBrands] = useState({});
   const [card, setCard] = useState({});
   const [idCar, setIdCar] = useState("");
   const [isOpen, setIsOpen] = useState(false);
@@ -49,6 +50,15 @@ function ApiState({ children }: iChildren) {
         console.log(err);
         navigate("/");
       });
+  }
+
+  async function getFipeBrands() {
+    try {
+      const brands = await apiKenzieCards.get(`/cars`);
+      setFipeBrands(brands.data);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   function getFipeTable(brand: string, model: string) {
@@ -125,6 +135,7 @@ function ApiState({ children }: iChildren) {
 
   useEffect(() => {
     getCards();
+    getFipeBrands();
   }, []);
 
   useEffect(() => {
@@ -139,6 +150,7 @@ function ApiState({ children }: iChildren) {
     <ContextApi.Provider
       value={{
         listCards,
+        fipeBrands,
         card,
         setCard,
         getCardId,
