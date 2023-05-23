@@ -64,7 +64,9 @@ function AdminPage() {
   }
 
   function getModels() {
-    setModelsList(fipeBrands[formCreateAnnounce.getValues().brand]);
+    if (formCreateAnnounce.getValues().brand) {
+      setModelsList(fipeBrands[formCreateAnnounce.getValues().brand]);
+    }
   }
 
   return (
@@ -111,6 +113,7 @@ function AdminPage() {
                       {...formCreateAnnounce.register("brand")}
                       onClick={() => getModels()}
                     >
+                      <option value="">Escolha uma Marca</option>
                       {Object.keys(fipeBrands).map((brand) => {
                         return (
                           <option key={brand} value={brand}>
@@ -125,6 +128,7 @@ function AdminPage() {
 
                     <label htmlFor="model">Modelo</label>
                     <select {...formCreateAnnounce.register("model")}>
+                      <option value="">Escolha um Modelo</option>
                       {modelsList.map((model: any) => {
                         return (
                           <option key={model.name} value={model.name}>
@@ -292,24 +296,35 @@ function AdminPage() {
                   <br />
                   <strong>Informações do veículo</strong>
                   <div className="content_register">
-                    <label htmlFor="email">Marca</label>
-                    <input
-                      type="name"
-                      id="marca"
-                      placeholder="Ex. Mercedes Benz"
+                    <label htmlFor="brand">Marca</label>
+                    <select
                       {...formEditAnnounce.register("brand")}
-                    />
+                      onClick={() => getModels()}
+                    >
+                      <option value="">Escolha uma Marca</option>
+                      {Object.keys(fipeBrands).map((brand) => {
+                        return (
+                          <option key={brand} value={brand}>
+                            {brand}
+                          </option>
+                        );
+                      })}
+                    </select>
                     <span>
                       {formEditAnnounce.formState.errors.brand?.message}
                     </span>
 
-                    <label htmlFor="email">Modelo</label>
-                    <input
-                      type="name"
-                      id="modelo"
-                      placeholder="Ex. A 200 CGI ADVANCE SEDAN"
-                      {...formEditAnnounce.register("model")}
-                    />
+                    <label htmlFor="model">Modelo</label>
+                    <select {...formEditAnnounce.register("model")}>
+                      <option value="">Escolha um Modelo</option>
+                      {modelsList.map((model: any) => {
+                        return (
+                          <option key={model.name} value={model.name}>
+                            {model.name}
+                          </option>
+                        );
+                      })}
+                    </select>
                     <span>
                       {formEditAnnounce.formState.errors.model?.message}
                     </span>
