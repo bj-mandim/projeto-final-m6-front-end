@@ -179,8 +179,8 @@ function ApiStateCars({ children }: iChildren) {
     const data = await getAllCars();
     const fuels = data.map((item: any) => {
       return item.fuel;
-    })
-    setFuel(fuels)
+    });
+    setFuel(fuels);
   }
   async function filterByFuel(fuel: string) {
     const data = await getAllCars();
@@ -203,16 +203,6 @@ function ApiStateCars({ children }: iChildren) {
       return item.price >= Number(priceMin) && item.price <= Number(priceMax);
     });
     setList(filtered);
-  }
-
-  async function createComment(comment: IComment, id: string): Promise<void> {
-    try {
-      apiKenzieCards.post(`/cars/${id}/comments`, comment);
-      toast.success("Comentário criado com Sucesso!");
-    } catch (error) {
-      console.log(error);
-      toast.error("Erro ao criar o comentário!");
-    }
   }
 
   async function updateComment(
@@ -278,7 +268,6 @@ function ApiStateCars({ children }: iChildren) {
         filterByFuel,
         filterByKm,
         filterByPrice,
-        createComment,
         updateComment,
         deleteComment,
         createAnnouncement,
