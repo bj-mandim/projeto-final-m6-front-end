@@ -448,6 +448,34 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    select {
+        border: 1px solid var(--grey7);
+        border-radius: 4px;
+        padding: 0px 16px;
+        min-height: 48px;
+        width: -moz-available;
+        width: -webkit-fill-available;
+        color: var(--grey1);
+        font-size: var(--input-placeholder-size);
+        background: transparent;
+
+        &::placeholder {
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: var(--input-placeholder-size);
+            color: var(--grey3);
+        }
+
+        &:hover {
+            border: 1px solid var(--grey4);
+        }
+
+        &:focus {
+            outline: none;
+            border: 1px solid var(--brand1);
+        }
+    }
+
     .error-message {
         color: var(--alert1);
         font-size: 13px;
