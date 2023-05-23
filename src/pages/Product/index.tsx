@@ -40,12 +40,12 @@ function Product() {
     let url = `https://api.whatsapp.com/send?phone=${tellDecoded}&text=${pedidoDecoded}`;
     return url;
   }
-
-  useEffect(() => {
+  /* console.log(card.user.phone); */
+  /* useEffect(() => {
     if (user) {
       decodeTellphone(card.user.phone);
     }
-  }, []);
+  }, []); */
 
   return (
     <>
@@ -84,7 +84,7 @@ function Product() {
                   </Flex>
                   <p className="heading heading-7">R$ {card.price}</p>
                 </Flex>
-                {user && <a href={decodeTellphone(card.user.phone)}>Comprar</a>}
+                {/* {user && <a href={decodeTellphone(card.user.phone)}>Comprar</a>} */}
               </WhiteSection>
               <WhiteSection>
                 <h3>Descrição</h3>
