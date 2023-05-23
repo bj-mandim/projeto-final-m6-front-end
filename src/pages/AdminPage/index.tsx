@@ -110,6 +110,7 @@ function AdminPage() {
                   <div className="content_register">
                     <label htmlFor="brand">Marca</label>
                     <select
+                      id="marca"
                       {...formCreateAnnounce.register("brand")}
                       onClick={() => getModels()}
                     >
@@ -127,7 +128,10 @@ function AdminPage() {
                     </span>
 
                     <label htmlFor="model">Modelo</label>
-                    <select {...formCreateAnnounce.register("model")}>
+                    <select
+                      id="modelo"
+                      {...formCreateAnnounce.register("model")}
+                    >
                       <option value="">Escolha um Modelo</option>
                       {modelsList.map((model: any) => {
                         return (
