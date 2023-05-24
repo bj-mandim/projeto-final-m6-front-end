@@ -24,7 +24,7 @@ Link para o back-end da aplicação: [Motors Shop Back-End](https://github.com/b
 
  **Documentação:**
  
-Link do swagger
+**Link do swagger** https://motor-shop-aty2.onrender.com/api
 
 
  ## **Devs**
