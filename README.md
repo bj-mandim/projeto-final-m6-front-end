@@ -20,7 +20,7 @@ Link para o back-end da aplicação: [Motors Shop Back-End](https://github.com/b
  - TypeORM
  - NestJS
  
- **Base URL:**
+ **Base URL: **https://kenzie-cars.vercel.app/
 
  **Documentação:**
  
